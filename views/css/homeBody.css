@@ -1,0 +1,36 @@
+
+#titleCont #titleRow h2.titleText{
+  font-size: 50px;
+  color: #eb9197;
+  text-transform: uppercase;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  margin: 0px 50px 0 50px;
+  padding-top: 0px; 
+  -webkit-text-stroke: 1px #bd7378;
+	text-shadow: 0px 4px 4px #bd7378;
+}
+
+#parent #blogRow #blogPosts #postImage{
+    width: 15rem;
+    height: 15rem;
+   
+}
+
+.card-title {
+    left: 100px;
+    bottom: 150px;
+}
+
+#readMore{
+    background-color: #eb9197;
+    color:white;
+   border: 2px solid #bd7378;
+}
+
+#readMore:hover{
+    background-color: white;
+    color:#73b8bd;
+    border: 2px solid #bd7378;
+}

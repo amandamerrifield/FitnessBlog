@@ -87,6 +87,30 @@ li:first-child
   margin:0;
 }
 
+@media all and (min-width: 320px) and (max-width: 1024px) {}
+    
+    
+ .button{
+   
+    color:black;
+    
+   
+}
+
+
+.button:hover{
+  
+    color:grey;
+   
+}   
+    
+    
+    
+    
+    
+
+
+
 
 
 footer
