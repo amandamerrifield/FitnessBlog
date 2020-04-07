@@ -30,7 +30,7 @@ function call($controller, $action)
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
-    'body_parts' => ['create'],
+    'body_parts' => ['readAll','read','delete','update','create'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
