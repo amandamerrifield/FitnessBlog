@@ -69,10 +69,24 @@ class BodyPartsController
 
     public function delete()
     {
-        BodyPart::remove($_GET['id']);
+//case we are showing the edit form for a specific bodypart
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['id'])){
+                call('pages', 'error');
+                return;
+            }
 
-        $products = BodyPart::all();
-        require_once('views/admin/bodyparts/readAll.php');
+            // we use the given id to get the correct product
+            $bodyPart = BodyPart::find($_GET['id']);
+
+            require_once('views/admin/bodyparts/delete.php');
+        } else { //case when we are writing the bodypart to the database
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            BodyPart::remove($id,$part);
+
+            $this->readAll();
+        }
     }
 
 }

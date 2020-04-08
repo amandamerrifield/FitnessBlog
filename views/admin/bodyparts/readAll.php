@@ -11,15 +11,19 @@
             </tr>
             </thead>
             <tbody>
-           <?php foreach($bodyParts as $part) { ?>
-               <tr>
+            <?php foreach ($bodyParts as $part) { ?>
+                <tr>
 
-                <td><?php print $part->getId()?></td>
-                <td><?php print $part->getPart()?></td>
+                    <td><?php print $part->getId() ?></td>
+                    <td><?php print $part->getPart() ?></td>
 
-                   <td><a href="index.php?controller=body_parts&action=update&id=<?php print $part->getId()?>">Edit</a></td>
-                <td>Delete</td>
-            </tr>
+                    <td>
+                        <a href="index.php?controller=body_parts&action=update&id=<?php print $part->getId() ?>">Edit</a>
+                    </td>
+                    <td>
+                        <a href="index.php?controller=body_parts&action=delete&id=<?php print $part->getId() ?>">Delete</a>
+                    </td>
+                </tr>
             <?php } ?>
             </tbody>
         </table>
