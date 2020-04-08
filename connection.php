@@ -13,7 +13,12 @@ class DB {
             'trainer',
             'trainer#4',
             $pdo_options);
+        echo "Connected successfully";
       }
+      else{
+        echo "Connection failed: ";
+    }
       return self::$instance;
     }
+  
 }

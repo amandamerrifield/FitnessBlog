@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<?php 
+
+$servername = "127.0.0.1";
+$username = "trainer";
+$password = "trainer#4";
+
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=exercises;port=3307;", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully";
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
+
+
+?>
+    
+    
     <meta charset="UTF-8">
     <title></title>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
@@ -69,14 +90,14 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>row 1-0</td>
-                            <td>row 1-1</td>
-                            <td>row 1-2</td>
-                            <td>row 1-3</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
+                        <?php  
+                            foreach($list as $products) {
+
+                       printf("<tr><td>{$products['id']}</td><td> {$products['part']}</td></tr>\n");
+                    }
+                    ?>
+  </table>
+  </body>
                         </tbody>
                     </table>
                 </div>

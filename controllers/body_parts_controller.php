@@ -1,3 +1,4 @@
+
 <?php
 
 //class BodyPartsController {
@@ -6,27 +7,28 @@
 //        require_once('views/admin/bodyparts/createBodyPart.php');
 //    }
 //}
-
+require_once "connection.php";
 
 class BodyPartsController
 {
     public function readAll()
     {
         // we store all the posts in a variable
-        $products = BodyPart::all();
+        $bodyParts = BodyPart::all();
         require_once('views/admin/bodyparts/readAllBodyPart.php');
+        
     }
 
     public function read()
     {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
-        if (!isset($_GET['id']))
+        if (!isset($_POST['id']))
             return call('pages', 'error');
 
         try {
             // we use the given id to get the correct post
-            $product = BodyPart::find($_GET['id']);
+            $product = BodyPart::find($_POST['id']);
             require_once('views/admin/bodyparts/indexBodyPart.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
@@ -38,7 +40,7 @@ class BodyPartsController
         // we expect a url of form ?controller=products&action=create
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once('views/admin/bodyparts/createBodyPart.php');
         } else {
             BodyPart::add();
@@ -52,16 +54,16 @@ class BodyPartsController
     public function update()
     {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['id']))
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (!isset($_POST['id']))
                 return call('pages', 'error');
 
             // we use the given id to get the correct product
-            $product = BodyPart::find($_GET['id']);
+            $product = BodyPart::find($_POST['id']);
 
             require_once('views/admin/bodyparts/editBodyPart.php');
         } else {
-            $id = $_GET['id'];
+            $id = $_POST['id'];
             BodyPart::update($id);
 
             $products = BodyPart::all();
@@ -72,7 +74,7 @@ class BodyPartsController
 
     public function delete()
     {
-        BodyPart::remove($_GET['id']);
+        BodyPart::remove($_POST['id']);
 
         $products = BodyPart::all();
         require_once('views/admin/bodyparts/readAllBodyPart.php');

@@ -1,11 +1,14 @@
 <?php
+require_once "../connection.php";
+
+
 
 class BodyPart
 {
-    private $id;
-    private $part;
+    protected $id;
+    protected $part;
 
-    private function __construct($id, $part)
+    public function __construct($id, $part)
     {
         $this->id = $id;
         $this->part = $part;
@@ -33,6 +36,7 @@ class BodyPart
         }
         return $list;
     }
+    //test
 
     public static function find($id)
     {
@@ -51,26 +55,21 @@ class BodyPart
         }
     }
 
-    public static function update($id)
+    public static function update($id, $part)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Update bodyPart set part=:part where id=:id");
+        $req = $db->prepare("UPDATE bodyPart set part=:part where id=:id");
         $req->bindParam(':id', $id);
         $req->bindParam(':part', $part);
 
-// set name and price parameters and execute
-        if (isset($_POST['part']) && $_POST['part'] != "") {
-            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $part = $filteredPart;
+        // set name and price parameters and execute
+        //if (isset($_POST['part']) && $_POST['part'] != "") {
+        //            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
+        //        }
+        //$part = $filteredPart;
+        
+        
         $req->execute();
-
-
-//upload product image if it exists
-        if (!empty($_FILES[self::InputKey]['part'])) {
-            BodyPart::uploadFile($part);
-        }
-
     }
 
     public static function add()
@@ -138,3 +137,7 @@ class BodyPart
         $req->execute(array('id' => $id));
     }
 }
+
+$test= new BodyPart(1, 'leg');
+
+print_r ($test->all());

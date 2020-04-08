@@ -10,6 +10,9 @@ INSERT INTO bodyPart(id, part) VALUES (1,'arms');
 INSERT INTO bodyPart(id, part) VALUES (2,'chest');
 INSERT INTO bodyPart(id, part) VALUES (3,'abs');
 INSERT INTO bodyPart(id, part) VALUES (4,'legs');
+-- Use synthetic key for body parts, so there isn't a mistake in reinserting too many pieces of data.
+-- This allows duplicates. Use natural key instead of synthetic
+-- Make PART the primary key. use id as the index, not the key.
 
 INSERT INTO users VALUES (1,false,'hanna99','hanna@gmail.com','password',NOW(), NOW());
 
