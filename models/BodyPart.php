@@ -2,10 +2,10 @@
 
 class BodyPart
 {
-    private $id;
-    private $part;
+    protected $id;
+    protected $part;
 
-    private function __construct($id, $part)
+    public function __construct($id, $part)
     {
         $this->id = $id;
         $this->part = $part;
