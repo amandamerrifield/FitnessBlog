@@ -8,12 +8,12 @@
 //}
 
 
-class LevelController
+class DifficultyController
 {
     public function readAll()
     {
         // we store all the posts in a variable
-        $levels = Difficulty::all();
+        $level = Difficulty::all();
         require_once('views/admin/difficulty/readAllLevel.php');
     }
 
@@ -26,8 +26,8 @@ class LevelController
         
         try {
             // we use the given id to get the correct post
-            $levels = Difficulty::find($_GET['id']);
-            require_once('views/admin/difficulty/readAllLevel.php');
+            $level = Difficulty::find($_GET['id']);
+            require_once('views/admin/difficulty/indexLevel.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
@@ -39,12 +39,11 @@ class LevelController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/difficulty/readAllLevel.php');
+            require_once('views/admin/difficulty/createLevel.php');
         } else {
-            Difficulty::add();
-
-            $levels = Difficulty::all(); //$products is used within the view
-            require_once('views/admin/difficulty/readAllLevel.php');
+            $level = filter_input(INPUT_POST, 'level', FILTER_SANITIZE_SPECIAL_CHARS);
+            BodyPart::create($level);
+            $this->readAllLevel();
         }
 
     }
@@ -57,15 +56,15 @@ class LevelController
                 return call('pages', 'error');
 
             // we use the given id to get the correct product
-            $levels = Difficulty::find($_GET['id']);
+            $level = Difficulty::find($_GET['id']);
 
-            require_once('views/admin/difficulty/readAllLevel.php');
+            require_once('views/admin/difficulty/editLevel.php');
         } else {
             $id = $_GET['id'];
             Difficulty::update($id);
 
-            $levels = Difficulty::all();
-            require_once('views/admin/difficulty/readAllLevel.php');
+            $level = Difficulty::all();
+            require_once('views/admin/difficulty/editLevel.php');
         }
 
     }
@@ -74,8 +73,8 @@ class LevelController
     {
         Difficulty::remove($_GET['id']);
 
-        $levels = Difficulty::all();
-        require_once('views/admin/difficulty/readAllLevel.php');
+        $level = Difficulty::all();
+        require_once('views/admin/difficulty/deleteLevel.php');
     }
 
 }

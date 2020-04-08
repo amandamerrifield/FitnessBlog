@@ -1,11 +1,33 @@
 <?php
 
-class Difficulty
+
+class DB {
+    
+    private static $instance = NULL;
+
+    //Singleton Design Pattern
+    public static function getInstance() {
+      if (!isset(self::$instance)) {
+        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+        self::$instance = new PDO(
+            'mysql:host=localhost;dbname=exercises',
+            'trainer',
+            'trainer#4',
+            $pdo_options);
+      }
+      return self::$instance;
+    }
+}
+
+
+
+
+class Difficulty 
 {
-    protected $id;
+    protected $id ;
     protected $level;
 
-    protected function __construct($id, $level)
+    public function __construct($id, $level)
     {
         $this->id = $id;
         $this->level = $level;
@@ -27,7 +49,7 @@ class Difficulty
     {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM bodyPart');
+        $req = $db->query('SELECT * FROM difficulty');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $level) {
             $list[] = new Difficulty($level['id'], $level['level']);
@@ -44,56 +66,47 @@ class Difficulty
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM bodyPart WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM difficulty WHERE id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-        $product = $req->fetch();
-        if ($product) {
-            return new BodyPart($product['id'], $product['part']);
+        $level = $req->fetch();
+        if ($level) {
+            return new Difficulty($level['id'], $level['level']);
         } else {
             //replace with a more meaningful exception
-            throw new Exception('This bodypart is not available');
+            throw new Exception('This difficulty is not available');
         }
     }
 
     public static function update($id)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Update bodyPart set part=:part where id=:id");
+        $req = $db->prepare("Update difficulty set level=:level where id=:id");
         $req->bindParam(':id', $id);
-        $req->bindParam(':part', $part);
+        $req->bindParam(':level', $level);
 
 // set name and price parameters and execute
-        if (isset($_POST['part']) && $_POST['part'] != "") {
-            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
+        if (isset($_POST['level']) && $_POST['level'] != "") {
+            $filteredLevel = filter_input(INPUT_POST, 'level', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-        $part = $filteredPart;
+        $level = $filteredLevel;
         $req->execute();
 
 
 //upload product image if it exists
-        if (!empty($_FILES[self::InputKey]['part'])) {
-            BodyPart::uploadFile($part);
+        if (!empty($_FILES[self::InputKey]['level'])) {
+            Difficulty::uploadFile($level);
         }
 
     }
 
-    public static function add()
+    public static function creat($level)
     {
         $db = Db::getInstance();
-//        $part= $_POST['part'];
-        $req = $db->prepare("Insert into bodyPart(part) values (:part)");
-        $req->bindParam(':part', $part);
-
-// set parameters and execute
-        if (isset($_POST['part']) && $_POST['part'] != "") {
-            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $part = $filteredPart;
+//        $level= $_POST['level'];
+        $req = $db->prepare("Insert into difficulty(level) values (:level)");
+        $req->bindParam(':level', $level);
         $req->execute();
-
-//upload product image
-        Product::uploadFile($part);
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
@@ -101,7 +114,7 @@ class Difficulty
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $part)
+    public static function uploadFile(string $level)
     {
 
         if (empty($_FILES[self::InputKey])) {
@@ -121,7 +134,7 @@ class Difficulty
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "/Applications/XAMPP/xamppfiles/htdocs/FittnessBlog/views/images";
 //        $path = "C:/xampp/htdocs/FitnessBlog/views/images/";
-        $destinationFile = $path . $part . '.jpeg';
+        $destinationFile = $path . $level . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
@@ -138,13 +151,13 @@ class Difficulty
         $db = Db::getInstance();
         //make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('delete FROM bodyPart WHERE id = :id');
+        $req = $db->prepare('delete FROM difficulty WHERE id = :id');
         // the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
     }
    
 }
 
-//
-//all($list);
-echo'hi';
+//$testObject = new Difficulty(1, 'hard');
+
+//$testObject->all();
