@@ -16,9 +16,9 @@ class BodyPart
         return $this->id;
     }
 
-    public function getPart($part)
+    public function getPart()
     {
-        $this->part = $part;
+        return $this->part;
     }
 
 
@@ -27,9 +27,9 @@ class BodyPart
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM bodyPart');
-        // we create a list of Product objects from the database results
-        foreach ($req->fetchAll() as $product) {
-            $list[] = new BodyPart($product['id'], $product['part']);
+        // we create a list of Body Part objects from the database results
+        foreach ($req->fetchAll() as $bodyPart) {
+            $list[] = new BodyPart($bodyPart['id'], $bodyPart['part']);
         }
         return $list;
     }
@@ -42,53 +42,30 @@ class BodyPart
         $req = $db->prepare('SELECT * FROM bodyPart WHERE id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-        $product = $req->fetch();
-        if ($product) {
-            return new BodyPart($product['id'], $product['part']);
+        $bodyPart = $req->fetch();
+        if ($bodyPart) {
+            return new BodyPart($bodyPart['id'], $bodyPart['part']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This bodypart is not available');
         }
     }
 
-    public static function update($id)
+    public static function update($id,$part)
     {
         $db = Db::getInstance();
         $req = $db->prepare("Update bodyPart set part=:part where id=:id");
-        $req->bindParam(':id', $id);
+        $req->bindParam(':id', intval($id));
         $req->bindParam(':part', $part);
-
-// set name and price parameters and execute
-        if (isset($_POST['part']) && $_POST['part'] != "") {
-            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $part = $filteredPart;
         $req->execute();
-
-
-//upload product image if it exists
-        if (!empty($_FILES[self::InputKey]['part'])) {
-            BodyPart::uploadFile($part);
-        }
-
     }
 
-    public static function add()
+    public static function create($part)
     {
         $db = Db::getInstance();
-//        $part= $_POST['part'];
         $req = $db->prepare("Insert into bodyPart(part) values (:part)");
         $req->bindParam(':part', $part);
-
-// set parameters and execute
-        if (isset($_POST['part']) && $_POST['part'] != "") {
-            $filteredPart = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $part = $filteredPart;
         $req->execute();
-
-//upload product image
-        Product::uploadFile($part);
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];

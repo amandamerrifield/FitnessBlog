@@ -1,11 +1,5 @@
 <?php
-
-//class BodyPartsController {
-//
-//    public function create() {
-//        require_once('views/admin/bodyparts/createBodyPart.php');
-//    }
-//}
+require_once 'models/BodyPart.php';
 
 
 class BodyPartsController
@@ -13,23 +7,25 @@ class BodyPartsController
     public function readAll()
     {
         // we store all the posts in a variable
-        $products = BodyPart::all();
-        require_once('views/admin/bodyparts/readAllBodyPart.php');
+        $bodyParts = BodyPart::all();
+        require_once('views/admin/bodyparts/readAll.php');
     }
 
     public function read()
     {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
-        if (!isset($_GET['id']))
-            return call('pages', 'error');
+        if (!isset($_GET['id'])) {
+            call('pages', 'error');
+            return;
+        }
         
         try {
             // we use the given id to get the correct post
             $product = BodyPart::find($_GET['id']);
-            require_once('views/admin/bodyparts/indexBodyPart.php');
+            require_once('views/admin/bodyparts/read.php');
         } catch (Exception $ex) {
-            return call('pages', 'error');
+            call('pages', 'error');
         }
     }
 
@@ -39,33 +35,34 @@ class BodyPartsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/bodyparts/createBodyPart.php');
+            require_once('views/admin/bodyparts/create.php');
         } else {
-            BodyPart::add();
-
-            $products = BodyPart::all(); //$products is used within the view
-            require_once('views/admin/bodyparts/readAllBodyPart.php');
+            $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
+            BodyPart::create($part);
+            $this->readAll();
         }
-
     }
 
     public function update()
     {
-
+//case we are showing the edit form for a specific bodypart
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['id']))
-                return call('pages', 'error');
+            if (!isset($_GET['id'])){
+                call('pages', 'error');
+                return;
+            }
 
             // we use the given id to get the correct product
-            $product = BodyPart::find($_GET['id']);
+            $bodyPart = BodyPart::find($_GET['id']);
 
-            require_once('views/admin/bodyparts/editBodyPart.php');
-        } else {
-            $id = $_GET['id'];
-            BodyPart::update($id);
+            require_once('views/admin/bodyparts/update.php');
+        } else { //case when we are writing the bodypart to the database
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            $products = BodyPart::all();
-            require_once('views/admin/bodyparts/readAllBodyPart.php');
+            BodyPart::update($id,$part);
+
+            $this->readAll();
         }
 
     }
@@ -75,7 +72,7 @@ class BodyPartsController
         BodyPart::remove($_GET['id']);
 
         $products = BodyPart::all();
-        require_once('views/admin/bodyparts/readAllBodyPart.php');
+        require_once('views/admin/bodyparts/readAll.php');
     }
 
 }
