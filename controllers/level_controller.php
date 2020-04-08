@@ -8,13 +8,13 @@
 //}
 
 
-class BodyPartsController
+class LevelController
 {
     public function readAll()
     {
         // we store all the posts in a variable
-        $products = BodyPart::all();
-        require_once('views/admin/bodyparts/readAllBodyPart.php');
+        $levels = Difficulty::all();
+        require_once('views/admin/difficulty/readAllLevel.php');
     }
 
     public function read()
@@ -26,8 +26,8 @@ class BodyPartsController
         
         try {
             // we use the given id to get the correct post
-            $product = BodyPart::find($_GET['id']);
-            require_once('views/admin/bodyparts/indexBodyPart.php');
+            $levels = Difficulty::find($_GET['id']);
+            require_once('views/admin/difficulty/readAllLevel.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
@@ -39,12 +39,12 @@ class BodyPartsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/bodyparts/createBodyPart.php');
+            require_once('views/admin/difficulty/readAllLevel.php');
         } else {
-            BodyPart::add();
+            Difficulty::add();
 
-            $products = BodyPart::all(); //$products is used within the view
-            require_once('views/admin/bodyparts/readAllBodyPart.php');
+            $levels = Difficulty::all(); //$products is used within the view
+            require_once('views/admin/difficulty/readAllLevel.php');
         }
 
     }
@@ -57,25 +57,25 @@ class BodyPartsController
                 return call('pages', 'error');
 
             // we use the given id to get the correct product
-            $product = BodyPart::find($_GET['id']);
+            $levels = Difficulty::find($_GET['id']);
 
-            require_once('views/admin/bodyparts/editBodyPart.php');
+            require_once('views/admin/difficulty/readAllLevel.php');
         } else {
             $id = $_GET['id'];
-            BodyPart::update($id);
+            Difficulty::update($id);
 
-            $products = BodyPart::all();
-            require_once('views/admin/bodyparts/readAllBodyPart.php');
+            $levels = Difficulty::all();
+            require_once('views/admin/difficulty/readAllLevel.php');
         }
 
     }
 
     public function delete()
     {
-        BodyPart::remove($_GET['id']);
+        Difficulty::remove($_GET['id']);
 
-        $products = BodyPart::all();
-        require_once('views/admin/bodyparts/readAllBodyPart.php');
+        $levels = Difficulty::all();
+        require_once('views/admin/difficulty/readAllLevel.php');
     }
 
 }
