@@ -7,15 +7,15 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-    <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-    <link href="../../css/admin.css" rel="stylesheet" type="text/css"/>
+    <link href="views/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="views/css/admin.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
     <div class="container">
         <div class="col-md-3" id="logo">
             <a class="navbar-brand js-scroll-trigger" style="margin-left: 15%;" href="#"><img
-                        src="../../images/logo.png" alt="logo"/></a>
+                    src="views/images/logo.png" alt="logo"/></a>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
@@ -44,43 +44,12 @@
         <nav class="nav nav-pills flex-column">
             <a class="nav-link" href="../post/indexPost.php">Manage Post</a>
             <a class="nav-link" href="../users/indexUsers.php">Manage Users</a>
-            <a class="nav-link" href="../difficulty/indexLevel.php">Manage Difficulty Levels</a>
-            <a class="nav-link active" href="indexBodyPart.php">Manage Body Part</a>
+            <a class="nav-link" href="index.php?controller=difficulty&action=readAll">Manage Difficulty Levels</a>
+            <a class="nav-link" href="index.php?controller=body_parts&action=readAll">Manage Body Part</a>
         </nav>
     </div>
     <div class="col-md-9">
-        <a href="createBodyPart.php" class="btn btn-info" id="adminBtn">Add Body Part</a>
-        <a href="indexBodyPart.php" class="btn btn-info" id="adminBtn">Manage Body Part</a>
-
-
-        <div class="container">
-            <div class="card">
-                <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Manage Body Part</h3>
-                <div class="card-body">
-                    <table class="table fixed_header table-bordered table-responsive-sm table-striped text-center">
-                        <thead>
-                        <tr>
-                            <th>Col 1</th>
-                            <th>Col 2</th>
-                            <th>Col 3</th>
-                            <th>Col 4</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>row 1-0</td>
-                            <td>row 1-1</td>
-                            <td>row 1-2</td>
-                            <td>row 1-3</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <?php require_once('routes.php'); ?>
         </div>
     </div>
 </div>

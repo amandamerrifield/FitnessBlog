@@ -1,27 +1,4 @@
 <?php
-
-
-class DB {
-    
-    private static $instance = NULL;
-
-    //Singleton Design Pattern
-    public static function getInstance() {
-      if (!isset(self::$instance)) {
-        $pdo_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-        self::$instance = new PDO(
-            'mysql:host=localhost;dbname=exercises',
-            'trainer',
-            'trainer#4',
-            $pdo_options);
-      }
-      return self::$instance;
-    }
-}
-
-
-
-
 class Difficulty 
 {
     protected $id ;
@@ -51,9 +28,8 @@ class Difficulty
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM difficulty');
         // we create a list of Product objects from the database results
-        foreach ($req->fetchAll() as $level) {
-            $list[] = new Difficulty($level['id'], $level['level']);
-            var_dump($list);
+        foreach ($req->fetchAll() as $difficulty) {
+            $list[] = new Difficulty($difficulty['id'], $difficulty['level']);
         }
         return $list;
         
@@ -69,41 +45,26 @@ class Difficulty
         $req = $db->prepare('SELECT * FROM difficulty WHERE id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
-        $level = $req->fetch();
-        if ($level) {
-            return new Difficulty($level['id'], $level['level']);
+        $difficulty = $req->fetch();
+        if ($difficulty) {
+            return new Difficulty($difficulty['id'], $difficulty['level']);
         } else {
             //replace with a more meaningful exception
-            throw new Exception('This difficulty is not available');
+            throw new Exception('This level is not available');
         }
     }
 
-    public static function update($id)
+    public static function update($id,$level)
     {
         $db = Db::getInstance();
         $req = $db->prepare("Update difficulty set level=:level where id=:id");
-        $req->bindParam(':id', $id);
+        $req->bindParam(':id', intval($id));
         $req->bindParam(':level', $level);
-
-// set name and price parameters and execute
-        if (isset($_POST['level']) && $_POST['level'] != "") {
-            $filteredLevel = filter_input(INPUT_POST, 'level', FILTER_SANITIZE_SPECIAL_CHARS);
-        }
-        $level = $filteredLevel;
         $req->execute();
-
-
-//upload product image if it exists
-        if (!empty($_FILES[self::InputKey]['level'])) {
-            Difficulty::uploadFile($level);
-        }
-
     }
-
-    public static function creat($level)
+    public static function create($level)
     {
         $db = Db::getInstance();
-//        $level= $_POST['level'];
         $req = $db->prepare("Insert into difficulty(level) values (:level)");
         $req->bindParam(':level', $level);
         $req->execute();
@@ -158,6 +119,3 @@ class Difficulty
    
 }
 
-//$testObject = new Difficulty(1, 'hard');
-
-//$testObject->all();

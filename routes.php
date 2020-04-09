@@ -7,15 +7,15 @@ function call($controller, $action)
     // create a new instance of the needed controller
     switch ($controller) {
         //for non-data-driven pages use the PagesController class
-//        case 'body_parts':
-//            $controller = new BodyPartsController();
-//            break;
+        case 'body_parts':
+            $controller = new BodyPartsController();
+            break;
         case 'pages':
             $controller = new PagesController();
             break;
-//        case'difficulty':
-//            $controller = new DifficultyController();
-//            break;
+        case'difficulty':
+            $controller = new DifficultyController();
+            break;
 
         //we will need to add a separate case for each controller
         default:

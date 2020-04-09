@@ -10,4 +10,4 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action = 'home';
 }
 
-require_once('layout.php');
+require_once('views\layout.php');
