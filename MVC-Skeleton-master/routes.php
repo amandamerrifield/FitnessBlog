@@ -9,7 +9,7 @@
         case 'pages':
             $controller = new PagesController();
         break;
-
+    
         default:
         //for all data-driven pages use a specific Controller class
         //we need the model to query the database later in the process
@@ -23,7 +23,7 @@
   }
 
 // for validation we list the allowed controllers and their actions
-// Add an entry for each new controller and its actions
+// Add an entry for each new con troller and its actions
 $controllers = array('pages' => ['home', 'error'],
                     'product' => ['readAll','read','create','update','delete'],
                     'controllerXXX' => ['actionYYY', 'actionZZZ'],

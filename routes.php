@@ -13,8 +13,8 @@ function call($controller, $action)
         case 'pages':
             $controller = new PagesController();
             break;
-        case'level':
-            $controller = new LevelController();
+        case'difficulty':
+            $controller = new DifficultyController();
             break;
 
         //we will need to add a separate case for each controller
@@ -34,7 +34,7 @@ function call($controller, $action)
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
-    'level'=>['readAll','read','delete','update','create'],
+    'difficulty'=>['readAll','read','create','update','delete'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
