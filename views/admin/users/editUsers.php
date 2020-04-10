@@ -42,14 +42,14 @@
             <div class="col-md-2" >
                 <nav class="nav nav-pills flex-column">
                     <a class="nav-link" href="indexPost.php">Manage User</a>
-                    <a class="nav-link active" href="../users/indexUsers.php">Manage Users</a>
+                    <a class="nav-link active" href="readAll.php">Manage Users</a>
                     <a class="nav-link" href="../difficulty/indexLevel.php">Manage Difficulty Levels</a>
                     <a class="nav-link" href="../bodyparts/indexBodyPart.php">Manage Body Part</a>
                 </nav>
             </div>
             <div class="col-md-9" >
-                <a href="createUsers.php" class="btn btn-info" id="adminBtn">Add User</a>
-                <a href="indexUsers.php" class="btn btn-info" id="adminBtn">Manage User</a>
+                <a href="create.php" class="btn btn-info" id="adminBtn">Add User</a>
+                <a href="readAll.php" class="btn btn-info" id="adminBtn">Manage User</a>
 
 
                 <div class="container"> 

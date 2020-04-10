@@ -10,4 +10,5 @@ if (isset($_GET['controller']) && isset($_GET['action'])) {
     $action = 'home';
 }
 
-require_once('views\layout.php');
+require_once('views/layout.php');
+// slash works on both mac and win but \ only works on win

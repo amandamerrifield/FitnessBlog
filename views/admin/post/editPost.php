@@ -42,7 +42,7 @@
             <div class="col-md-2" >
                 <nav class="nav nav-pills flex-column">
                     <a class="nav-link active" href="indexPost.php">Manage Post</a>
-                    <a class="nav-link" href="../users/indexUsers.php">Manage Users</a>
+                    <a class="nav-link" href="../users/readAll.php">Manage Users</a>
                     <a class="nav-link" href="../difficulty/indexLevel.php">Manage Difficulty Levels</a>
                     <a class="nav-link" href="../bodyparts/indexBodyPart.php">Manage Body Part</a>
                 </nav>

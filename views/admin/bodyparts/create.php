@@ -7,5 +7,6 @@
                     <label for="BodyPartName">Body Part Name</label>
                     <input type="text" class="form-control" id="BodyPartName" name="part" placeholder="Legs">
                 </div>
-                <button class="btn btn-info" id="adminBtn">Add Body Part</button>
+                <button type="submit" class="btn btn-info" id="adminBtn">Add Body Part</button>
             </form>
+<!-- add the closing div here not in the layout because it is hard to understand and maintain when the opening and closing tags are in separate files -->
