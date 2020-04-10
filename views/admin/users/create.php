@@ -9,21 +9,26 @@
                 </div>
                 <div class="form-label-group">
                     <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" name="email" required>
+                    <input type="email" id="inputEmail" class="form-control" name="email" >
                 </div>
                 <div class="form-label-group">
                     <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" name="password" required>
+                    <input type="password" id="inputPassword" class="form-control"  name="password" required>
                 </div>
                 <div class="form-label-group">
                     <label for="inputConfirmPassword">Confirm Password</label>
                     <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required>
                 </div>
+               <?php if ($passwordsnotequal==true)
+               {
+                   print "You made a typo. Please enter again";
+               }
+               ?>
                 <label> </label>
                 <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-center" href="">Or Sign In</a>
+            <a class="dropdown-item text-center" href="#">Or Sign In</a>
         </div>
     </div>
 </div>

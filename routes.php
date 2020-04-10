@@ -16,6 +16,9 @@ function call($controller, $action)
         case'difficulty':
             $controller = new DifficultyController();
             break;
+        case 'users':
+            $controller = new UserController();
+            break;
 
         //we will need to add a separate case for each controller
         default:
@@ -35,6 +38,7 @@ function call($controller, $action)
 $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
     'difficulty'=>['readAll','read','create','update','delete'],
+    'users'=>['readAll','create'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
