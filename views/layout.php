@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="views/css/style.css" rel="stylesheet" type="text/css"/>
     <link href="views/css/admin.css" rel="stylesheet" type="text/css"/>
+    <link href="css/blogSearchStyle.css" rel="stylesheet" type="text/css"/>
+    <link href="css/homeBody.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top">
