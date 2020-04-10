@@ -12,95 +12,89 @@
 
 <br> 
 
-  
-
- <div class="container-fluid">
-      <div class="row">
-    <div class="col-6">
-      <div class="card" id="card_1">
-    
-        <div class="card-block">
-            <br>
-         <h4 class="card-title" style="text-align:center">Amanda</h4>
-        
-            <img id="hike" class="img-fluid" src="../images/hiking.jpg" alt="" >
-            <br>
-        <p  id="title_1" class="title card-text" style="text-align:center">Co-Founder</p>
-        <p class="card-text" style="text-align:center">Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. 
-            However her preferred indoor exercise is yoga and weight training. </p>
-        <p class="card-text" style="text-align:center">amanda.r.merrifield@gmail.com</p>
-        <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="card" id="card_2">
-        <div class="card-block">
-               <br>
-               <h4 style="text-align:center">Maya-Vani</h4>
-         <img id="swim" class="img-fluid" src="../images/lifeguard.png" alt="" >
-          <br>
-          <p id="title_2" class="title card-text" style="text-align:center">Co-Founder</p>
-        <p class="card-text" style="text-align:center">Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys
-        practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future.</p>
-        <p class="card-text" style="text-align:center">mayavanimudgal@gmail.com</p>
-         <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
-        
-        </div>
-      </div>
-    </div>
-  </div>     
-</div>     
-         
+  <div class="container-fluid">
+ <div class="card-deck">
      
-         
- 
-
-<br> 
-
-
-
-
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-6">
-      <div class="card" id="card_3">
-      <div class="card-block">
-          <br>
-           <h4 class="card-title" style="text-align:center">Zita</h4>
-         <img id="situp" class="img-fluid" src="../images/situp.jpeg" alt="" >
-         <br>
-          <p  id="title_3" class="title card-text" style="text-align:center">Co-Founder</p>
-            <p class="card-text" style="text-align:center"> Zita believes you don't have to be a professional athlete to 
-        incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.</p>
-        <p class="card-text" style="text-align:center">buzasizita@gmail.com</p>
-               <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
-          
+  <div class="card">
+    <img  id="hike" class="img-fluid"  src="../images/hiking.jpg" alt="">
+    <div class="card-body">
+      <h5 class="card-title" class="card-title" style="text-align:center">Amanda</h5>
+    
+     
+  
+      <p class="card-text" style="text-align:center">Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. 
+            However her preferred indoor exercise is yoga and weight training.</p>
+    
         
-        </div>
-      </div>
     </div>
-    <div class="col-6">
-      <div class="card" id="card_4">
-        <div class="card-block">
-              <br>
-               <h4 class="card-title" style="text-align:center">Afrodyta</h4>
+    <div class="card-footer">
+        <br>
+      <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
+      
+        <p style="text-align:center"><small class="card-text" style="text-align:center">amanda.r.merrifield@gmail.com</small></p> 
         
-         <img  id="runningcharity" class="img-fluid" src="../images/runningcharity.jpg" alt="" >
-          <br>
-         <p id="title_4" class="title card-text" style="text-align:center" >Co-Founder</p>
-      <p class="card-text" style="text-align:center">Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
-            her to share her passion for keeping fit, with others.</p>
-      <p class="card-text" style="text-align:center"> afrodytapudlo@hotmail.com</p>
-               <p  id= "button_4" class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
-               
-        </div>
-      </div>
+    </div>
+  </div>
+     
+  <div class="card">
+    <img id="swim" class="img-fluid"  src="../images/lifeguard.png" alt="">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Maya-Vani</h5>
+       <p class="card-text" style="text-align:center">Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys
+        practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future.</p>
+       
+    </div>
+    <div class="card-footer">
+         <br>
+      <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
+       <p style="text-align:center"><small class="card-text" style="text-align:center">mayavanimudgal@gmail.com</small></p> 
+      
     </div>
   </div>
 
+</div> 
+<br> 
+
+<div class="card-deck">
+    <div class="card">
+    
+         <img id="situp" class="img-fluid" src="../images/situp.jpeg" alt="">
+    <div class="card-body">
+      <h5 class="card-title" style="text-align:center">Zita</h5>
+      <p class="card-text" style="text-align:center"> Zita believes you don't have to be a professional athlete to 
+        incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.</p>
+       
+    </div>
+    <div class="card-footer">
+         <br>
+      <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
+       <p style="text-align:center"><small class="card-text" style="text-align:center">buzasizita@gmail.com</small></p> 
+    </div>   
+          
+      </div>
+      
+  
+  <div class="card">
+    <img id="runningcharity" class="img-fluid" src="../images/runningcharity.jpg" alt="">
+    <div class="card-body">
+      <h5  class="card-title" style="text-align:center">Afrodyta</h5>
+         <p class="card-text" style="text-align:center">Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
+            her to share her passion for keeping fit, with others.</p>
+      
+    </div>
+    <div class="card-footer">
+         <br>
+       <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
+        <p style="text-align:center"><small class="card-text" style="text-align:center">afrodytapudlo@hotmail.com</small></p> 
+    </div>
+    </div>
+  
+
+</div>      
 </div>
+
+  
+     
+         
 
 <?php require 'footer.php'; ?>
