@@ -46,6 +46,7 @@
             <a class="nav-link" href="index.php?controller=user&action=create">Manage Users</a>
             <a class="nav-link" href="index.php?controller=difficulty&action=readAll">Manage Difficulty Levels</a>
             <a class="nav-link" href="index.php?controller=body_parts&action=readAll">Manage Body Part</a>
+            <a class="nav-link" href="index.php?controller=login&action=validateLogin">Log in</a>
         </nav>
     </div>
     <div class="col-md-9">
