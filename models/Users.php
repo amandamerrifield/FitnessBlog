@@ -83,4 +83,21 @@ class Users
         //figure out inserting into created_at and updated_at;
         $req->execute();
     }
-}
+    
+      public static function update($id, $username,  $email, $password)
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password where id=:id");
+        $req->bindParam(':id', intval($id));
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':password', $password);
+      //  $req->bindParam(':updated_at', $updated_at);
+        //$req = date_update table SET datetime =update_date_time;
+        //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");
+         $date = date('Y-m-d H:i:s');
+         $updated_at("INSERT INTO `table` (`dateposted`) VALUES ('$date')");   
+       
+        $req->execute();
+    }
+    }

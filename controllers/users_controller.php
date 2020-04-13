@@ -1,7 +1,7 @@
 <?php
 require 'models/Users.php';
 
-class UserController
+class UsersController
 {
     public function readAll()
     {
@@ -55,31 +55,42 @@ class UserController
         }
     }
 
-//    public function update()
-//    {
-////case we are showing the edit form for a specific bodypart
-//        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-//            if (!isset($_GET['id'])){
-//                call('pages', 'error');
-//                return;
-//            }
-//
-//            // we use the given id to get the correct product
-//            $bodyPart = Users::find($_GET['id']);
-//
-//            require_once('views/admin/bodyparts/update.php');
-//        } else { //case when we are writing the bodypart to the database
-//            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//            $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-//
-//            Users::update($id,$part);
-//
-//            $this->readAll();
-//        }
-//
-//    }
-//
-//    public function delete()
+     public function update()
+    {
+//case we are showing the edit form for a specific bodypart
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['id'])){
+                call('pages', 'error');
+                return;
+            }
+
+            // we use the given id to get the correct product
+            $user = Users::update($_GET['id']);
+
+            require_once('views/admin/users/update.php');
+        } else { //case when we are writing the bodypart to the database
+           
+           $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            
+            if ($_POST['password'] != $_POST['password2']) {
+                $passwordsnotequal = true;
+                require_once('views/admin/users/update.php');
+                return;
+            }
+
+            Users::update($id, $username, $email, $password);
+
+          //  $this->readAll();
+           //   require_once('views/pages/home.php');
+        }
+
+    }
+
+//   public function delete()
 //    {
 ////case we are showing the edit form for a specific bodypart
 //        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
