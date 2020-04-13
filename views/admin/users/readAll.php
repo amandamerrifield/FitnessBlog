@@ -18,7 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($users as $user) { ?>
+                <?php foreach ($users as $user): ?>
                     <tr>
                         <td><?php print $user->getId() ?></td>
                         <td><?php print $user->getAdmin() ?></td>
@@ -34,7 +34,7 @@
                             <a href="index.php?controller=users&action=delete&id=<?php print $user->getId() ?>">Delete</a>
                         </td>
                     </tr>
-                <?php } ?>
+                 <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
