@@ -30,6 +30,7 @@ class UsersController
 
     public function create() //shall we rename this to register?
     {
+        $passwordsnotequal = false;
         // we expect a url of form ?controller=products&action=create
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
