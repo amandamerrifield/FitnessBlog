@@ -2,7 +2,7 @@
     <div class="card card-signin my-5">
         <div class="card-body">
             <h5 class="card-title text-center">Register</h5>
-            <form class="form-signin" action="index.php?controller=user&action=create" method="POST">
+            <form class="form-signin" action="index.php?controller=users&action=create" method="POST">
                 <div class="form-label-group">
                     <label for="inputUsername">Username</label>
                     <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>

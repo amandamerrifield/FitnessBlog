@@ -20,7 +20,7 @@ function call($controller, $action)
             $controller = new HomePageController();
              break;
         case 'users':
-            $controller = new UserController();
+            $controller = new UsersController();
             break;
         case 'posts':
             $controller = new PostsController();
