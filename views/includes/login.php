@@ -1,4 +1,4 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -43,7 +43,7 @@
                 </div>
             </div>
         </nav>
-        -->
+       
         <div class="container">
             <div class="row h-25 d-inline-block"></div>
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
