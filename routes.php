@@ -17,7 +17,7 @@ function call($controller, $action)
             $controller = new DifficultyController();
             break;
         case 'users':
-            $controller = new UserController();
+            $controller = new UsersController();
             break;
 
         //we will need to add a separate case for each controller

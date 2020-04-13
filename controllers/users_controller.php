@@ -1,7 +1,7 @@
 <?php
 require 'models/Users.php';
 
-class UserController
+class UsersController
 {
     public function readAll()
     {
