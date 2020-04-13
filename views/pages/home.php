@@ -7,5 +7,6 @@ if(isset ($_SESSION["email"]))
     echo'<br /><br /><a href="logout.php">Logout<?a>';
 }
  else {
-    header("location:login.php");
+    //header("location:../validateLogin.php");
+    require_once 'views/admin/login/validateLogin.php';
 }
