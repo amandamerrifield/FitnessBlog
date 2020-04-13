@@ -17,7 +17,7 @@ function call($controller, $action)
             $controller = new DifficultyController();
             break;
         case 'users':
-            $controller = new UserController();
+            $controller = new UsersController();
             break;
         case 'login':
             $controller = new LoginController();

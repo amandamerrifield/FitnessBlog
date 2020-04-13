@@ -23,6 +23,7 @@ CREATE TABLE users
     username   varchar(225) NOT NULL,
     email      varchar(225) NOT NULL,
     password   varchar(225) NOT NULL,
+    photo blob,
     created_at datetime,
     updated_at datetime
 

@@ -11,7 +11,7 @@ INSERT INTO bodyPart(id, part) VALUES (2,'chest');
 INSERT INTO bodyPart(id, part) VALUES (3,'abs');
 INSERT INTO bodyPart(id, part) VALUES (4,'legs');
 
-INSERT INTO users VALUES (1,false,'hanna99','hanna@gmail.com','password',NOW(), NOW());
+INSERT INTO users VALUES (1,false,'hanna99','hanna@gmail.com','password',LOAD_FILE('d:\\flower.gif'),NOW(), NOW());
 
 INSERT INTO difficulty VALUES (1,'beginner');
 INSERT INTO difficulty VALUES (2,'intermediate');
