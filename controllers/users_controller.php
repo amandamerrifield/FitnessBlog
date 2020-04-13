@@ -65,12 +65,17 @@ class UsersController
             }
 
             // we use the given id to get the correct product
-            $user = Users::update($_GET['id']);
+            $id = Users::update($_GET['id']);
+              $username = Users::update($_GET['username']);
+                $email = Users::update($_GET['email']);
+                  $password = Users::update($_GET['password']);
+                    $passwordretype = Users::update($_GET['password2']);
 
             require_once('views/admin/users/update.php');
         } else { //case when we are writing the bodypart to the database
-           
-           $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
             $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -84,7 +89,7 @@ class UsersController
 
             Users::update($id, $username, $email, $password);
 
-          //  $this->readAll();
+           $this->readAll();
            //   require_once('views/pages/home.php');
         }
 
