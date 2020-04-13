@@ -6,7 +6,8 @@
         <div class="card-body">
             <table class="table fixed_header table-bordered table-responsive-sm table-striped text-center">
                 <thead>
-                <?php           echo"your email is" . $_SESSION['email']; ?>
+                <?php           echo"your email is" . $_SESSION['email'];
+                var_dump($_SESSION['is_admin']);?>
 
                 <tr>
                     <th>ID</th>

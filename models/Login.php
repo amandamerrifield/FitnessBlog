@@ -61,7 +61,12 @@ class Login
         if ($users) {
             $_SESSION['email']=$users['email'];
             $_SESSION['password']=$users['password'];
-            $_SESSION['is_admin']=$users['admin'];
+            if ($users['admin']==1){ //mysql translates true to 1, we want to te translate it back to true
+                $_SESSION['is_admin'] = true;
+            }
+            else {
+                $_SESSION['is_admin'] = false;
+            }
 
 //        }
 //
