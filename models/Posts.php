@@ -3,65 +3,80 @@
 class Posts
 
 {
-    private $id;
-    private $user_id;
-    private $exercise_name;
-    private $body_part_id;
-    private $difficulty_id;
-    private $description;
-
-    private function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
+    public $id;
+    public $user_id;
+    public $exercise_name;
+    public $body_part_id;
+    public $difficulty_id;
+    public $description;
+    public $test= 'this is a test';
+    public $test2=['hello', 'world'];
+    public $all=[];
+    public $quantityElements;
+    
+    public function __construct()
     {
-        $this->id = $id;
-        $this->user_id = $user_id;
-        $this->exercise_name = $exercise_name;
-        $this->body_part_id = $body_part_id;
-        $this->difficulty_id = $difficulty_id;
-        $this->description = $description;
+        $this->id = 'hello';
+        $this->user_id ='world';
+        $this->exercise_name = 'this';
+        $this->body_part_id = 'is';
+        $this->difficulty_id = 'me';
+        $this->description = '..';
     }
+    
+//    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
+//    {
+//        $instance= new self();
+//        $this->id = $id;
+//        $this->user_id = $user_id;
+//        $this->exercise_name = $exercise_name;
+//        $this->body_part_id = $body_part_id;
+//        $this->difficulty_id = $difficulty_id;
+//        $this->description = $description;
+//    }
+//
+//    public function getId()
+//    {
+//        return $this->id;
+//    }
+//
+//    public function getUserId()
+//    {
+//        return $this->user_id;
+//    }
+//
+//    public function getExerciseName()
+//    {
+//        return $this->exercise_name;
+//    }
+//
+//    public function getBodyPartId($body_part_id)
+//    {
+//        $this->body_part_id = $body_part_id;
+//    }
+//
+//
+//    public function getDifficultyId()
+//    {
+//        return $this->difficulty_id;
+//    }
+//
+//    public function getDescription()
+//    {
+//        return $this->description;
+//    }
 
-    public function getId()
+    public function readAll () //$description, $user_id, $exercisename)
     {
-        return $this->id;
-    }
-
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    public function getExerciseName()
-    {
-        return $this->exercise_name;
-    }
-
-    public function getBodyPartId($body_part_id)
-    {
-        $this->body_part_id = $body_part_id;
-    }
-
-
-    public function getDifficultyId()
-    {
-        return $this->difficulty_id;
-    }
-
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    public static function readAll ($id, $description, $user_id, $exercisename){
-        $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM posts');
+        $all = $db->query('SELECT * FROM posts');
         // we create a list of Product objects from the database results
-        foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $difficulty['level']);
-        }
-        return $list;
+//        foreach ($req->fetchAll() as $posts) {
+//            $list[] = new Posts($posts['id']);
+//        }  
+        $quantityElements= 10;
         
-        
+       
     }
 
     public static function findByExercise($id, $exercisename)
