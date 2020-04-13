@@ -56,13 +56,22 @@ class Login
                         'password' => $_POST["password"]
                     )
                 );
-        
-        $count = $req->rowCount();
-        if($count > 0)
-        { 
-          $_SESSION["email"] = $_POST["email"];
-          echo"you have loged in";
-          
+
+        $users = $req->fetch();
+        if ($users) {
+            $_SESSION['email']=$users['email'];
+            $_SESSION['password']=$users['password'];
+            $_SESSION['is_admin']=$users['admin'];
+
+//        }
+//
+//
+//        $count = $req->rowCount();
+//        if($count > 0)
+//        {
+//          $_SESSION["email"] = $_POST["email"];
+          echo"you have logged in";
+
         } else {
             //replace with a more meaningful exception
             echo 'Account does not exist';
