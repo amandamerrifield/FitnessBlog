@@ -24,7 +24,7 @@
                                         <a href="index.php?controller=difficulty&action=update&id=<?php print $level->getId() ?>">Edit</a>
                                     </td>
                                     <td>
-                                        <a href="index.php?controller=difficulty&action=delete&id=<?php print $level->getId() ?>">Delete</a>
+                                         <a href="index.php?controller=difficulty&action=delete&id=<?php print $level->getId() ?>">Delete</a>
                                     </td>
                                   </tr>
                                   <?php endforeach; ?>
