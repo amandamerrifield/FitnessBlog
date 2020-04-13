@@ -11,15 +11,15 @@ class Users
     protected $created_at;
     protected $updated_at;
 
-    public function __construct($id, $admin, $username, $email, $password, $created_at, $updated_at)
+    public function __construct($id, $username, $email, $password)
     {
         $this->id = $id;
-        $this->admin = $admin;
+       //$this->admin = $admin;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->created_at = $created_at;
-        $this->updated_at = $updated_at;
+       // $this->created_at = $created_at;
+       // $this->updated_at = $updated_at;
     }
 
 
@@ -83,4 +83,38 @@ class Users
         //figure out inserting into created_at and updated_at;
         $req->execute();
     }
-}
+    
+    public static function find($id)
+    {
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare('SELECT * FROM users WHERE id = :id');
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $users = $req->fetch();
+        if ($users) {
+            return new Users($users['id'], $users['username'], $users['email'], $users['password']);
+        } else {
+            //replace with a more meaningful exception
+            throw new Exception('This user is not available');
+        }
+    }
+    
+      public static function update( $id, $username,  $email, $password)
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password where id=:id");
+        $req->bindParam(':id', intval($id));
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':password', $password);
+      //  $req->bindParam(':updated_at', $updated_at);
+        //$req = date_update table SET datetime =update_date_time;
+        //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");
+        // $date = date('Y-m-d H:i:s');
+       //  $updated_at("INSERT INTO `table` (`dateposted`) VALUES ('$date')");   
+       
+        $req->execute();
+    }
+    }

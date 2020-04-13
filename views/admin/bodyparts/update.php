@@ -4,6 +4,7 @@
     <div class="row h-25 d-inline-block"></div>
     <form action="index.php?controller=body_parts&action=update" method="POST">
         <div class="form-group">
+            
             <label for="BodyPartName">Body Part Name</label>
             <input type="hidden" class="form-control" id="BodyPartId" name="id" value="<?php print $bodyPart->getId()?>">
             <input type="text" class="form-control" id="BodyPartName" name="part" value="<?php print $bodyPart->getPart()?>">
