@@ -1,5 +1,5 @@
 <?php
-require_once "models/Posts.php";
+require "models/Posts.php";
 
 class PostsController
 {
@@ -7,10 +7,10 @@ class PostsController
     {
           // we store all the posts in a variable
         $posts = Posts::readAll();
-        require_once('views/admin/posts/readAll.php');
+        require_once('views/admin/post/readAll.php');
 //        // we expect a url of form ?controller=posts&action=show&id=x
 //        // without an id we just redirect to the error page as we need the post id to find it in the database
-//        if (!isset($_GET['id'])) {
+//         if (!isset($_GET['id'])) {
 //            call('pages', 'error');
 //            return;
 //        }

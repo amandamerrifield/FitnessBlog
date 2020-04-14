@@ -37,7 +37,7 @@ class Posts
 
     public function getBodyPartId()
     {
-        $this->body_part_id;
+        return $this->body_part_id;
     }
 
 
@@ -55,7 +55,7 @@ class Posts
         return $this->photo;
     }
 
-    public function readAll ($id, $user_id, $exercise_name, $body_part_id, $difficulty_id,$description) //$description, $user_id, $exercisename)
+    public function readAll () //$description, $user_id, $exercisename)
     {
        $list = [];
         $db = Db::getInstance();
