@@ -1,7 +1,6 @@
-<div class="container">
-            <div class="row h-25 d-inline-block"></div>
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card card-signin my-5">
+<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+    <div class="card card-signin my-5">
+        <div class="card-body">
                     <div class="card-body">
                         <h5 class="card-title text-center">Login</h5>
                         <form class="form-signin" action="index.php?controller=login&action=validateLogin" method="POST">
