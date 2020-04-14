@@ -12,19 +12,22 @@
     <?php require_once "blogSearchFinal.php"?>
 
 <div class="row row-cols-1 row-cols-md-3">
+    <?php foreach ($posts as $blogPosts): ?>
   <div class="col mb-4">
     <div class="card h-100">
-      <img src="views/images/AdobeStock_109806363_Preview.png" class="card-img-top" alt="Photo of the exercise ">
+      <img src="<?php print $blogPosts->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
       <div class="card-body">
-        <h5 id='h5' class="card-title">Cardio</h5>
-        <p class="card-text"> Body Part: ... </p>
-        <p class="card-text"> Level: ...</p>
-        <p class="card-text"> Discription: ...This is a longer card with supporting text below as a naturalis is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little is is a longer card with supporting text below as a natural lead-in to additional content. This content is a little  lead-in to additional content. This content is a little bit lon</p>
-        <a href="#" class="btn btn-primary" id='readMore'>Read More!</a> 
+         <h5 id='h5' class="card-title"><?php print $blogPosts->getExerciseName() ?></h5>
+        <p class="card-text"> Body part: <?php print $blogPosts->getBodyPartId() ?></p>
+        <p class="card-text"> Level: <?php print $blogPosts->getDifficultyId() ?></p>
+        <p class="card-text"> Description: <?php print $blogPosts->getDescription() ?></p>
+      
+        <a href="#" class="btn btn-primary" id='readMore' action="">Read More!</a> 
       </div>
     </div>
+      
   </div>
-  
+  <?php endforeach; ?>
 </div>
     
 
