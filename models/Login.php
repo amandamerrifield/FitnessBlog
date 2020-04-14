@@ -45,21 +45,21 @@ class Login
     }
 
     
-    public static function validate($email, $password)
+    public static function validate($username, $password)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("SELECT * FROM users WHERE email = :email AND password = :password");
+        $req = $db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
                 
         $req->execute(
                     array(
-                        'email' => $_POST["email"],
+                        'username' => $_POST["username"],
                         'password' => $_POST["password"]
                     )
                 );
 
         $users = $req->fetch();
         if ($users) {
-            $_SESSION['email']=$users['email'];
+            $_SESSION['username']=$users['username'];
             $_SESSION['password']=$users['password'];
             if ($users['admin']==1){ //mysql translates true to 1, we want to te translate it back to true
                 $_SESSION['is_admin'] = true;
@@ -68,13 +68,9 @@ class Login
                 $_SESSION['is_admin'] = false;
             }
 
+           // $_SESSION['last_login_timestamp'] = time();
 //        }
-//
-//
-//        $count = $req->rowCount();
-//        if($count > 0)
-//        {
-//          $_SESSION["email"] = $_POST["email"];
+
           echo"you have logged in";
 
         } else {
@@ -82,5 +78,12 @@ class Login
             echo 'Account does not exist';
         }
     }
+    
+    
+    public static function logout()
+    {
+        session_destroy();
+    }
+    
 
 }
