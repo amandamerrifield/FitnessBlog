@@ -42,7 +42,7 @@ $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
     'difficulty'=>['readAll','read','create','update','delete'],
     'users'=>['readAll','create', 'update'],
-    'login'=>['validateLogin'],
+    'login'=>['validateLogin','logout'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 

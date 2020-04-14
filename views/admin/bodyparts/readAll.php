@@ -6,7 +6,7 @@
         <div class="card-body">
             <table class="table fixed_header table-bordered table-responsive-sm table-striped text-center">
                 <thead>
-                <?php           echo"your email is" . $_SESSION['email']; ?>
+                <?php           echo"your email is " . $_SESSION['username']; ?>
 
                 <tr>
                     <th>ID</th>
@@ -22,7 +22,7 @@
                         <td><?php print $part->getId() ?></td>
                         <td><?php print $part->getPart() ?></td>
 
-                        <td>
+                        <td id="edit">
                             <a href="index.php?controller=body_parts&action=update&id=<?php print $part->getId() ?>">Edit</a>
                         </td>
                         <td>
