@@ -3,93 +3,79 @@
 class Posts
 
 {
-    public $id;
-    public $user_id;
-    public $exercise_name;
-    public $body_part_id;
-    public $difficulty_id;
-    public $description;
-    public $test= 'this is a test';
-    public $test2=['hello', 'world'];
-    public $all=[];
-    public $quantityElements;
-    
-    public function __construct()
-    {
-        $this->id = 'hello';
-        $this->user_id ='world';
-        $this->exercise_name = 'this';
-        $this->body_part_id = 'is';
-        $this->difficulty_id = 'me';
-        $this->description = '..';
-    }
-    
-//    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
-//    {
-//        $instance= new self();
-//        $this->id = $id;
-//        $this->user_id = $user_id;
-//        $this->exercise_name = $exercise_name;
-//        $this->body_part_id = $body_part_id;
-//        $this->difficulty_id = $difficulty_id;
-//        $this->description = $description;
-//    }
-//
-//    public function getId()
-//    {
-//        return $this->id;
-//    }
-//
-//    public function getUserId()
-//    {
-//        return $this->user_id;
-//    }
-//
-//    public function getExerciseName()
-//    {
-//        return $this->exercise_name;
-//    }
-//
-//    public function getBodyPartId($body_part_id)
-//    {
-//        $this->body_part_id = $body_part_id;
-//    }
-//
-//
-//    public function getDifficultyId()
-//    {
-//        return $this->difficulty_id;
-//    }
-//
-//    public function getDescription()
-//    {
-//        return $this->description;
-//    }
+    protected $id;
+    protected $user_id;
+    protected $exercise_name;
+    protected $body_part_id;
+    protected $difficulty_id;
+    protected $description;
 
-    public function readAll () //$description, $user_id, $exercisename)
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
     {
+        $this->id = $id;
+        $this->user_id = $user_id;
+        $this->exercise_name = $exercise_name;
+        $this->body_part_id = $body_part_id;
+        $this->difficulty_id = $difficulty_id;
+        $this->description = $description;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    public function getExerciseName()
+    {
+        return $this->exercise_name;
+    }
+
+    public function getBodyPartId()
+    {
+        $this->body_part_id;
+    }
+
+
+    public function getDifficultyId()
+    {
+        return $this->difficulty_id;
+    }
+
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    public function readAll ($id, $user_id, $exercise_name, $body_part_id, $difficulty_id,$description) //$description, $user_id, $exercisename)
+    {
+       $list = [];
         $db = Db::getInstance();
-        $all = $db->query('SELECT * FROM posts');
-        // we create a list of Product objects from the database results
-//        foreach ($req->fetchAll() as $posts) {
-//            $list[] = new Posts($posts['id']);
-//        }  
-        $quantityElements= 10;
-        
-       
+        $req = $db->query('SELECT * FROM posts');
+        foreach ($req->fetchAll() as $posts) {
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['photo']);
+        }
+        return $list;
     }
 
     public static function findByExercise($id, $exercisename)
     {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM posts WHERE id = :id AND exercise_name= :exercise_name');
         //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('id' => $id, 'exercisename'=>$exercisename));
+        $req->execute(array('id' => $id, 'exercise_name'=>$exercisename));
         $posts = $req->fetch();
         if ($posts) {
-            return new Posts($posts['id'], $posts['exercisename']);
+            return new Posts($posts['id'], $posts['exercise_name']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This exercise is not available');
@@ -149,23 +135,28 @@ class Posts
     {
         $db = Db::getInstance();
         $req->bindParam(':id', intval($id));
-        $req = $db->prepare("Update user_id set user_id=:user_id where id=:id");
+        $req = $db->prepare("Update posts SET user_id=:user_id, exercise_name=:exercise_name,body_part_id=:body_part_id, difficulty_id=:difficulty_id, description=:description, photo=:photo WHERE id=:id");
+        $id = intval($id);
         $req->bindParam(':user_id', $user_id);
-        $req = $db->prepare("Update exercise_name set exercise_name=:exercise_name where id=:id");
         $req->bindParam(':exercise_name', $exercise_name);
-        $req = $db->prepare("Update body_part_id set body_part_id=:body_part_id where id=:id");
         $req->bindParam(':body_part_id', $body_part_id);
-        $req = $db->prepare("Update difficulty set level=:level where id=:id");
         $req->bindParam(':difficulty_id', $difficulty_id);
-        $req = $db->prepare("Update description set description=:description where id=:id");
         $req->bindParam(':description', $description);
+        $req->bindParam(':photo', $photo);
         $req->execute();
     }
     public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into difficulty(level) values (:level)");
-        $req->bindParam(':level', $level);
+        $req->bindParam(':id', intval($id));
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name,body_part_id, difficulty_id, description, photo) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, :photo)");
+        $id = intval($id);
+        $req->bindParam(':user_id', $user_id);
+        $req->bindParam(':exercise_name', $exercise_name);
+        $req->bindParam(':body_part_id', $body_part_id);
+        $req->bindParam(':difficulty_id', $difficulty_id);
+        $req->bindParam(':description', $description);
+        $req->bindParam(':photo', $photo);
         $req->execute();
     }
 
@@ -174,7 +165,7 @@ class Posts
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $level)
+    public static function uploadFile(string $posts)
     {
 
         if (empty($_FILES[self::InputKey])) {

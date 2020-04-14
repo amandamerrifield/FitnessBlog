@@ -22,7 +22,6 @@ function call($controller, $action)
         case 'users':
             $controller = new UsersController();
             break;
-
         case 'posts':
             $controller = new PostsController();
 
@@ -52,7 +51,7 @@ $controllers = array('pages' => ['home', 'error'],
 
     'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
     'users'=>['readAll','create'],
-    'Posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
+    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
 
     'users'=>['readAll','create', 'update'],
     'login'=>['validateLogin'],

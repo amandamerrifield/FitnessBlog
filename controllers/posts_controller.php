@@ -1,16 +1,9 @@
 <?php
-require_once 'models/Posts.php';
+require_once "models/Posts.php";
+
 class PostsController
 {
     public function readAll()
-    {
-        // we store all the posts in a variable
-        $posts = Posts::readAll();
-        require_once('views/admin/post/readAll.php');
-        
-    }
-
-    public function read()
     {
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
@@ -21,8 +14,8 @@ class PostsController
         
         try {
             // we use the given id to get the correct post
-            $product = BodyPart::find($_GET['id']);
-            require_once('views/admin/bodyparts/read.php');
+            $posts = Posts::find($_GET['id']);
+            require_once('views/admin/post/readAll.php');
         } catch (Exception $ex) {
             call('pages', 'error');
         }
@@ -34,10 +27,10 @@ class PostsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/post/createPost.php');
+            require_once('views/admin/post/create.php');
         } else {
-            $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
-            BodyPart::create($part);
+            $posts = filter_input(INPUT_POST, 'posts', FILTER_SANITIZE_SPECIAL_CHARS);
+            Posts::create($posts);
             $this->readAll($id);
         }
     }
@@ -52,14 +45,14 @@ class PostsController
             }
 
             // we use the given id to get the correct product
-            $bodyPart = BodyPart::find($_GET['id']);
+            $bodyPart = Posts::find($_GET['id']);
 
             require_once('views/admin/post/editPost.php');
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);
+            $posts = filter_input(INPUT_POST, 'post', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            BodyPart::update($id,$part);
+            Posts::update($id,$posts);
 
             $this->readAll($id);
         }
@@ -76,13 +69,13 @@ class PostsController
             }
 
             // we use the given id to get the correct product
-            $bodyPart = BodyPart::find($_GET['id']);
+            $posts = Posts::find($_GET['id']);
 
-            require_once('views/admin/post/deletePost.php');
+            require_once('views/admin/post/delete.php');
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            BodyPart::remove($id,$part);
+            Posts::remove($id,$posts);
 
             $this->readAll($id);
         }
