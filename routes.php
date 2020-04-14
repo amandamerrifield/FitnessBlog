@@ -55,7 +55,6 @@ $controllers = array('pages' => ['home', 'error'],
 
     'users'=>['readAll','create', 'update'],
     'login'=>['validateLogin'],
-
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
