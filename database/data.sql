@@ -19,7 +19,7 @@ INSERT INTO difficulty VALUES (1,'beginner');
 INSERT INTO difficulty VALUES (2,'intermediate');
 INSERT INTO difficulty VALUES (3,'advanced');
 
-# INSERT INTO images VAlUES (1, 'PHOTO');
+ INSERT INTO images VAlUES (1, 'PHOTO');
 
 INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description)
     VALUES (1,1,'running',4, 1, 'Run around the block 3 times');

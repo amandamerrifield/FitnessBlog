@@ -16,11 +16,19 @@ function call($controller, $action)
         case'difficulty':
             $controller = new DifficultyController();
             break;
+         case'homePageSearch':
+            $controller = new HomePageController();
+             break;
         case 'users':
             $controller = new UsersController();
             break;
+        case 'posts':
+            $controller = new PostsController();
+            break;
+
         case 'login':
             $controller = new LoginController();
+
             break;
 
         //we will need to add a separate case for each controller
@@ -41,8 +49,13 @@ function call($controller, $action)
 $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
     'difficulty'=>['readAll','read','create','update','delete'],
+
+    'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
+    'users'=>['readAll','create'],
+    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
+
     'users'=>['readAll','create', 'update'],
-    'login'=>['validateLogin','logout'],
+    'login'=>['validateLogin'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 

@@ -7,11 +7,13 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <link href="blogSearchStyle.css" rel="stylesheet" type="text/css"/>
+<link href="blogSearchStyle.css" rel="stylesheet" type="text/css"/> 
         <title></title>
     </head>
     <body>
-               <div id="mySidenav" class="sidenav">
+    
+
+            <div id="mySidenav" class="sidenav" >
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div>
                 <h5>Sort by level of difficulty:</h5>
@@ -66,6 +68,9 @@ and open the template in the editor.
             <input type="checkbox" class="search" id="test3" name="radio-group">Strength</a>
             </div>
           </div>
+              <div name="mysubmitbutton" id="mysubmitbutton" class="customButton" onClick="javascript:this.form.submit();">
+                Search
+                </div>
                </div>
         
         
