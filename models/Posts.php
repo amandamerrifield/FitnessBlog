@@ -56,6 +56,7 @@ class Posts
     }
 
     public function readAll ()
+
     {
        $list = [];
         $db = Db::getInstance();

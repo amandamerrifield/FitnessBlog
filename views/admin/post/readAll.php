@@ -1,5 +1,22 @@
 
+
 <a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
+
+<!--<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+        <title></title>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
+        <script src="../../scripts/scripts.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="../../css/admin.css" rel="stylesheet" type="text/css"/>
+</head>-->
+
                 <a href='?controller=posts&action=editPosts' class="btn btn-info" id="adminBtn">Manage Posts</a>
 <div class="container">
     <div class="card">
@@ -8,13 +25,13 @@
             <table class="table fixed_header table-bordered table-responsive-sm table-striped text-center">
                 <thead>
                 <tr>
-                    <th>1 ID</th>
-                    <th>2 user id</th>
-                    <th>3 exercise name</th>
-                    <th>4 body part id</th>
-                    <th>5 difficulty id</th>
+                    <th> ID</th>
+                    <th> user id</th>
+                    <th> exercise name</th>
+                    <th> body part id</th>
+                    <th> difficulty id</th>
                     <!--                  Get rid of this?-->
-                    <th>6 description</th>
+                    <th> description</th>
 <!--                    <th>7 photo</th>-->
                     <th> Edit</th>
                      <th> Delete</th>
@@ -22,15 +39,15 @@
                 </tr>
                 </thead>
                 <tbody>
-             <?php foreach ($posts as $blogPosts){ ?> 
+             <?php foreach ($posts as $blogPosts): ?> 
                     <tr>
-                        <td> 1<?php print $blogPosts->getId() ?></td>
-                        <td> 2 <?php print $blogPosts->getUserId() ?></td>
-                        <td> 3 <?php print $blogPosts->getExerciseName() ?></td>
-                        <td> 4 <?php print $blogPosts->getBodyPartId()?></td>
-                        <td> 5 <?php print $blogPosts->getDifficultyId()?></td>
-                        <td> 6 <?php print $blogPosts->getDescription() ?></td>
-                        <td> 7 <?php //print $blogPosts->getPhoto() ?></td>
+                        <td> <?php print $blogPosts->getId() ?></td>
+                        <td> <?php print $blogPosts->getUserId() ?></td>
+                        <td> <?php print $blogPosts->getExerciseName() ?></td>
+                        <td> <?php print $blogPosts->getBodyPartId()?></td>
+                        <td> <?php print $blogPosts->getDifficultyId()?></td>
+                        <td> <?php print $blogPosts->getDescription() ?></td>
+                        <!--<td> <?php //print $blogPosts->getPhoto() ?></td>-->
                         <td>
                             <a href="index.php?controller=users&action=update&id=<?php //print $blogPosts->getId() ?>">Edit</a>
                         </td>
@@ -38,7 +55,7 @@
                             <a href="index.php?controller=users&action=delete&id=<?php //print $blogPosts->getId() ?>">Delete</a>
                         </td>
                     </tr>
-             <?php } ?> 
+             <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
