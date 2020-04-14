@@ -61,10 +61,11 @@ class Posts
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM posts');
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['photo']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description']);
         }
         return $list;
     }
+    
 
     public static function findByExercise($id, $exercisename)
     {

@@ -5,20 +5,23 @@ class PostsController
 {
     public function readAll()
     {
-        // we expect a url of form ?controller=posts&action=show&id=x
-        // without an id we just redirect to the error page as we need the post id to find it in the database
-        if (!isset($_GET['id'])) {
-            call('pages', 'error');
-            return;
-        }
-        
-        try {
-            // we use the given id to get the correct post
-            $posts = Posts::find($_GET['id']);
-            require_once('views/admin/post/readAll.php');
-        } catch (Exception $ex) {
-            call('pages', 'error');
-        }
+          // we store all the posts in a variable
+        $posts = Posts::readAll();
+        require_once('views/admin/posts/readAll.php');
+//        // we expect a url of form ?controller=posts&action=show&id=x
+//        // without an id we just redirect to the error page as we need the post id to find it in the database
+//        if (!isset($_GET['id'])) {
+//            call('pages', 'error');
+//            return;
+//        }
+//        
+//        try {
+//            // we use the given id to get the correct post
+//            $posts = Posts::find($_GET['id']);
+//            require_once('views/admin/post/readAll.php');
+//        } catch (Exception $ex) {
+//            call('pages', 'error');
+//        }
     }
 
     public function create()

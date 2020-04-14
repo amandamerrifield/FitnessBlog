@@ -24,6 +24,7 @@ function call($controller, $action)
             break;
         case 'posts':
             $controller = new PostsController();
+            break;
 
         case 'login':
             $controller = new LoginController();
