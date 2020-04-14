@@ -80,7 +80,7 @@
             </a>
         </div>
 <div class="row" style="padding-top: 80px;">
-    gyfrtytuyfyuf
+
     <?php if ($_SESSION['is_admin']==true) {?>
 
         <div class="col-md-2" >
