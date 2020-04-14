@@ -28,7 +28,9 @@ function call($controller, $action)
 
         case 'login':
             $controller = new LoginController();
-
+            break;
+        case 'comments':
+            $controller = new CommentsController();
             break;
 
         //we will need to add a separate case for each controller
@@ -56,6 +58,7 @@ $controllers = array('pages' => ['home', 'error'],
 
     'users'=>['readAll','create', 'update'],
     'login'=>['validateLogin'],
+    'comments'=>['create'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
