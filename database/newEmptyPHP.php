@@ -17,31 +17,19 @@ CREATE TABLE difficulty
     level varchar(12) NOT NULL
 );
 
--- CREATE TABLE users
--- (
---     id         INT PRIMARY KEY AUTO_INCREMENT,
---     admin      boolean,
---     username   varchar(225) NOT NULL,
---     email      varchar(225) NOT NULL,
---     password   varchar(225) NOT NULL,
---     photo blob,
---     created_at datetime,
---     updated_at datetime
--- 
--- );
-
-CREATE TABLE user
+CREATE TABLE users
 (
-    id  INT PRIMARY KEY AUTO_INCREMENT, 
-    admin boolean,
-    username varchar(225) NOT NULL, 
-    email varchar(225) NOT NULL,
-    password varchar(225) NOT NULL, 
-    photo blob, 
+    id         INT PRIMARY KEY AUTO_INCREMENT,
+    admin      boolean,
+    username   varchar(225) NOT NULL,
+    email      varchar(225) NOT NULL,
+    password   varchar(255) NOT NULL, # 255 because the hashing requires 255 min
+    photo blob,
     created_at datetime,
     updated_at datetime,
-    first_name varchar(20) NOT NULL,
-    content varchar(225) NOT NULL, 
+    first_name varchar(20) NOT NULL, 
+    user_content varchar(225) NOT NULL
+   
 );
 
 CREATE TABLE posts
@@ -65,5 +53,4 @@ CREATE table comments
     posted_at datetime,
     content text(300) NOT NULL,
     CONSTRAINT `fk_comments` FOREIGN KEY (blog_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE RESTRICT
-
 );
