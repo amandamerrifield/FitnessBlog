@@ -4,6 +4,10 @@
             <h5 class="card-title text-center">Sign Up</h5>
             <form class="form-signin" action="index.php?controller=users&action=create" method="POST">
                 <div class="form-label-group">
+                    <label for="inputFirstName">First Name</label>
+                    <input type="text" id="inputUsername" class="form-control" name="first_name" required autofocus>
+                </div>
+                <div class="form-label-group">
                     <label for="inputUsername">Username</label>
                     <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>
                 </div>
@@ -18,6 +22,10 @@
                 <div class="form-label-group">
                     <label for="inputConfirmPassword">Confirm Password</label>
                     <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required>
+                </div>
+                <div class="form-label-group">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>
                 </div>
                <?php if ($passwordsnotequal==true)
                {

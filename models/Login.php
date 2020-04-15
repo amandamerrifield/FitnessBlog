@@ -68,8 +68,8 @@ class Login
                 $_SESSION['is_admin'] = false;
             }
 
-           // $_SESSION['last_login_timestamp'] = time();
-//        }
+            $_SESSION['last_login_timestamp'] = time();
+
 
           echo"you have logged in";
 
