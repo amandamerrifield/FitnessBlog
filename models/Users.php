@@ -1,5 +1,5 @@
 <?php
-
+require_once 'password/Hashing.php';
 
 class Users
 {
@@ -14,12 +14,12 @@ class Users
     public function __construct($id, $username, $email, $password)
     {
         $this->id = $id;
-       //$this->admin = $admin;
+        //$this->admin = $admin;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-       // $this->created_at = $created_at;
-       // $this->updated_at = $updated_at;
+        // $this->created_at = $created_at;
+        // $this->updated_at = $updated_at;
     }
 
 
@@ -77,13 +77,13 @@ class Users
         values (:username,:email,:password,:created_at,:updated_at)");
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
-        $req->bindParam(':password', $password);
+        $req->bindParam(':password', Hashing::hashPassword($password));
         $req->bindParam(':created_at', $created_at);
         $req->bindParam(':updated_at', $updated_at);
         //figure out inserting into created_at and updated_at;
         $req->execute();
     }
-    
+
     public static function find($id)
     {
         $db = Db::getInstance();
@@ -100,8 +100,8 @@ class Users
             throw new Exception('This user is not available');
         }
     }
-    
-      public static function update( $id, $username,  $email, $password)
+
+    public static function update($id, $username, $email, $password)
     {
         $db = Db::getInstance();
         $req = $db->prepare("Update users SET username=:username, email=:email, password=:password where id=:id");
@@ -109,12 +109,12 @@ class Users
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $password);
-      //  $req->bindParam(':updated_at', $updated_at);
+        //  $req->bindParam(':updated_at', $updated_at);
         //$req = date_update table SET datetime =update_date_time;
         //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");
         // $date = date('Y-m-d H:i:s');
-       //  $updated_at("INSERT INTO `table` (`dateposted`) VALUES ('$date')");   
-       
+        //  $updated_at("INSERT INTO `table` (`dateposted`) VALUES ('$date')");
+
         $req->execute();
     }
-    }
+}
