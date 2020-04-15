@@ -60,8 +60,8 @@ $controllers = array('pages' => ['home', 'error'],
     'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
 
 
+    'login'=>['validateLogin', 'logout'],
 
-    'login'=>['validateLogin'],
     'comments'=>['create'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
