@@ -1,4 +1,5 @@
 <?php
+
 require_once 'models/BodyPart.php';
 
 
@@ -83,13 +84,10 @@ class BodyPartsController
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
 
-           
-            BodyPart::remove($id);
+            BodyPart::remove($id,$part);
 
             $this->readAll();
         }
     }
 
 }
-
-

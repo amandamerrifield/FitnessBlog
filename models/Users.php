@@ -64,11 +64,11 @@ class Users
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM users');
         foreach ($req->fetchAll() as $users) {
-            $list[] = new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['created_at'], $users['updated_at']);
+            $list[] = new Users($users['id'], $users['admin'], $users['name'], $users['content'], $users['username'], $users['email'], $users['password'], $users['created_at'], $users['updated_at']);
         }
         return $list;
     }
-
+   
 
     public static function create($username, $email, $password) //this is for the registering new users part
     {

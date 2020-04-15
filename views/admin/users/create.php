@@ -1,7 +1,7 @@
 <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
     <div class="card card-signin my-5">
         <div class="card-body">
-            <h5 class="card-title text-center">Register</h5>
+            <h5 class="card-title text-center">Sign Up</h5>
             <form class="form-signin" action="index.php?controller=users&action=create" method="POST">
                 <div class="form-label-group">
                     <label for="inputUsername">Username</label>
@@ -25,7 +25,7 @@
                }
                ?>
                 <label> </label>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
             </form>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item text-center" href="#">Or Sign In</a>

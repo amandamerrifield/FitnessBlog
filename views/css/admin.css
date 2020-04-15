@@ -35,20 +35,16 @@ body{
 }
 
 
-.edit{
+#edit{
     color: green;
 }
 
 .delete{
     color: red;
 }
-.publish{
-    color: blue;
-}
 
 
 .edit:hover,
-.delete:hover,
-.publish:hover{
+.delete:hover{
     text-decoration: underline;
 }
