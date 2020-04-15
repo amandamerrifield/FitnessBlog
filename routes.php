@@ -41,7 +41,7 @@ function call($controller, $action)
 $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
     'difficulty'=>['readAll','read','create','update','delete'],
-    'users'=>['readAll','create', 'update'],
+    'users'=>['readAll','create', 'update', 'read'],
     'login'=>['validateLogin'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
