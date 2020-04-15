@@ -6,7 +6,7 @@
   z-index: 1; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: graytext; /* Black*/
+  background-color: darkgray; /* Black*/
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 80px;  /* Place content 60px from the top */
   padding-bottom: 60px;

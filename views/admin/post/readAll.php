@@ -1,3 +1,7 @@
+
+
+<a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
+
 <!--<!DOCTYPE html>
 
 <head>
@@ -12,7 +16,7 @@
         <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
         <link href="../../css/admin.css" rel="stylesheet" type="text/css"/>
 </head>-->
-                <a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
+
                 <a href='?controller=posts&action=editPosts' class="btn btn-info" id="adminBtn">Manage Posts</a>
 <div class="container">
     <div class="card">
@@ -29,8 +33,8 @@
                     <!--                  Get rid of this?-->
                     <th> description</th>
 <!--                    <th>7 photo</th>-->
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th> Edit</th>
+                     <th> Delete</th>
 
                 </tr>
                 </thead>

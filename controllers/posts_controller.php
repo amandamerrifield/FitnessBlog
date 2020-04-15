@@ -1,5 +1,5 @@
 <?php
-require "models/Posts.php";
+require"models/Posts.php";
 
 class PostsController
 {
@@ -21,9 +21,9 @@ class PostsController
 //            require_once('views/admin/post/readAll.php');
 //        } catch (Exception $ex) {
 //            call('pages', 'error');
-//        }
-    }
-
+//  
+      }
+    
     public function create()
     {
         // we expect a url of form ?controller=products&action=create
