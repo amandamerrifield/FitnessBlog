@@ -26,8 +26,9 @@ CREATE TABLE users
     password   varchar(255) NOT NULL, # 255 because the hashing requires 255 min
     photo blob,
     created_at datetime,
-    updated_at datetime
-
+    updated_at datetime,
+    first_name varchar(20) NOT NULL,
+    user_content varchar(225) NOT NULL
 );
 
 CREATE TABLE posts

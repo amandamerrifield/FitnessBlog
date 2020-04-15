@@ -10,8 +10,8 @@ INSERT INTO bodyPart(id, part) VALUES (2,'chest');
 INSERT INTO bodyPart(id, part) VALUES (3,'abs');
 INSERT INTO bodyPart(id, part) VALUES (4,'legs');
 
-INSERT INTO users VALUES (1,false,'hanna99','hanna@gmail.com','password',LOAD_FILE('d:\\flower.gif'),NOW(), NOW());
-INSERT INTO users VALUES (2, true, 'admin', 'admin@google.com', 'password', LOAD_FILE('/Users/zita/Desktop/FibonacciDualSpiral.png'), DATE('2020-2-20'),NOW());
+INSERT INTO users VALUES (1,false,'hanna99','hanna@gmail.com','password',LOAD_FILE('d:\\flower.gif'),NOW(), NOW(),'Hannah','Hi I am Hannah');
+INSERT INTO users VALUES (2, true, 'admin', 'admin@google.com', 'password', LOAD_FILE('/Users/zita/Desktop/FibonacciDualSpiral.png'), DATE('2020-2-20'),NOW(), 'Admin','Hi I am the admin');
 
 INSERT INTO difficulty VALUES (1,'beginner');
 INSERT INTO difficulty VALUES (2,'intermediate');
