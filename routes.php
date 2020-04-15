@@ -51,16 +51,16 @@ function call($controller, $action)
 $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create'],
     'difficulty'=>['readAll','read','create','update','delete'],
-<<<<<<< HEAD
+
     'users'=>['readAll','create', 'update', 'read'],
-=======
+
 
     'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
-    'users'=>['readAll','create'],
+    
     'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
 
-    'users'=>['readAll','create', 'update'],
->>>>>>> c16835019abe8adb1246d5c9ebe9a129fd6f0fc9
+
+
     'login'=>['validateLogin'],
     'comments'=>['create'],
     'controllerXXX' => ['actionYYY', 'actionZZZ'],
