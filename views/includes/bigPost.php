@@ -19,7 +19,7 @@
         <hr>
 
         <!-- Date/Time -->
-        <p>Posted on January 1, 2019 at 12:00 PM</p>
+        <p>Posted on <?php print date('Y-m-d', 'H-i-j' )?></p>
 
         <hr>
 
