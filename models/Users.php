@@ -8,18 +8,24 @@ class Users
     protected $username;
     protected $email;
     protected $password;
+    protected $photo;
     protected $created_at;
     protected $updated_at;
+    protected $first_name;
+    protected $user_content;
 
-    public function __construct($id, $username, $email, $password)
+    public function __construct($id, $username, $email, $password,$photo, $first_name, $user_content)
     {
         $this->id = $id;
         //$this->admin = $admin;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
+         $this->password = $photo;
         // $this->created_at = $created_at;
         // $this->updated_at = $updated_at;
+        $this->first_name = $first_name;
+         $this->user_content = $user_content;
     }
 
 
@@ -47,6 +53,11 @@ class Users
     {
         return $this->password;
     }
+    
+      public function getPhoto()
+    {
+        return $this->photo;
+    }
 
     public function getCreatedAt()
     {
@@ -57,6 +68,16 @@ class Users
     {
         return $this->updated_at;
     }
+    
+       public function getFirstName()
+    {
+        return $this->first_name;
+    }
+    
+       public function getUserContent()
+    {
+        return $this->user_content;
+    }
 
     public static function all()
     {
@@ -64,11 +85,11 @@ class Users
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM users');
         foreach ($req->fetchAll() as $users) {
-            $list[] = new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['created_at'], $users['updated_at']);
+            $list[] = new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
         }
         return $list;
     }
-
+   
 
     public static function create($username, $email, $password) //this is for the registering new users part
     {
