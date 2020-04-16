@@ -101,16 +101,20 @@ class Users
     }
    
 
-    public static function create($username, $email, $password, $created_at, $updated_at) //this is for the registering new users part
+    public static function create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content) //this is for the registering new users part
     {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 
         values (:username,:email,:password,:created_at,:updated_at)");
+        $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', Hashing::hashPassword($password));
         $req->bindParam(':created_at', $created_at);
         $req->bindParam(':updated_at', $updated_at);
+        $req->bindParam(':photo', $photo);
+        $req->bindParam(':first_name', $first_name);
+        $req->bindParam(':user_content', $user_content);
         //figure out inserting into created_at and updated_at;
         $req->execute();
     }
@@ -125,21 +129,25 @@ class Users
         $req->execute(array('id' => $id));
         $users = $req->fetch();
         if ($users) {
-            return new Users($users['id'], $users['username'], $users['email'], $users['password']);
+            return new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This user is not available');
         }
     }
 
-    public static function update($id, $username, $email, $password)
+    public static function update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content)
     {
         $db = Db::getInstance();
         $req = $db->prepare("Update users SET username=:username, email=:email, password=:password where id=:id");
         $req->bindParam(':id', intval($id));
+        $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $password);
+        $req->bindParam(':photo', $photo);
+        $req->bindParam(':first_name', $first_name);
+        $req->bindParam(':user_content', $user_content);
         //  $req->bindParam(':updated_at', $updated_at);
         //$req = date_update table SET datetime =update_date_time;
         //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");

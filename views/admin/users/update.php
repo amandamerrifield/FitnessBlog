@@ -1,38 +1,54 @@
-<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-    <div class="card card-signin my-5">
-        <div class="card-body">
-            <h5 class="card-title text-center">Update</h5>
-            <form class="form-signin" action="index.php?controller=users&action=update" method="POST">
-                <input type="hidden" class="form-control" id="UsersId" name="id" value="<?php print $users->getId()?>">
-                
-                <div class="form-label-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" id="inputUsername" class="form-control" name="username" required autofocus value="<?php print $users->getUsername()?>">
-                </div>
-                <div class="form-label-group">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" name="email" value="<?php print $users->getEmail()?>">
-                </div>
-                <div class="form-label-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control"  name="password" required value="<?php print $users->getPassword()?>">
-                </div>
-                <div class="form-label-group">
-                    <label for="inputConfirmPassword">Confirm Password</label>
-                    <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required value="<?php print $users->getPassword()?>">
-                </div>
-               <?php 
-               $passwordsnotequal=false;
-               if ($passwordsnotequal==true)
-               {
-                   print "You made a typo. Please enter again";
-               }
-               ?>
-                <label> </label>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Update</button>
-            </form>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-center" href="#">Or Sign In</a>
-        </div>
+<div class="col-md-9" >
+    <a href="index.php?controller=users&action=create" class="btn btn-info" id="adminBtn">Add User</a>
+    <a href="index.php?controller=users&action=readAll" class="btn btn-info" id="adminBtn">Manage User</a>
+    <div class="container"> 
+        <div class="row h-25 d-inline-block"></div>
+        <form action="index.php?controller=users&action=create" method="POST" enctype="multipart/form-data">
+            <input type="hidden" class="form-control" id="user_id" name="id" value="<?php print $users->getId()?>">
+            <div class="form-label-group">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" id="inputUsername" class="form-control" name="first_name" value="<?php print $users->getFirstName()?>" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputUsername">Username</label>
+                <input type="text" id="inputUsername" class="form-control" name="username" value="<?php print $users->getUsername()?>" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" value="<?php print $users->getEmail()?>" >
+            </div>
+            <div class="form-label-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" class="form-control"  name="password" value="<?php print $users->getPassword()?>" required>
+            </div>
+            <div class="form-label-group">
+                <label for="inputConfirmPassword">Confirm Password</label>
+                <input type="password" id="inputConfirmPassword" class="form-control" name="password2" value="<?php print $users->getPassword()?>" required>
+            </div>
+           <?php $passwordsnotequal = false; if ($passwordsnotequal==true)
+           {
+               print "You made a typo. Please enter again";
+           }
+           ?>
+            <div class="form-group">
+                <label for="user">Is this user an admin?</label>
+                <select class="form-control" id="admin" name="admin" value="<?php print $users->getAdmin()?>">
+                    <option value="0">Not Admin</option>
+                    <option value="1">Is an Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userContent">User Description (1000 word max)</label>
+                <textarea class="form-control" maxlength="1000" id="userContent" name="user_content" value="<?php print $users->getUserContent()?>"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Image</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button type="submit" class="btn btn-info">Add User</button>
+        </form>
+
+
     </div>
-</div>
+</div>  
+ 
