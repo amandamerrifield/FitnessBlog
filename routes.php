@@ -49,17 +49,13 @@ function call($controller, $action)
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
-    'body_parts' => ['readAll','read','delete','update','create'],
+    'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
     'difficulty'=>['readAll','read','create','update','delete'],
-
     'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
-    'users'=>['readAll','create'],
     'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
-
     'users'=>['readAll','create', 'update'],
     'login'=>['validateLogin', 'logout'],
     'comments'=>['create'],
-    'controllerXXX' => ['actionYYY', 'actionZZZ'],
 );
 
 // check that the requested controller and action are both allowed
