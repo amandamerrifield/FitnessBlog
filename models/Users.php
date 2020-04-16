@@ -14,18 +14,18 @@ class Users
     protected $first_name;
     protected $user_content;
 
-    public function __construct($id, $username, $email, $password,$photo, $first_name, $user_content)
+    public function __construct($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content)
     {
         $this->id = $id;
-        //$this->admin = $admin;
+        $this->admin = $admin;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-         $this->password = $photo;
-        // $this->created_at = $created_at;
-        // $this->updated_at = $updated_at;
+        $this->password = $photo;
+        $this->created_at = $created_at;
+        $this->updated_at = $updated_at;
         $this->first_name = $first_name;
-         $this->user_content = $user_content;
+        $this->user_content = $user_content;
     }
 
 
@@ -89,9 +89,19 @@ class Users
         }
         return $list;
     }
+        public static function read()
+    {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->query('SELECT * FROM users');
+        foreach ($req->fetchAll() as $users) {
+            $list[] = new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
+        }
+        return $list;
+    }
    
 
-    public static function create($username, $email, $password) //this is for the registering new users part
+    public static function create($username, $email, $password, $created_at, $updated_at) //this is for the registering new users part
     {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 

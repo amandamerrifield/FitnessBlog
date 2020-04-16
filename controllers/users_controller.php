@@ -95,7 +95,7 @@ class UsersController
    public function read()
     {
         // we store all the posts in a variable
-        $users = Users::all();
+        $users = Users::read();
         require_once('views/admin/users/read.php');
     }
 //
