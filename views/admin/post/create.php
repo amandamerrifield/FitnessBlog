@@ -7,7 +7,7 @@
                    
                     <div class="row h-25 d-inline-block"></div>
                         <form action="index.php?controller=posts&action=create" method="POST" enctype="multipart/form-data">
-                                <input value ="<?php print $posts->getUserId()?>" type="text" class="form-control" id="userId" name="user_id">
+                                <input value =" <?php echo $_SESSION['id']; ?>" type="hidden" class="form-control" id="userId" name="user_id">
 
                             <div class="form-group">
                                 <label for="ExerciseName">Exercise Name</label>
@@ -15,12 +15,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="BodyPart">Body Part</label>
+                                    <?php foreach ($bodyParts as $part): ?> 
                                 <select class="form-control" id="BodyPart" name="body_part_id">
-                                    <option value="1">Arms</option>
-                                    <option value="2">Chest</option>
+                                    
+                                    <option value="<?php print $part->getId() ?>"><?php print $part->getPart() ?></option>
+                                   <option value="2">Chest</option>
                                     <option value="3">Abs</option>
                                     <option value="4">Legs</option>
-                                </select>
+                                    
+                                </select><?php endforeach; ?>
                             </div>
                             <div class="form-group">
                                 <label for="ExperienceLevel">Experience Level</label>
@@ -34,14 +37,12 @@
                                 <label for="body">Exercise Description (1000 word max)</label>
                                 <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
                             </div>
-                             <button type="submit" class="btn btn-info">Add Post</button>
-                        </form>
-<!--                        <form>
                             <div class="form-group">
                                 <label for="exampleFormControlFile1">Image</label>
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
-                        </form>-->
+                             <button type="submit" class="btn btn-info">Add Post</button>
+                        </form>
                        
 
                 </div>
