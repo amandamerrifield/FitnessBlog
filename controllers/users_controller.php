@@ -28,14 +28,14 @@ class UsersController
 //        }
 //    }
 
-    public function create() //shall we rename this to register?
+    public function register() //shall we rename this to register?
     {
           $passwordsnotequal = false;
         // we expect a url of form ?controller=products&action=create
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/users/create.php');
+            require_once('views/admin/users/register.php');
         } else {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -55,6 +55,37 @@ class UsersController
             require_once('views/pages/home.php');
         }
     }
+    
+     public function create() //shall we rename this to register?
+    {
+          $passwordsnotequal = false;
+        // we expect a url of form ?controller=products&action=create
+        // if it's a GET request display a blank form for creating a new product
+        // else it's a POST so add to the database and redirect to readAll action
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            require_once('views/admin/users/create.php');
+        } else {
+            $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
+            $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
+            $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            if ($_POST['password'] != $_POST['password2']) {
+                $passwordsnotequal = true;
+                require_once('views/admin/users/create.php');
+                return;
+            }
+
+
+            Users::create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
+            $this->readAll();
+            require_once('views/pages/home.php');
+        }
+    }
 
      public function update()
     {
@@ -70,11 +101,14 @@ class UsersController
         } else { //case when we are writing the bodypart to the database
             
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
             $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
-
+            $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
+            $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
+            $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
             
             if ($_POST['password'] != $_POST['password2']) {
                 $passwordsnotequal = true;
@@ -82,15 +116,14 @@ class UsersController
                 return;
             }
 
-            Users::update($id, $username, $email, $password);
+            Users::update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
 
            $this->readAll();
-           //   require_once('views/pages/home.php');
         }
 
     }
     
-    
+
     
    public function read()
     {

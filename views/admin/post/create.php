@@ -43,11 +43,8 @@
                             </div>
                              <button type="submit" class="btn btn-info">Add Post</button>
                         </form>
-                       
-
                 </div>
             </div>  
         </div>     
-    </body>
-</html>
+ 
 

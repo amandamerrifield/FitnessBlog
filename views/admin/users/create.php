@@ -1,42 +1,53 @@
-<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-    <div class="card card-signin my-5">
-        <div class="card-body">
-            <h5 class="card-title text-center">Sign Up</h5>
-            <form class="form-signin" action="index.php?controller=users&action=create" method="POST">
-                <div class="form-label-group">
-                    <label for="inputFirstName">First Name</label>
-                    <input type="text" id="inputUsername" class="form-control" name="first_name" required autofocus>
-                </div>
-                <div class="form-label-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>
-                </div>
-                <div class="form-label-group">
-                    <label for="inputEmail">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" name="email" >
-                </div>
-                <div class="form-label-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" id="inputPassword" class="form-control"  name="password" required>
-                </div>
-                <div class="form-label-group">
-                    <label for="inputConfirmPassword">Confirm Password</label>
-                    <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required>
-                </div>
-                <div class="form-label-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>
-                </div>
-               <?php if ($passwordsnotequal==true)
-               {
-                   print "You made a typo. Please enter again";
-               }
-               ?>
-                <label> </label>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
-            </form>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item text-center" href="#">Or Sign In</a>
-        </div>
+<div class="col-md-9" >
+    <a href="index.php?controller=users&action=create" class="btn btn-info" id="adminBtn">Add User</a>
+    <a href="index.php?controller=users&action=readAll" class="btn btn-info" id="adminBtn">Manage User</a>
+    <div class="container"> 
+        <div class="row h-25 d-inline-block"></div>
+        <form action="index.php?controller=users&action=create" method="POST" enctype="multipart/form-data">
+            <div class="form-label-group">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" id="inputUsername" class="form-control" name="first_name" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputUsername">Username</label>
+                <input type="text" id="inputUsername" class="form-control" name="username" required autofocus>
+            </div>
+            <div class="form-label-group">
+                <label for="inputEmail">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" >
+            </div>
+            <div class="form-label-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" id="inputPassword" class="form-control"  name="password" required>
+            </div>
+            <div class="form-label-group">
+                <label for="inputConfirmPassword">Confirm Password</label>
+                <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required>
+            </div>
+           <?php if ($passwordsnotequal==true)
+           {
+               print "You made a typo. Please enter again";
+           }
+           ?>
+            <div class="form-group">
+                <label for="user">Is this user an admin?</label>
+                <select class="form-control" id="admin" name="admin">
+                    <option value="0">Not Admin</option>
+                    <option value="1">Is an Admin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="userContent">User Description (1000 word max)</label>
+                <textarea class="form-control" maxlength="1000" id="userContent" name="user_content"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Image</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <button type="submit" class="btn btn-info">Add User</button>
+        </form>
+
+
     </div>
-</div>
+</div>  
+ 
