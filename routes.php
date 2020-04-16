@@ -53,7 +53,7 @@ $controllers = array('pages' => ['home', 'error'],
     'difficulty'=>['readAll','read','create','update','delete'],
     'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
     'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
-    'users'=>['readAll','create', 'update', 'register'],
+    'users'=>['read','readAll','create', 'update', 'register'],
     'login'=>['validateLogin', 'logout'],
 
     'comments'=>['create'],
