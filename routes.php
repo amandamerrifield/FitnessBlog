@@ -52,10 +52,9 @@ $controllers = array('pages' => ['home', 'error'],
     'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
     'difficulty'=>['readAll','read','create','update','delete'],
     'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
-    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove'],
+    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove','bigPost'],
     'users'=>['readAll','create', 'update'],
     'login'=>['validateLogin', 'logout'],
-
     'comments'=>['create'],
 );
 

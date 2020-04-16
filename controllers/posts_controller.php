@@ -88,6 +88,10 @@ class PostsController
             $this->readAll($id);
         }
     }
+    public function bigPost(){
+        $posts = filter_input(INPUT_POST, 'post', FILTER_SANITIZE_SPECIAL_CHARS);
+        require_once 'views/admin/post/bigPost.php';
+    }
 
 }
 
