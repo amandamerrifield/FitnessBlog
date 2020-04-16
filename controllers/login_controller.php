@@ -33,8 +33,6 @@ class LoginController
             require_once('views/pages/home.php');
             echo 'you have logged out';
         }
-            
- 
         
     }
 }

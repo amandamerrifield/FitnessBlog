@@ -30,10 +30,10 @@ class PostsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/post/create.php');
+                require_once('views/admin/post/create.php');
         } else {
-            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $userId = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $userId = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $exerciseName = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS); 

@@ -9,8 +9,18 @@ class BodyPartsController
         // we store all the posts in a variable
         $bodyParts = BodyPart::all();
         require_once('views/admin/bodyparts/readAll.php');
+        //require_once('views/admin/post/create.php');
     }
 
+    
+    public function readAll2()
+    {
+        // we store all the posts in a variable
+        $bodyParts = BodyPart::all();
+        require_once('views/admin/post/create.php');
+        //require_once('views/admin/post/create.php');
+    }
+    
     public function read()
     {
         // we expect a url of form ?controller=posts&action=show&id=x

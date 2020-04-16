@@ -2,22 +2,7 @@
 
 <a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
 
-<!--<!DOCTYPE html>
-
-<head>
-    <meta charset="UTF-8">
-        <title></title>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
-        <script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
-        <script src="../../scripts/scripts.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link href="../../css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="../../css/admin.css" rel="stylesheet" type="text/css"/>
-</head>-->
-
-                <a href='?controller=posts&action=update' class="btn btn-info" id="adminBtn">Manage Posts</a>
+<a href='?controller=posts&action=update' class="btn btn-info" id="adminBtn">Manage Posts</a>
 <div class="container">
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">All Posts</h3>
