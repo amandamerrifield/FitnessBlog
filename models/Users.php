@@ -105,12 +105,12 @@ class Users
         $db = Db::getInstance();
         $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 
         values (:username,:email,:password,:created_at,:updated_at)");
-        
+        $hasher = Hashing::hashPassword($password);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
-        $req->bindParam(':password', Hashing::hashPassword($password));
-        $req->bindParam(':created_at', $created_at);
-        $req->bindParam(':updated_at', $updated_at);
+        $req->bindParam(':password', $hasher);
+       // $req->bindParam(':created_at', $created_at);
+       // $req->bindParam(':updated_at', $updated_at);
         
         //figure out inserting into created_at and updated_at;
         $req->execute();
