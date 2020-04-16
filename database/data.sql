@@ -11,11 +11,11 @@ INSERT INTO bodyPart(id, part) VALUES (3,'abs');
 INSERT INTO bodyPart(id, part) VALUES (4,'legs');
 
 
-INSERT INTO users VALUES(6, false, 'Vani2', 'amanda.r.merrifield@gmail.com', 'password2', '', NOW(),NOW(), 'Maya-Vani',
-  "Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future");
+INSERT INTO users  VALUES( false, 'Vani2', 'amanda.r.merrifield@gmail.com', 'password2', '', NOW(),NOW(), 'Maya-Vani',
+  'Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own womens self defence classes in the future");
 
 INSERT INTO users VALUES(2, false, 'Zita3', 'buzasizita@gmail.com', 'password3', '', NOW(),NOW(), 'Zita',
-  "Zita believes you don't have to be a professional athlete to incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.");
+  'Zita believes you don't have to be a professional athlete to incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.');
 
 INSERT INTO users VALUES(3, false, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', '', NOW(),NOW(), 'Afrodyta',
  "Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
