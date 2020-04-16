@@ -15,7 +15,7 @@ if (isset($_SESSION["username"]))
     require_once('views/layout.php');
     // slash works on both mac and win but \ only works on win
 
-    if((time() - $_SESSION['last_login_timestamp']) > 10)
+    if((time() - $_SESSION['last_login_timestamp']) > 1000)
     {
         session_destroy();
         echo 'you have been logged out';

@@ -32,9 +32,14 @@ class PostsController
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             require_once('views/admin/post/create.php');
         } else {
-            $posts = filter_input(INPUT_POST, 'posts', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::create($posts);
-            $this->readAll($id);
+            $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $userId = filter_input(INPUT_GET, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $exerciseName = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
+            $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS); 
+            $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description);
+            //$this->readAll($id);
         }
     }
 
@@ -50,7 +55,7 @@ class PostsController
             // we use the given id to get the correct product
             $bodyPart = Posts::find($_GET['id']);
 
-            require_once('views/admin/post/editPost.php');
+            require_once('views/admin/post/update.php');
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $posts = filter_input(INPUT_POST, 'post', FILTER_SANITIZE_SPECIAL_CHARS);

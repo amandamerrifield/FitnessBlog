@@ -17,7 +17,7 @@
         <link href="../../css/admin.css" rel="stylesheet" type="text/css"/>
 </head>-->
 
-                <a href='?controller=posts&action=editPosts' class="btn btn-info" id="adminBtn">Manage Posts</a>
+                <a href='?controller=posts&action=update' class="btn btn-info" id="adminBtn">Manage Posts</a>
 <div class="container">
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">All Posts</h3>
@@ -49,10 +49,10 @@
                         <td> <?php print $blogPosts->getDescription() ?></td>
                         <!--<td> <?php //print $blogPosts->getPhoto() ?></td>-->
                         <td>
-                            <a href="index.php?controller=users&action=update&id=<?php //print $blogPosts->getId() ?>">Edit</a>
+                            <a href="index.php?controller=posts&action=update&id=<?php print $blogPosts->getId() ?>">Edit</a>
                         </td>
                         <td>
-                            <a href="index.php?controller=users&action=delete&id=<?php //print $blogPosts->getId() ?>">Delete</a>
+                            <a href="index.php?controller=posts&action=delete&id=<?php print $blogPosts->getId() ?>">Delete</a>
                         </td>
                     </tr>
              <?php endforeach; ?>
