@@ -13,17 +13,17 @@
                                 <label for="ExerciseName">Exercise Name</label>
                                 <input type="text" class="form-control" id="ExerciseName" name="exercise_name" placeholder="Push Up">
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" >
                                 <label for="BodyPart">Body Part</label>
+                                    
+                                <select  class="form-control" id="BodyPart" name="body_part_id">
                                     <?php foreach ($bodyParts as $part): ?> 
-                                <select class="form-control" id="BodyPart" name="body_part_id">
-                                    
-                                    <option value="<?php print $part->getId() ?>"><?php print $part->getPart() ?></option>
-                                   <option value="2">Chest</option>
+                                    <option href="index.php?controller=body_parts&action=readAll2"><?php print $part->getPart() ?></option>
+<!--                                   <option value="2">Chest</option>
                                     <option value="3">Abs</option>
-                                    <option value="4">Legs</option>
-                                    
-                                </select><?php endforeach; ?>
+                                    <option value="4">Legs</option>-->
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="ExperienceLevel">Experience Level</label>
