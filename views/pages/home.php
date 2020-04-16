@@ -22,7 +22,7 @@
         <p class="card-text"> Level: <?php print $blogPosts->getDifficultyId() ?></p>
         <p class="card-text"> Description: <?php print $blogPosts->getDescription() ?></p>
       
-        <a href="#" class="btn btn-primary" id='readMore' action="">Read More!</a> 
+        <a href="index.php?controller=posts&action=bigPost" class="btn btn-primary" id='readMore'>Read More!</a>
       </div>
     </div>
       
