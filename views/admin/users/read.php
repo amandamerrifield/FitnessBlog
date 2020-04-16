@@ -17,13 +17,13 @@
          
      <?php foreach ($users as $user): ?>
      <div class="card">
-    <img  id="hike" class="img-fluid"  <?php print $user->getPhoto() ?> alt=""> 
+    <img  id="hike" class="img-fluid"   alt=""> 
     <div class="card-body">
-      <h5 class="card-title" class="card-title" style="text-align:center"><?php print $user->getTitle() ?></h5>
+      <h5 class="card-title" class="card-title" style="text-align:center"><?php print $user->getFirstName() ?></h5>
     
      
   
-      <p class="card-text" style="text-align:center"><?php print $user->getContent() ?>
+      <p class="card-text" style="text-align:center"><?php print $user->getUserContent() ?>
         
     </div>
     <div class="card-footer">
