@@ -92,8 +92,8 @@ class PostsController
         }
     }
     public function bigPost(){
-        $post = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_SPECIAL_CHARS);
-        //ki kell olvasni a databasebol
+        $post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_SPECIAL_CHARS);
+        $post = Posts::find($_GET['id']);
         require_once 'views/admin/post/bigPost.php';
     }
 

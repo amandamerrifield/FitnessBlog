@@ -71,8 +71,24 @@ class Posts
         $req = $db->query('SELECT * FROM posts');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
-        }
+    }
         return $list;
+    }
+
+    public static function find($id)
+    {
+        $db = Db::getInstance();
+        $id = intval($id);
+        $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $post = $req->fetch();
+        if ($post) {
+            return new Posts($post['id'], $post['user_id'], $post['exercise_name'], $post['body_part_id'], $post['difficulty_id'], $post['description'], $post['created_at']);
+        }
+         else {
+            throw new Exception('This post is not available');
+        }
     }
 
 
