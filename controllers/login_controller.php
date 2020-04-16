@@ -17,9 +17,10 @@ class LoginController
             
             if (empty($_POST['username']) || empty($_POST['password'])) {
                 echo "Please enter all of the values!";
+            } else {
+                Login::validate($username, $password);
             }
-             Login::validate($username, $password);
-             
+
              require_once('views/pages/home.php');
         }
     }

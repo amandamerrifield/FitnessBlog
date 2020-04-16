@@ -64,10 +64,6 @@ class Login
             }
 
             $_SESSION['last_login_timestamp'] = time();
-
-
-          echo"you have logged in";
-
         } else {
             //replace with a more meaningful exception
             echo 'Account does not exist';
