@@ -40,6 +40,7 @@ CREATE TABLE posts
     difficulty_id tinyint      NOT NULL,
     description   text(1000)   NOT NULL,
     photo         blob,
+    created_at datetime,
     CONSTRAINT `fk_posts_user` FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT `fk_posts_bodyPart` FOREIGN KEY (body_part_id) REFERENCES bodyPart (id) ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT `fk_posts_difficulty` FOREIGN KEY (difficulty_id) REFERENCES difficulty (id) ON UPDATE CASCADE ON DELETE RESTRICT
