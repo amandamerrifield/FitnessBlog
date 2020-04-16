@@ -7,35 +7,31 @@
 </div>
 <br>
 <h2 style="text-align:center">Our Team</h2>
-
 <br>
-
-
 <div class="container-fluid">
     
-     <div class="card-deck">  
-         
-     <?php foreach ($users as $user): ?>
-     <div class="card">
-    <img  id="hike" class="img-fluid"   alt=""> 
-    <div class="card-body">
-      <h5 class="card-title" class="card-title" style="text-align:center"><?php print $user->getFirstName() ?></h5>
-    
-     
-  
-      <p class="card-text" style="text-align:center"><?php print $user->getUserContent() ?>
-        
+    <div class="row row-cols-1 row-cols-md-3">
+        <?php foreach ($users as $user): ?>
+       <?php if ($user->getAdmin() == 1){?>
+  <div class="col mb-4">
+    <div class="card h-100">
+      <img src="<?php print $user->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
+      <div class="card-body">
+         <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
+         <p class="card-text"> <?php print $user->getUserContent() ?></p>
+        <a href="#" class="btn btn-primary" id='contact' action="">Contact</a> 
+        <p class="card-text"> <?php print $user->getEmail() ?></p>
+      </div>
     </div>
-    <div class="card-footer">
-        <br>
-      <p  class="button" style="text-align:center"><button type="button" class="btn btn-info">Contact</button></p>
-      
-          <p style="text-align:center"><small class="card-text" style="text-align:center"><?php print $user->getEmail() ?></small></p> 
-      
-       </div>
+        
   </div>
-          <?php endforeach; ?>
-    </div>  
+       <?php }
+        else {
+            
+        }
+       endforeach; ?>
+</div>
+     </div>
     
 </div>
         
