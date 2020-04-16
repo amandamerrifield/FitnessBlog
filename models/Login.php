@@ -51,10 +51,10 @@ class Login
         $req = $db->prepare("SELECT * FROM users WHERE username = :username");
                 
         $req->execute(array('username' => $_POST["username"]));
-
         $users = $req->fetch();
         if ($users) {
             $_SESSION['username']=$users['username'];
+            $_SESSION['id']=$users['id'];
             $_SESSION['password']=$users['password'];
             if ($users['admin']==1){ //mysql translates true to 1, we want to te translate it back to true
                 $_SESSION['is_admin'] = true;
@@ -95,5 +95,4 @@ class Login
         session_destroy();
     }
     
-
 }

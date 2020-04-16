@@ -150,20 +150,20 @@ class Posts
     public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
     {
         $db = Db::getInstance();
-        $req->bindParam(':id', intval($id));
-        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name,body_part_id, difficulty_id, description, photo) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, :photo)");
-        $id = intval($id);
+//        $req->bindParam(':id', intval($id));
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description)");
+//        $id = intval($id);
         $req->bindParam(':user_id', $user_id);
         $req->bindParam(':exercise_name', $exercise_name);
         $req->bindParam(':body_part_id', $body_part_id);
         $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
-        $req->bindParam(':photo', $photo);
+//        $req->bindParam(':photo', $photo);
         $req->execute();
     }
 
-    const AllowedTypes = ['image/jpeg', 'image/jpg'];
-    const InputKey = 'myUploader';
+//    const AllowedTypes = ['image/jpeg', 'image/jpg'];
+//    const InputKey = 'myUploader';
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
