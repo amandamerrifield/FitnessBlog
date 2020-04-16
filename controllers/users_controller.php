@@ -50,7 +50,7 @@ class UsersController
             }
 
 
-            Users::create($username, $email, $password);
+            Users::register($username, $email, $password);
 //            $this->readAll();
             require_once('views/pages/home.php');
         }

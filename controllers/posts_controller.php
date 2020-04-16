@@ -6,7 +6,9 @@ class PostsController
     public function readAll()
     {
           // we store all the posts in a variable
-        $posts = Posts::readAll();
+      
+        $posts = Posts::readAll;
+          //posts = '';
         require_once('views/admin/post/readAll.php');
 //        // we expect a url of form ?controller=posts&action=show&id=x
 //        // without an id we just redirect to the error page as we need the post id to find it in the database
