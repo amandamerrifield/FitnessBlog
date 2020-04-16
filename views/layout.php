@@ -38,7 +38,7 @@
                                 <a class="nav-link" href="index.php?controller=pages&action=home">Home </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=users&action=aboutUs">About</a>
+                                <a class="nav-link" href="index.php?controller=users&action=read">About</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=users&action=register">
@@ -55,7 +55,7 @@
                         <ul class="navbar-nav ml-auto">
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="index.php?controller=users&action=readAll">About</a>
+                                <a class="nav-link" href="index.php?controller=users&action=read">About</a>
                             </li>
                             <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
