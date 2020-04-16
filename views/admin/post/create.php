@@ -38,23 +38,15 @@
                 </div>
             </div>
         </nav>
-        <div class="row" style="padding-top: 80px;">
-            <div class="col-md-2" >
-                <nav class="nav nav-pills flex-column">
-                    <a class="nav-link active" href="indexPost.php">Manage Post</a>
-                    <a class="nav-link" href="../users/readAll.php">Manage Users</a>
-                    <a class="nav-link" href="../difficulty/indexLevel.php">Manage Difficulty Levels</a>
-                    <a class="nav-link" href="../bodyparts/indexBodyPart.php">Manage Body Part</a>
-                </nav>
-            </div>
             <div class="col-md-9" >
                 <a href="createPost.php" class="btn btn-info" id="adminBtn">Add Post</a>
                 <a href="indexPost.php" class="btn btn-info" id="adminBtn">Manage Post</a>
 
 
                 <div class="container"> 
+                   
                     <div class="row h-25 d-inline-block"></div>
-                        <form>
+                        <form action="index.php?controller=posts&action=create" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="ExerciseName">Exercise Name</label>
                                 <input type="text" class="form-control" id="ExerciseName" name="ExerciseName" placeholder="Push Up">
@@ -87,7 +79,8 @@
                                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
                             </div>
                         </form>
-                        <button type="button" class="btn btn-info">Add Post</button>
+                        <button type="submit" class="btn btn-info">Add Post</button>
+
                 </div>
             </div>  
         </div>     
