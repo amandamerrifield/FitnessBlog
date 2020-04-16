@@ -175,17 +175,19 @@ class Posts
         $req->execute();
     }
 
-    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
+    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at)
     {
         $db = Db::getInstance();
 //        $req->bindParam(':id', intval($id));
-        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description)");
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
 //        $id = intval($id);
         $req->bindParam(':user_id', $user_id);
         $req->bindParam(':exercise_name', $exercise_name);
         $req->bindParam(':body_part_id', $body_part_id);
         $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
+
+
 //        $req->bindParam(':photo', $photo);
         $req->execute();
     }
