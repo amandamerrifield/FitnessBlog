@@ -80,7 +80,6 @@ class Posts
         $db = Db::getInstance();
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
-        //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {

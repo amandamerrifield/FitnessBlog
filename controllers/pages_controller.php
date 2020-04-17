@@ -1,5 +1,5 @@
 <?php
-require"models/Posts.php";
+require_once 'models/Posts.php';
 class PagesController {
 
     //public function home() {

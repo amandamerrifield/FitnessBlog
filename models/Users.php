@@ -103,16 +103,12 @@ class Users
     public static function register($username, $email, $password) //this is for the registering new users part
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 
-        values (:username,:email,:password,:created_at,:updated_at)");
+        $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at,first_name,user_content) 
+        values (:username,:email,:password,NOW(),NOW(),'','')");
         $hasher = Hashing::hashPassword($password);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $hasher);
-       // $req->bindParam(':created_at', $created_at);
-       // $req->bindParam(':updated_at', $updated_at);
-        
-        //figure out inserting into created_at and updated_at;
         $req->execute();
     }
 

@@ -51,36 +51,24 @@ class Login
         $req = $db->prepare("SELECT * FROM users WHERE username = :username");
                 
         $req->execute(array('username' => $_POST["username"]));
-        $users = $req->fetch();
-        if ($users) {
-            $_SESSION['username']=$users['username'];
-            $_SESSION['id']=$users['id'];
-            $_SESSION['password']=$users['password'];
-            if ($users['admin']==1){ //mysql translates true to 1, we want to te translate it back to true
-                $_SESSION['is_admin'] = true;
-            }
-            else {
-                $_SESSION['is_admin'] = false;
-            }
-
-            $_SESSION['last_login_timestamp'] = time();
-        } else {
+        $user = $req->fetch();
+        if (!$user) {
             //replace with a more meaningful exception
             echo 'Account does not exist';
             return;
         }
 
-        if (!Hashing::isPasswordValid($_POST["password"], $users['password'])) {
+        if (!Hashing::isPasswordValid($_POST["password"], $user['password'])) {
             //replace with a more meaningful exception
             echo 'Incorrect password';
             return;
         }
 
-        $_SESSION['username']=$users['username'];
-        $_SESSION['password']=$users['password'];
+        $_SESSION['username']=$user['username'];
+        $_SESSION['password']=$user['password'];
 
         //mysql translates true to 1, we want to te translate it back to boolean
-        $_SESSION['is_admin'] = $users['admin']==1; //refactoring, evaluates to the same
+        $_SESSION['is_admin'] = $user['admin']==1; //refactoring, evaluates to the same
 
         echo "you have logged in";
     }

@@ -37,16 +37,13 @@ class BodyPart
     public static function find($id)
     {
         $db = Db::getInstance();
-        //use intval to make sure $id is an integer
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM bodyPart WHERE id = :id');
-        //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $bodyPart = $req->fetch();
         if ($bodyPart) {
             return new BodyPart($bodyPart['id'], $bodyPart['part']);
         } else {
-            //replace with a more meaningful exception
             throw new Exception('This bodypart is not available');
         }
     }
