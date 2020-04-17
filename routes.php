@@ -15,7 +15,7 @@ function call($controller, $action)
             break;
         case'difficulty':
             $controller = new DifficultyController();
-            break;
+            break; 
         case'homePageSearch':
             $controller = new HomePageController();
             break;
