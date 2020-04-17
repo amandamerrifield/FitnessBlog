@@ -25,7 +25,6 @@ function call($controller, $action)
         case 'posts':
             $controller = new PostsController();
             break;
-
         case 'login':
             $controller = new LoginController();
             break;
@@ -55,7 +54,6 @@ $controllers = array('pages' => ['home', 'error'],
     'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove', 'bigPost'],
     'users'=>['read','readAll','create', 'update', 'register'],
     'login'=>['validateLogin', 'logout'],
-
     'comments'=>['create'],
 );
 

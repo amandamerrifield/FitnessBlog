@@ -38,7 +38,7 @@
             </div>
             <div class="form-group">
                 <label for="userContent">User Description (1000 word max)</label>
-                <textarea class="form-control" maxlength="1000" id="userContent" name="user_content"></textarea>
+                <textarea class="form-control" name="user_content"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Image</label>
@@ -46,7 +46,14 @@
             </div>
             <button type="submit" class="btn btn-info">Add User</button>
         </form>
-
+ 
+        
+        
+       
+        <script>
+            CKEDITOR.replace('user_content');
+        </script>
+            
 
     </div>
 </div>  

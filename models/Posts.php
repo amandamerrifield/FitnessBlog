@@ -175,7 +175,7 @@ class Posts
     }
 
     public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at)
-    {
+    {   
         $db = Db::getInstance();
 //        $req->bindParam(':id', intval($id));
         $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
@@ -189,6 +189,9 @@ class Posts
 
 //        $req->bindParam(':photo', $photo);
         $req->execute();
+        
+       
+        
     }
 
 //    const AllowedTypes = ['image/jpeg', 'image/jpg'];
