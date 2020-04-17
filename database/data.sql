@@ -35,7 +35,13 @@ INSERT INTO difficulty VALUES (3,'advanced');
 INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
     VALUES (1,1,'running',4, 1, 'Run around the block 3 times',  LOAD_FILE('views/images/logo.png'), NOW());
 INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
-VALUES (2,1,'resistance band',4, 1, 'Step 1 Starting Position: Assume a seated position, extending one leg out in front. Secure a cable or resistance band around the ball of that foot. The resistance should be pulling the bottom of your foot away from you. Step 2 Start with your foot in plantar flexion (toes pointed forward away from your body) and slowly dorsiflex the ankle (pulling your toes towards your shin). Slowly return to your starting position, controlling the speed of movement and repeat. Step 3 The movement comes from your ankle, so avoid any bending or full extension of your knee throughout the movement. Always aim to keep your foot aligned facing forward. Step 4 As an exercise progression, modify your movement to include a slight foot rotation as you dorsiflex the ankle (toes point towards the ceiling). The direction of your slight rotation should be into inversion (bringing the big toe towards your shin bone). Attempt to sit upright and avoid any excessive arching or slouching in the low back.',  LOAD_FILE('views/images/logo.png'), NOW());
+VALUES (2,1,'resistance band',4, 1, 'Step 1:
+Starting Position: Assume a seated position, extending one leg out in front. Secure a cable or resistance band around the ball of that foot. The resistance should be pulling the bottom of your foot away from you.
+Step 2:
+    Start with your foot in plantar flexion (toes pointed forward away from your body) and slowly dorsiflex the ankle (pulling your toes towards your shin). Slowly return to your starting position, controlling the speed of movement and repeat.
+Step 3:
+    The movement comes from your ankle, so avoid any bending or full extension of your knee throughout the movement. Always aim to keep your foot aligned facing forward. Step 4 As an exercise progression, modify your movement to include a slight foot rotation as you dorsiflex the ankle (toes point towards the ceiling). The direction of your slight rotation should be into inversion (bringing the big toe towards your shin bone). Attempt to sit upright and avoid any excessive arching or slouching in the low back.',
+        LOAD_FILE('views/images/logo.png'), NOW());
 
 INSERT INTO comments VALUES (1,1,NOW(),'This is an amazing exercise!');
 

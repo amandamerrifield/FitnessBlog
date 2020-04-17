@@ -16,16 +16,15 @@ function call($controller, $action)
         case'difficulty':
             $controller = new DifficultyController();
             break;
-         case'homePageSearch':
+        case'homePageSearch':
             $controller = new HomePageController();
-             break;
+            break;
         case 'users':
             $controller = new UsersController();
             break;
         case 'posts':
             $controller = new PostsController();
             break;
-
         case 'login':
             $controller = new LoginController();
             break;
@@ -49,14 +48,13 @@ function call($controller, $action)
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error'],
-    'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
-    'difficulty'=>['readAll','read','create','update','delete'],
-    'homePageSearch'=>['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
-    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove', 'bigPost'],
-    'users'=>['read','readAll','create', 'update', 'register'],
-    'login'=>['validateLogin', 'logout'],
-
-    'comments'=>['create'],
+    'body_parts' => ['readAll', 'read', 'delete', 'update', 'create', 'readAll2'],
+    'difficulty' => ['readAll', 'read', 'create', 'update', 'delete'],
+    'homePageSearch' => ['all, findByExercise, findByDifficulty, findByBodyPart, findByAuthor'],
+    'posts' => ['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor', 'update', 'create', 'uploadFile', 'remove', 'bigPost'],
+    'users' => ['read', 'readAll', 'create', 'update', 'register'],
+    'login' => ['validateLogin', 'logout'],
+    'comments' => ['create'],
 );
 
 // check that the requested controller and action are both allowed
