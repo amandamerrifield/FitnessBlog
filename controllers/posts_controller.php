@@ -95,12 +95,12 @@ class PostsController
     public function bigPost()
     {
         $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-        try {
+//        try {
             $post = Posts::find($_GET['id']);
             require_once 'views/admin/post/bigPost.php';
-        } catch (Exception $ex) {
-            call('pages', 'error');
-        }
+//        } catch (Exception $ex) {
+//            call('pages', 'error');
+//        }
 
     }
 
