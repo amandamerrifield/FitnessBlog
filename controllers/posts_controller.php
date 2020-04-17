@@ -54,7 +54,7 @@ class PostsController
             }
 
             // we use the given id to get the correct product
-            $bodyPart = Posts::find($_GET['id']);
+            $posts = Posts::find($_GET['id']);
 
             require_once('views/admin/post/update.php');
         } else { //case when we are writing the bodypart to the database
