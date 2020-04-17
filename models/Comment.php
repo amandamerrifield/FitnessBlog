@@ -34,11 +34,15 @@ class Comment
         return $this->content;
     }
 
-    public static function create($blog_id,$content)
+    public static function create($blog_id,$posted_at,$content)
     {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into comments(blog_id, posted_at, content) 
         values (:blog_id, NOW(), :content)");
+        var_dump($blog_id);
+        var_dump($posted_at);
+        var_dump($content);
+
         $req->bindParam(':blog_id',$blog_id);
         $req->bindParam(':content',$content);
         $req->execute();

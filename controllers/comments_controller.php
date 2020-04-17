@@ -17,9 +17,10 @@ class CommentsController
             require_once('views/Comments/create.php');
         } else {
             $blog_id = filter_input(INPUT_POST, 'blog_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $posted_at=filter_input(INPUT_POST, 'blog_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
-            Comment::create($blog_id, $content);
-            $this->readAll();
+            Comment::create($blog_id,$posted_at, $content);
+//            $this->readAll();
         }
     }
 }

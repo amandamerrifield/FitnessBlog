@@ -1,8 +1,9 @@
 <?php //date_default_timezone_set('Europe/London');?>
-<form class="container" method="POST" action="index.php?controller=comments&action=create">
+<form method="POST" action="index.php?controller=comments&action=create">
     <div class="form-group">
-        <input type="hidden" name="blog_id" value="<?php print $blog_id?>">
-        <textarea name="content" required  placeholder="Enter your comment here"></textarea>
+        <input type="hidden" name="blog_id" value="<?php print $post->getId()?>">
+        <input type="hidden" name="posted_at" value="<?php print date('Y-m-d h:g:s')?>">
+        <textarea class="card-body" name="content" required  placeholder="Enter your comment here"></textarea>
     </div>
-    <button name = "commentSubmit" type="submit">Comment</button>
+    <button class="btn btn-primary" name = "commentSubmit" type="submit">Comment</button>
 </form>
