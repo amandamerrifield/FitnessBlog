@@ -146,6 +146,23 @@ class Users
             throw new Exception('This user is not available');
         }
     }
+    
+    public static function findOne($id)
+    {
+        $db = Db::getInstance();
+        //use intval to make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare('SELECT * FROM users WHERE id = :id');
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+        $users = $req->fetch();
+        if ($users) {
+            return new Users($users['id'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name']);
+        } else {
+            //replace with a more meaningful exception
+            throw new Exception('This user is not available');
+        }
+    }
 
     public static function update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content)
     {
