@@ -19,16 +19,16 @@ if (isset($_SESSION["username"]))
     {
         session_destroy();
         echo 'you have been logged out';
-        
+
     }else{
         $_SESSION['last_login_timestamp'] = time();
     }
-    
-    
+
+
 }else{
     //require_once 'views/pages/home.php';
 //}
-    
+
 if (isset($_GET['controller']) && isset($_GET['action'])) {
     $controller = $_GET['controller'];
     $action = $_GET['action'];
