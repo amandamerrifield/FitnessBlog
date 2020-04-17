@@ -1,6 +1,6 @@
 <div class="col-md-9" >
-    <a href="createPost.php" class="btn btn-info" id="adminBtn">Add Post</a>
-    <a href="indexPost.php" class="btn btn-info" id="adminBtn">Manage Post</a>
+    <a href="?controller=posts&action=create" class="btn btn-info" id="adminBtn">Add Post</a>
+    <a href="?controller=posts&action=readAll" class="btn btn-info" id="adminBtn">Manage Post</a>
 
 
     <div class="container"> 
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="body">Exercise Discription (1000 word max)</label>
-                <textarea class="form-control" maxlength="1000" id="body" name="ExerciseDiscription"></textarea>
+                <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Exercise image file input</label>

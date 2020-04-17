@@ -1,7 +1,7 @@
 
 <div class="col-md-9" >
-    <a href="/views/admin/post/create.php" class="btn btn-info" id="adminBtn">Add Post</a>
-    <a href="/views/admin/post/readAll.php" class="btn btn-info" id="adminBtn">Manage Post</a>
+    <a href="?controller=posts&action=create" class="btn btn-info" id="adminBtn">Add Post</a>
+    <a href="?controller=posts&action=readAll" class="btn btn-info" id="adminBtn">Manage Post</a>
 
 
     <div class="container"> 
@@ -44,7 +44,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="body">Exercise Description (1000 word max)</label>
+                        <label for="body">Exercise Description</label>
                         <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
                     </div>
                     <div class="form-group">
