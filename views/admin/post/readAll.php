@@ -1,7 +1,4 @@
-
-
 <a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
-
 <a href='?controller=posts&action=update' class="btn btn-info" id="adminBtn">Manage Posts</a>
 <div class="container">
     <div class="card">
@@ -17,30 +14,30 @@
                     <th> difficulty id</th>
                     <!--                  Get rid of this?-->
                     <th> description</th>
-<!--                    <th>7 photo</th>-->
+                    <!--                    <th>7 photo</th>-->
                     <th> Edit</th>
-                     <th> Delete</th>
+                    <th> Delete</th>
 
                 </tr>
                 </thead>
                 <tbody>
-             <?php foreach ($posts as $blogPosts): ?> 
+                <?php foreach ($posts as $post): ?>
                     <tr>
-                        <td> <?php print $blogPosts->getId() ?></td>
-                        <td> <?php print $blogPosts->getUserId() ?></td>
-                        <td> <?php print $blogPosts->getExerciseName() ?></td>
-                        <td> <?php print $blogPosts->getBodyPartId()?></td>
-                        <td> <?php print $blogPosts->getDifficultyId()?></td>
-                        <td> <?php print $blogPosts->getDescription() ?></td>
+                        <td> <?php print $post->getId() ?></td>
+                        <td> <?php print $post->getUserId() ?></td>
+                        <td> <?php print $post->getExerciseName() ?></td>
+                        <td> <?php print $post->getBodyPartId() ?></td>
+                        <td> <?php print $post->getDifficultyId() ?></td>
+                        <td> <?php print $post->getDescription() ?></td>
                         <!--<td> <?php //print $blogPosts->getPhoto() ?></td>-->
                         <td>
-                            <a href="index.php?controller=posts&action=update&id=<?php print $blogPosts->getId() ?>">Edit</a>
+                            <a href="index.php?controller=posts&action=update&id=<?php print $post->getId() ?>">Edit</a>
                         </td>
                         <td>
-                            <a href="index.php?controller=posts&action=delete&id=<?php print $blogPosts->getId() ?>">Delete</a>
+                            <a href="index.php?controller=posts&action=delete&id=<?php print $post->getId() ?>">Delete</a>
                         </td>
                     </tr>
-             <?php endforeach; ?>
+                <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

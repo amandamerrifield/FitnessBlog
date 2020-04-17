@@ -1,5 +1,5 @@
 <?php
-require 'models/Login.php';
+require_once 'models/Login.php';
 
 class LoginController
 {
