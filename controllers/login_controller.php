@@ -21,7 +21,7 @@ class LoginController
                 Login::validate($username, $password);
             }
 
-             require_once('views/pages/home.php');
+            call('pages', 'home');
         }
     }
     

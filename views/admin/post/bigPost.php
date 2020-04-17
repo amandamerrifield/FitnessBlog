@@ -1,10 +1,9 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-8">
-            <h1 class="mt-4">Post Title</h1>
+            <h1 class="mt-4"><?php print $post->getExerciseName()?></h1>
             <hr>
-            <!-- Date/Time -->
-            <p>Posted on <?php print $posts->getCreatedAt()?></p>
+            <p>Posted on <?php print $post->getCreatedAt()?></p>
             <hr>
             <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
 

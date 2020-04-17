@@ -12,17 +12,17 @@
     <?php require_once "blogSearchFinal.php"?>
 
 <div class="row row-cols-1 row-cols-md-3">
-    <?php foreach ($posts as $blogPosts): ?>
+    <?php foreach ($posts as $post): ?>
   <div class="col mb-4">
     <div class="card h-100">
-      <img src="<?php print $blogPosts->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
+      <img src="<?php print $post->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
       <div class="card-body">
-         <h5 id='h5' class="card-title"><?php print $blogPosts->getExerciseName() ?></h5>
-        <p class="card-text"> Body part: <?php print $blogPosts->getBodyPartId() ?></p>
-        <p class="card-text"> Level: <?php print $blogPosts->getDifficultyId() ?></p>
-        <p class="card-text"> Description: <?php print $blogPosts->getDescription() ?></p>
+         <h5 id='h5' class="card-title"><?php print $post->getExerciseName() ?></h5>
+        <p class="card-text"> Body part: <?php print $post->getBodyPartId() ?></p>
+        <p class="card-text"> Level: <?php print $post->getDifficultyId() ?></p>
+        <p class="card-text"> Description: <?php print $post->getDescription() ?></p>
       
-        <a href="index.php?controller=posts&action=bigPost" class="btn btn-primary" id='readMore'>Read More!</a>
+        <a href="index.php?controller=posts&action=bigPost&id=<?php print $post->getId()?>" class="btn btn-primary" id='readMore'>Read More!</a>
       </div>
     </div>
       
