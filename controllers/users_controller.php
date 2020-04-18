@@ -13,7 +13,7 @@ class UsersController
     public function readOne()
     {
         // we store all the posts in a variable
-        $users = Users::findOne($id);
+        $users= Users::findOne($_GET['id']);
         require_once('views/admin/users/readOne.php');
     }
     
@@ -131,7 +131,7 @@ class UsersController
 
     }
     
-
+    
     
    public function read()
     {

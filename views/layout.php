@@ -124,16 +124,14 @@
                     <?php
                 } else {
                     ?>
-                    <nav class="nav nav-pills flex-column">
-                        <form action="index.php?controller=users&action=readOne">
-                        <input value =" <?php echo $_SESSION['id']; ?>" type="hidden" id="userId" name="id">
-                        <a type="sublit" class="nav-link" href="index.php?controller=users&action=readOne">Manage Your Details</a>
-                        </form>
+
+                    <nav class="nav nav-pills flex-column">   
+                        <a class="nav-link" href="index.php?controller=users&action=readOne">Manage Your Details</a>
                     </nav>
 
                     <?php
                 }
-                    ?>
+                ?>
             </div>
             <div class="col-md-9">
                 <?php require_once('routes.php'); ?>

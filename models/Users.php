@@ -151,13 +151,13 @@ class Users
     {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
-        $id = intval($id);
+        $id = intval($_SESSION['id']);
         $req = $db->prepare('SELECT * FROM users WHERE id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $users = $req->fetch();
         if ($users) {
-            return new Users($users['id'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name']);
+            return new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This user is not available');
