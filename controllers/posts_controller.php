@@ -1,6 +1,7 @@
 <?php
 require_once "models/Posts.php";
 require_once "models/BodyPart.php";
+require_once "models/Difficulty.php";
 
 class PostsController
 {
@@ -32,6 +33,7 @@ class PostsController
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $bodyParts = BodyPart::all();
+            $difficulty = Difficulty::all();
             require_once('views/admin/post/create.php');
         } else {
             //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
