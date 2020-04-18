@@ -16,7 +16,7 @@ function call($controller, $action)
         case'difficulty':
             $controller = new DifficultyController();
             break; 
-        case'homePageSearch':
+        case'filter':
             $controller = new HomePageController();
             break;
         case 'users':
@@ -47,11 +47,10 @@ function call($controller, $action)
 
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
-$controllers = array('pages' => ['home', 'error'],
+$controllers = array('pages' => ['home', 'home2', 'error'],
     'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
     'difficulty'=>['readAll','read','create','update','delete'],
-    'homePageSearch'=>['all', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor'],
-    'posts'=>['readAll', 'findByExercise', 'findByDifficulty', 'findByBodyPart', 'findByAuthor','update', 'create', 'uploadFile', 'remove', 'bigPost'],
+    'posts'=>['readAll', 'findByDifficulty', 'findByBodyPart','update', 'create', 'uploadFile', 'remove', 'bigPost'],
     'users'=>['read','readAll','create', 'update', 'register', 'readOne'],
     'login'=>['validateLogin', 'logout'],
     'comments'=>['create'],

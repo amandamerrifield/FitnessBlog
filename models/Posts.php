@@ -1,8 +1,7 @@
 <?php
 
-class Posts
+class Posts {
 
-{
     protected $id;
     protected $user_id;
     protected $exercise_name;
@@ -11,8 +10,7 @@ class Posts
     protected $description;
     protected $created_at;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at)
-    {
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->exercise_name = $exercise_name;
@@ -22,61 +20,49 @@ class Posts
         $this->created_at = $created_at;
     }
 
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->user_id;
     }
 
-    public function getExerciseName()
-    {
+    public function getExerciseName() {
         return $this->exercise_name;
     }
 
-    public function getBodyPartId()
-    {
+    public function getBodyPartId() {
         return $this->body_part_id;
     }
 
-
-    public function getDifficultyId()
-    {
+    public function getDifficultyId() {
         return $this->difficulty_id;
     }
 
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
-    public function getCreatedAt()
-    {
+    public function getCreatedAt() {
         return $this->created_at;
     }
 
-    public function getPhoto()
-    {
+    public function getPhoto() {
         return $this->photo;
     }
 
-    public function readAll()
-
-    {
+    public function readAll() {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM posts');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
-    }
+        }
         return $list;
     }
 
-    public static function find($id)
-    {
+    public static function find($id) {
         $db = Db::getInstance();
         $id = intval($id);
         $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
@@ -84,83 +70,39 @@ class Posts
         $post = $req->fetch();
         if ($post) {
             return new Posts($post['id'], $post['user_id'], $post['exercise_name'], $post['body_part_id'], $post['difficulty_id'], $post['description'], $post['created_at']);
-        }
-         else {
+        } else {
             throw new Exception('This post is not available');
         }
     }
 
 
-    public static function findByExercise($id, $exercisename)
-    {
-        $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $req = $db->prepare('SELECT * FROM posts WHERE id = :id AND exercise_name= :exercise_name');
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('id' => $id, 'exercise_name' => $exercisename));
-        $posts = $req->fetch();
-        if ($posts) {
-            return new Posts($posts['id'], $posts['exercise_name']);
-        } else {
-            //replace with a more meaningful exception
-            throw new Exception('This exercise is not available');
-        }
-    }
 
-    public static function findByDifficulty($id, $difficulty)
-    {
+    public static function findByBodyPart($body_part_id) {
+        $list = [];
         $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts WHERE difficulty = :difficulty');
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('id' => $id, 'difficulty' => $difficulty));
-        $posts = $req->fetch();
-        if ($posts) {
-            return new Posts($posts['id'], $posts['difficulty']);
-        } else {
-            //replace with a more meaningful exception
-            throw new Exception('This level is not available');
-        }
-    }
-
-    public static function findByBodyPart($id, $body_part_id)
-    {
-        $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $id = intval($id);
         $req = $db->prepare('SELECT * FROM posts WHERE body_part_id = :body_part_id');
-        //the query was prepared, now replace :id with the actual $id value
+        //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
-        $posts = $req->fetch();
-        if ($posts) {
-            return new Posts($posts['body_part_id']);
-        } else {
-            //replace with a more meaningful exception
-            throw new Exception('No exercises for this body part');
+        foreach ($req->fetchAll() as $posts) {
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
         }
+        return $list;
     }
 
-    public static function findByAuthor($id, $user_id)
-    {
+    public static function findByDifficulty($difficulty_id) {
+        $list = [];
         $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts WHERE user_id = :user_id');
+        $req = $db->prepare('SELECT * FROM posts WHERE difficulty_id = :difficulty_id');
         //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('user_id' => $user_id));
-        $posts = $req->fetch();
-        if ($posts) {
-            return new Posts($posts['user_id']);
-        } else {
-            //replace with a more meaningful exception
-            throw new Exception('This author has not posted anything');
+        $req->execute(array('difficulty_id' => $difficulty_id));
+        foreach ($req->fetchAll() as $posts) {
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
         }
+        return $list;
     }
-
-
-    public static function update($user_id, $exercise_name, $body_part_id, $difficulty_id, $description)
-    {
+    
+    
+        public static function update($user_id, $exercise_name, $body_part_id, $difficulty_id, $description) {
         $db = Db::getInstance();
         $req->bindParam(':id', intval($id));
         $req = $db->prepare("Update posts SET user_id=:user_id, exercise_name=:exercise_name,body_part_id=:body_part_id, difficulty_id=:difficulty_id, description=:description, photo=:photo WHERE id=:id");
@@ -173,9 +115,9 @@ class Posts
         $req->bindParam(':photo', $photo);
         $req->execute();
     }
+    
 
-    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at)
-    {   
+    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
         $db = Db::getInstance();
 //        $req->bindParam(':id', intval($id));
         $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
@@ -189,18 +131,48 @@ class Posts
 
 //        $req->bindParam(':photo', $photo);
         $req->execute();
-        
-       
-        
     }
+    
+//   public static function findByExercise($id, $exercisename)
+//    {
+//        $db = Db::getInstance();
+//        //use intval to make sure $id is an integer
+//        $req = $db->prepare('SELECT * FROM posts WHERE id = :id AND exercise_name= :exercise_name');
+//        //the query was prepared, now replace :id with the actual $id value
+//        $req->execute(array('id' => $id, 'exercise_name' => $exercisename));
+//        $posts = $req->fetch();
+//        if ($posts) {
+//            return new Posts($posts['id'], $posts['exercise_name']);
+//        } else {
+//            //replace with a more meaningful exception
+//            throw new Exception('This exercise is not available');
+//        }
+//    }
+//    public static function findByAuthor($id, $user_id)
+//    {
+//        $db = Db::getInstance();
+//        //use intval to make sure $id is an integer
+//        $id = intval($id);
+//        $req = $db->prepare('SELECT * FROM posts WHERE user_id = :user_id');
+//        //the query was prepared, now replace :id with the actual $id value
+//        $req->execute(array('user_id' => $user_id));
+//        $posts = $req->fetch();
+//        if ($posts) {
+//            return new Posts($posts['user_id']);
+//        } else {
+//            //replace with a more meaningful exception
+//            throw new Exception('This author has not posted anything');
+//        }
+//    }
+
+
+
 
 //    const AllowedTypes = ['image/jpeg', 'image/jpg'];
 //    const InputKey = 'myUploader';
-
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $posts)
-    {
+    public static function uploadFile(string $posts) {
 
         if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
@@ -231,8 +203,7 @@ class Posts
         }
     }
 
-    public static function remove($id)
-    {
+    public static function remove($id) {
         $db = Db::getInstance();
         //make sure $id is an integer
         $id = intval($id);
@@ -242,4 +213,3 @@ class Posts
     }
 
 }
-

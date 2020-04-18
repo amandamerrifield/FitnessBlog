@@ -1,32 +1,86 @@
 <?php
 require_once 'models/Posts.php';
+require_once "models/BodyPart.php";
+require_once "models/Difficulty.php";
+
 class PagesController {
 
-    //public function home() {
-    //    require_once('views/pages/home.php');
-    //}
 
     public function error() {
         require_once('views/pages/error.php');
     }
-    public function home()
+    
+      public function home()
     {
           // we store all the posts in a variable
-        $posts = Posts::readAll();
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+           if(!isset ($_GET['id'])){ 
+            $posts = Posts::readAll();
+            $bodyParts = BodyPart::all();
+            $difficulty = Difficulty::all(); 
+            
         require_once('views/pages/home.php');
+           }else {
+               
+            $bodyParts = BodyPart::all();
+            $difficulty = Difficulty::all();
+            
+            $posts = Posts::findByBodyPart($_GET['id']);
+           // $posts = Posts::findByDifficulty($_GET['id']);
+           require_once('views/pages/home.php');
+           }
+        }
+    }
+    
+     public function home2()
+    {
+          // we store all the posts in a variable
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+           if(!isset ($_GET['id'])){ 
+            $posts = Posts::readAll();
+            $bodyParts = BodyPart::all();
+            $difficulty = Difficulty::all(); 
+            
+        require_once('views/pages/home.php');
+           }else {
+               
+            $bodyParts = BodyPart::all();
+            $difficulty = Difficulty::all();
+            
+            //$posts = Posts::findByBodyPart($_GET['id']);
+            $posts = Posts::findByDifficulty($_GET['id']);
+           require_once('views/pages/home.php');
+           }
+        }
+    }
+//    public function home() {
+//        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+//            if (!isset($_GET['id'])) {
+//                $posts = Posts::readAll();
+//                $bodyParts = BodyPart::all();
+//                $difficulty = Difficulty::all();
+//
+//                require_once('views/pages/home.php');
+//            } else {
+//                if (!null==(findByBodyPart($_GET['id']))) {
+//
+//                    $bodyParts = BodyPart::all();
+//                    $difficulty = Difficulty::all();
+//                    $posts = Posts::findByBodyPart($_GET['id']);
+//                    require_once('views/pages/home.php');
+//                } else {
+//                    $bodyParts = BodyPart::all();
+//                    $difficulty = Difficulty::all();
+//                    $posts = Posts::findByDifficulty($_GET['id']);
+//                    require_once('views/pages/home.php');
+//                }
+//            }
+//        }
+//
+//    }
+    
 //        // we expect a url of form ?controller=posts&action=show&id=x
 //        // without an id we just redirect to the error page as we need the post id to find it in the database
-//         if (!isset($_GET['id'])) {
-//            call('pages', 'error');
-//            return;
-//        }
-//        
-//        try {
-//            // we use the given id to get the correct post
-//            $posts = Posts::find($_GET['id']);
-//            require_once('views/admin/post/readAll.php');
-//        } catch (Exception $ex) {
-//            call('pages', 'error');
-//  
-      }
+//         
+    
 }
