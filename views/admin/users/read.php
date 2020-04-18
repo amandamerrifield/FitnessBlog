@@ -1,38 +1,37 @@
-
-  <div class="about-section">
-  <h1 style="text-align:center">About Us Page</h1>
-  <br>
-  <p style="text-align:center">We want to ensure everyone is taking care of both their physical and mental wellbeing, especially during this time of self-isolation and social distancing. This is why we passionate to share some simple yet effective at home-workouts that have been designed to get you results in 30 days, simply by using your bodyweight and a couple of items you can find around your house.</p>
-  <p style="text-align:center">Get ready to start your fitness journey and meet your online coaches down below!</p>
+<div class="about-section">
+    <h1 style="text-align:center">About Us Page</h1>
+    <br>
+    <p style="text-align:center">We want to ensure everyone is taking care of both their physical and mental wellbeing,
+        especially during this time of self-isolation and social distancing. This is why we passionate to share some
+        simple yet effective at home-workouts that have been designed to get you results in 30 days, simply by using
+        your bodyweight and a couple of items you can find around your house.</p>
+    <p style="text-align:center">Get ready to start your fitness journey and meet your online coaches down below!</p>
 </div>
 <br>
 <h2 style="text-align:center">Our Team</h2>
 <br>
 <div class="container-fluid">
-    
+
     <div class="row row-cols-1 row-cols-md-3">
         <?php foreach ($users as $user): ?>
-       <?php if ($user->getAdmin() == 1){?>
-  <div class="col mb-4">
-    <div class="card h-100">
-      <img src="<?php print $user->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
-      <div class="card-body">
-         <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
-         <p class="card-text"> <?php print $user->getUserContent() ?></p>
-        <a href="#" class="btn btn-primary" id='contact' action="">Contact</a> 
-        <p class="card-text"> <?php print $user->getEmail() ?></p>
-      </div>
+            <?php if ($user->getAdmin() == 1) { ?>
+                <div class="col mb-4">
+                    <div class="card h-100">
+                        <img src="<?php print $user->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
+                        <div class="card-body">
+                            <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
+                            <p class="card-text"> <?php print $user->getUserContent() ?></p>
+                            <a href="#" class="btn btn-primary" id='contact' action="">Contact</a>
+                            <p class="card-text"> <?php print $user->getEmail() ?></p>
+                        </div>
+                    </div>
+
+                </div>
+            <?php }
+        endforeach; ?>
     </div>
-        
-  </div>
-       <?php }
-        else {
-            
-        }
-       endforeach; ?>
 </div>
-     </div>
-    
+
 </div>
         
    

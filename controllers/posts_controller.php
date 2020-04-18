@@ -1,5 +1,6 @@
 <?php
 require_once "models/Posts.php";
+require_once "models/BodyPart.php";
 
 class PostsController
 {
@@ -30,6 +31,7 @@ class PostsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $bodyParts = BodyPart::all();
             require_once('views/admin/post/create.php');
         } else {
             //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);

@@ -14,7 +14,18 @@ class Users
     protected $first_name;
     protected $user_content;
 
-    public function __construct($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content)
+    public function __construct(
+        $id,
+        $admin,
+        $username,
+        $email,
+        $password,
+        $photo,
+        $created_at,
+        $updated_at,
+        $first_name,
+        $user_content
+    )
     {
         $this->id = $id;
         $this->admin = $admin;
@@ -53,8 +64,8 @@ class Users
     {
         return $this->password;
     }
-    
-      public function getPhoto()
+
+    public function getPhoto()
     {
         return $this->photo;
     }
@@ -68,13 +79,13 @@ class Users
     {
         return $this->updated_at;
     }
-    
-       public function getFirstName()
+
+    public function getFirstName()
     {
         return $this->first_name;
     }
-    
-       public function getUserContent()
+
+    public function getUserContent()
     {
         return $this->user_content;
     }
@@ -89,7 +100,8 @@ class Users
         }
         return $list;
     }
-        public static function read()
+
+    public static function read()
     {
         $list = [];
         $db = Db::getInstance();
@@ -99,7 +111,7 @@ class Users
         }
         return $list;
     }
-    
+
     public static function register($username, $email, $password) //this is for the registering new users part
     {
         $db = Db::getInstance();
@@ -116,13 +128,13 @@ class Users
     {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 
-        values (:username,:email,:password,:created_at,:updated_at)");
+        values (:username,:email,:password, NOW(),NOW())");
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', Hashing::hashPassword($password));
-        $req->bindParam(':created_at', $created_at);
-        $req->bindParam(':updated_at', $updated_at);
+//        $req->bindParam(':created_at', $created_at);
+//        $req->bindParam(':updated_at', $updated_at);
         $req->bindParam(':photo', $photo);
         $req->bindParam(':first_name', $first_name);
         $req->bindParam(':user_content', $user_content);
@@ -140,24 +152,17 @@ class Users
         $req->execute(array('id' => $id));
         $users = $req->fetch();
         if ($users) {
-            return new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
-        } else {
-            //replace with a more meaningful exception
-            throw new Exception('This user is not available');
-        }
-    }
-    
-    public static function findOne($id)
-    {
-        $db = Db::getInstance();
-        //use intval to make sure $id is an integer
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM users WHERE id = :id');
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('id' => $id));
-        $users = $req->fetch();
-        if ($users) {
-            return new Users($users['id'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name']);
+            return new Users(
+                $users['id'],
+                $users['admin'],
+                $users['username'],
+                $users['email'],
+                $users['password'],
+                $users['photo'],
+                $users['created_at'],
+                $users['updated_at'],
+                $users['first_name'],
+                $users['user_content']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This user is not available');

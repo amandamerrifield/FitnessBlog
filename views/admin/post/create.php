@@ -27,13 +27,13 @@
                     </div>
                     <div class="form-group">
                         <label for="BodyPart">Body Part</label>
-                        <?php foreach ($bodyParts as $part): ?> 
+
                             <select class="form-control" id="BodyPart" name="body_part_id">
-
+                                <?php foreach ($bodyParts as $part): ?>
                                 <option value="<?php print $part->getId() ?>"><?php print $part->getPart() ?></option>
+                                <?php endforeach; ?>
 
-
-                            </select><?php endforeach; ?>
+                            </select>
                     </div>
                     <div class="form-group">
                         <label for="ExperienceLevel">Experience Level</label>

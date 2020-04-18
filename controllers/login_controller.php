@@ -30,8 +30,7 @@ class LoginController
         if (isset($_SESSION["username"]))
         { 
             Login::logout();
-            require_once('views/pages/home.php');
-            echo 'you have logged out';
+            call('pages', 'home');
         }
         
     }
