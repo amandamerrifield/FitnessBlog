@@ -63,8 +63,9 @@ class Login
             echo 'Incorrect password';
             return;
         }
-        $_SESSION['id']=$user['id'];
+        
         $_SESSION['last_login_timestamp'] = time();
+        $_SESSION['id']=$user['id'];
         $_SESSION['username']=$user['username'];
         $_SESSION['password']=$user['password'];
 
