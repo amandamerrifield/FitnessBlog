@@ -21,7 +21,7 @@ class LoginController
             } else {
                 Login::validate($username, $password);
             }
-
+            //show_view('views/index.php');
             redirect('pages', 'home');
         }
     }
