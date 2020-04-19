@@ -11,7 +11,7 @@ class UsersController
 
     public function readOne()
     {
-        show_view('views/admin/users/readAll.php', ['users' => Users::find($_SESSION['id'])]);
+        show_view('views/admin/users/readOne.php', ['user' => Users::find($_SESSION['id'])]);
     }
 
 //
@@ -119,7 +119,7 @@ class UsersController
             redirect('users','readAll');
         }
     }
-    
+
     public function read()
     {
         show_view('views/admin/users/read.php', ['users' => Users::read()]);
