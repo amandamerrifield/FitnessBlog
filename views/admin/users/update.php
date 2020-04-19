@@ -1,4 +1,7 @@
 <div class="col-md-9" >
+    
+    <a href="index.php?controller=users&action=readOne" class="btn btn-info" id="adminBtn">Manage User</a>
+
     <a href="index.php?controller=users&action=create" class="btn btn-info" id="adminBtn">Add User</a>
     <a href="index.php?controller=users&action=readAll" class="btn btn-info" id="adminBtn">Manage User</a>
     <div class="container"> 
