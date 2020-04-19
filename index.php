@@ -3,32 +3,28 @@ require_once('connection.php');
 session_start();
 if (isset($_SESSION["username"])) {
     if (isset($_GET['controller']) && isset($_GET['action'])) {
-    $controller = $_GET['controller'];
-    $action = $_GET['action'];
+        $controller = $_GET['controller'];
+        $action = $_GET['action'];
     } else {
-    //these variables are set either by the query parameters or by default!
-    $controller = 'pages';
-    $action = 'home';
+        //these variables are set either by the query parameters or by default!
+        $controller = 'pages';
+        $action = 'home';
     }
 
-    if((time() - $_SESSION['last_login_timestamp']) > 1000)
-    {
+    if ((time() - $_SESSION['last_login_timestamp']) > 1000) {
         session_destroy();
-    }else{
+    } else {
         $_SESSION['last_login_timestamp'] = time();
     }
-
-
-}else{
-
-if (isset($_GET['controller']) && isset($_GET['action'])) {
-    $controller = $_GET['controller'];
-    $action = $_GET['action'];
 } else {
-    //these variables are set either by the query parameters or by default!
-    $controller = 'pages';
-    $action = 'home';
-}
+    if (isset($_GET['controller']) && isset($_GET['action'])) {
+        $controller = $_GET['controller'];
+        $action = $_GET['action'];
+    } else {
+        //these variables are set either by the query parameters or by default!
+        $controller = 'pages';
+        $action = 'home';
+    }
 }
 
 require_once('routes.php');
