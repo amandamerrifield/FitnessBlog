@@ -9,14 +9,14 @@ class UsersController
         $users = Users::all();
         require_once('views/admin/users/readAll.php');
     }
-    
+
     public function readOne()
     {
         // we store all the posts in a variable
         $user = Users::find($_SESSION['id']);
         require_once('views/admin/users/readOne.php');
     }
-    
+
 //
 //    public function read()
 //    {
@@ -60,13 +60,13 @@ class UsersController
 
             Users::register($username, $email, $password);
 //            $this->readAll();
-            require_once('views/pages/home.php');
+            call('pages', 'home'); //if we want a homepage with variables we MUST use call()
         }
     }
-    
-     public function create() //shall we rename this to register?
+
+    public function create() //shall we rename this to register?
     {
-          $passwordsnotequal = false;
+        $passwordsnotequal = false;
         // we expect a url of form ?controller=products&action=create
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
@@ -81,7 +81,7 @@ class UsersController
             $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
             $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
             $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
-            
+
             if ($_POST['password'] != $_POST['password2']) {
                 $passwordsnotequal = true;
                 require_once('views/admin/users/create.php');
@@ -95,19 +95,19 @@ class UsersController
         }
     }
 
-     public function update()
+    public function update()
     {
 //case we are showing the edit form for a specific bodypart
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['id'])){
+            if (!isset($_GET['id'])) {
                 call('pages', 'error');
                 return;
             }
-            $users= Users::find($_GET['id']);
-            
+            $users = Users::find($_GET['id']);
+
             require_once('views/admin/users/update.php');
         } else { //case when we are writing the bodypart to the database
-            
+
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -117,7 +117,7 @@ class UsersController
             $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
             $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
             $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
-            
+
             if ($_POST['password'] != $_POST['password2']) {
                 $passwordsnotequal = true;
                 require_once('views/admin/users/update.php');
@@ -126,14 +126,13 @@ class UsersController
 
             Users::update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
 
-           $this->readAll();
+            $this->readAll();
         }
 
     }
-    
 
-    
-   public function read()
+
+    public function read()
     {
         // we store all the posts in a variable
         $users = Users::read();
