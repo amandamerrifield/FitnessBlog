@@ -129,7 +129,7 @@
                 ?>
             </div>
             <div class="col-md-9">
-                <?php require_once('routes.php'); ?>
+                <?php require_once($view_path); ?>
             </div>
         </div>
         <div class="container">

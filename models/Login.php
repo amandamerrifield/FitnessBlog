@@ -71,8 +71,6 @@ class Login
 
         //mysql translates true to 1, we want to te translate it back to boolean
         $_SESSION['is_admin'] = $user['admin']==1; //refactoring, evaluates to the same
-
-        echo "you have logged in";
     }
     
     

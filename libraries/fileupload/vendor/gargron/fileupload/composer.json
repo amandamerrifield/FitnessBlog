@@ -1,0 +1,16 @@
+{
+  "name": "gargron/fileupload",
+  "description": "File uploading library capable of handling large/chunked/multiple file uploads",
+  "license": "MIT",
+  "autoload": {
+    "psr-0": {
+      "FileUpload\\": "src/"
+    }
+  },
+  "require": {
+    "php": "~7.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.0"
+  }
+}

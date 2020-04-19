@@ -1,5 +1,6 @@
 <?php
 require_once 'models/Login.php';
+require_once 'utilities.php';
 
 class LoginController
 {
@@ -9,7 +10,7 @@ class LoginController
         // we expect a url of form ?controller=posts&action=show&id=x
         // without an id we just redirect to the error page as we need the post id to find it in the database
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/login/validateLogin.php');
+            show_view('views/admin/login/validateLogin.php');
         } else {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -21,7 +22,7 @@ class LoginController
                 Login::validate($username, $password);
             }
 
-            call('pages', 'home');
+            redirect('pages', 'home');
         }
     }
     
@@ -30,7 +31,7 @@ class LoginController
         if (isset($_SESSION["username"]))
         { 
             Login::logout();
-            call('pages', 'home');
+            redirect('pages', 'home');
         }
         
     }
