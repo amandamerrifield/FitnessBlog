@@ -1,0 +1,37 @@
+[
+    {
+        "name": "gargron/fileupload",
+        "version": "v1.5.1",
+        "version_normalized": "1.5.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Gargron/fileupload.git",
+            "reference": "1b7327f62e6d61bd56a3a5dc079af06d084efd39"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Gargron/fileupload/zipball/1b7327f62e6d61bd56a3a5dc079af06d084efd39",
+            "reference": "1b7327f62e6d61bd56a3a5dc079af06d084efd39",
+            "shasum": ""
+        },
+        "require": {
+            "php": "~7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^6.0"
+        },
+        "time": "2019-02-14T10:12:34+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "FileUpload\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "File uploading library capable of handling large/chunked/multiple file uploads"
+    }
+]
