@@ -2,32 +2,31 @@
 require_once 'models/Posts.php';
 require_once "models/BodyPart.php";
 require_once "models/Difficulty.php";
+require_once 'utilities.php';
 
 class PagesController {
 
 
     public function error() {
-        require_once('views/pages/error.php');
+        show_view('views/pages/error.php');
     }
     
       public function home()
     {
           // we store all the posts in a variable
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-           if(!isset ($_GET['id'])){ 
-            $posts = Posts::readAll();
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all(); 
-            
-        require_once('views/pages/home.php');
+           if(!isset ($_GET['id'])){
+               show_view('views/pages/home.php', [
+                   'posts' => Posts::readAll(),
+                   'bodyParts' => BodyPart::all(),
+                   'difficulty' => Difficulty::all(),
+               ]);
            }else {
-               
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all();
-            
-            $posts = Posts::findByBodyPart($_GET['id']);
-           // $posts = Posts::findByDifficulty($_GET['id']);
-           require_once('views/pages/home.php');
+               show_view('views/pages/home.php', [
+                   'posts' => Posts::findByBodyPart($_GET['id']),
+                   'bodyParts' => BodyPart::all(),
+                   'difficulty' => Difficulty::all(),
+               ]);
            }
         }
     }
@@ -36,20 +35,18 @@ class PagesController {
     {
           // we store all the posts in a variable
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-           if(!isset ($_GET['id'])){ 
-            $posts = Posts::readAll();
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all(); 
-            
-        require_once('views/pages/home.php');
+           if(!isset ($_GET['id'])){
+               show_view('views/pages/home.php', [
+                   'posts' => Posts::readAll(),
+                   'bodyParts' => BodyPart::all(),
+                   'difficulty' => Difficulty::all(),
+               ]);
            }else {
-               
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all();
-            
-            //$posts = Posts::findByBodyPart($_GET['id']);
-            $posts = Posts::findByDifficulty($_GET['id']);
-           require_once('views/pages/home.php');
+               show_view('views/pages/home.php', [
+                   'posts' => Posts::findByDifficulty($_GET['id']),
+                   'bodyParts' => BodyPart::all(),
+                   'difficulty' => Difficulty::all(),
+               ]);
            }
         }
     }

@@ -1,20 +1,17 @@
 <?php
 require_once 'models/Users.php';
+require_once 'utilities.php';
 
 class UsersController
 {
     public function readAll()
     {
-        // we store all the posts in a variable
-        $users = Users::all();
-        require_once('views/admin/users/readAll.php');
+        show_view('views/admin/users/readAll.php', ['users' => Users::all()]);
     }
 
     public function readOne()
     {
-        // we store all the posts in a variable
-        $user = Users::find($_SESSION['id']);
-        require_once('views/admin/users/readOne.php');
+        show_view('views/admin/users/readAll.php', ['users' => Users::find($_SESSION['id'])]);
     }
 
 //
@@ -38,12 +35,12 @@ class UsersController
 
     public function register() //shall we rename this to register?
     {
-          $passwordsnotequal = false;
+        $passwordsnotequal = false;
         // we expect a url of form ?controller=products&action=create
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/users/register.php');
+            show_view('views/admin/users/register.php');
         } else {
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -52,15 +49,13 @@ class UsersController
 
 
             if ($_POST['password'] != $_POST['password2']) {
-                $passwordsnotequal = true;
-                require_once('views/admin/users/create.php');
+                show_view('views/admin/users/create.php', ['passwordsnotequal' => true]);
                 return;
             }
 
 
             Users::register($username, $email, $password);
-//            $this->readAll();
-            call('pages', 'home'); //if we want a homepage with variables we MUST use call()
+            redirect('pages', 'home');
         }
     }
 
@@ -71,7 +66,7 @@ class UsersController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            require_once('views/admin/users/create.php');
+            show_view('views/admin/users/create.php');
         } else {
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -83,15 +78,14 @@ class UsersController
             $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
 
             if ($_POST['password'] != $_POST['password2']) {
-                $passwordsnotequal = true;
-                require_once('views/admin/users/create.php');
+                show_view('views/admin/users/create.php', ['passwordnotequal' => true]);
                 return;
             }
 
 
             Users::create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
             $this->readAll();
-            require_once('views/pages/home.php');
+            show_view('views/pages/home.php');
         }
     }
 
@@ -103,9 +97,7 @@ class UsersController
                 call('pages', 'error');
                 return;
             }
-            $users = Users::find($_GET['id']);
-
-            require_once('views/admin/users/update.php');
+            show_view('views/admin/users/update.php', ['users'=> Users::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
 
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -119,24 +111,18 @@ class UsersController
             $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
 
             if ($_POST['password'] != $_POST['password2']) {
-                $passwordsnotequal = true;
-                require_once('views/admin/users/update.php');
+                show_view('views/admin/users/update.php', ['passwordnotequal' => true]);
                 return;
             }
 
             Users::update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
-
-            $this->readAll();
+            redirect('users','readAll');
         }
-
     }
-
-
+    
     public function read()
     {
-        // we store all the posts in a variable
-        $users = Users::read();
-        require_once('views/admin/users/read.php');
+        show_view('views/admin/users/read.php', ['users' => Users::read()]);
     }
 //
 // 

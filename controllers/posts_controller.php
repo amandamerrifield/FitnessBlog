@@ -2,14 +2,13 @@
 require_once "models/Posts.php";
 require_once "models/BodyPart.php";
 require_once "models/Difficulty.php";
+require_once 'utilities.php';
 
 class PostsController
 {
     public function readAll()
     {
-        // we store all the posts in a variable
-        $posts = Posts::readAll();
-        require_once('views/admin/post/readAll.php');
+        show_view('views/admin/post/readAll.php', ['posts' => Posts::readAll()]);
     }
 
     public function create()
@@ -18,9 +17,11 @@ class PostsController
         // if it's a GET request display a blank form for creating a new product
         // else it's a POST so add to the database and redirect to readAll action
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all();
-            require_once('views/admin/post/create.php');
+
+            show_view('views/admin/post/create.php', [
+                'bodyParts' => BodyPart::all(),
+                'difficulty' => Difficulty::all()
+            ]);
         } else {
             //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $userId = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -30,7 +31,7 @@ class PostsController
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
             $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
             Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at);
-            //$this->readAll($id);
+            redirect('posts', 'readAll');
         }
     }
 
@@ -39,21 +40,17 @@ class PostsController
 //case we are showing the edit form for a specific bodypart
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (!isset($_GET['id'])) {
-                call('pages', 'error');
+                redirect('pages', 'error');
                 return;
             }
-
-            // we use the given id to get the correct product
-            $posts = Posts::find($_GET['id']);
-
-            require_once('views/admin/post/update.php');
+            show_view('views/admin/post/update.php', ['posts' => Posts::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $posts = filter_input(INPUT_POST, 'post', FILTER_SANITIZE_SPECIAL_CHARS);
 
             Posts::update($id, $posts);
 
-            $this->readAll($id);
+            redirect('posts', 'readAll');
         }
 
     }
@@ -66,51 +63,40 @@ class PostsController
                 call('pages', 'error');
                 return;
             }
-
             // we use the given id to get the correct product
-            $posts = Posts::find($_GET['id']);
-
-            require_once('views/admin/post/delete.php');
+            show_view('views/admin/post/delete.php', ['posts' => Posts::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-
             Posts::remove($id, $posts);
-
-            $this->readAll($id);
+            redirect('posts', 'readAll');
         }
     }
 
     public function bigPost()
     {
         $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//        try {
-            $post = Posts::find($_GET['id']);
-            require_once 'views/admin/post/bigPost.php';
-//        } catch (Exception $ex) {
-//            call('pages', 'error');
-//        }
-
+        show_view('views/admin/post/bigPost.php', ['post' => Posts::find($post_id)]);
     }
-    
+
     public function findByBodyPart()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all(); 
-            $posts = Posts::findByBodyPart($_GET['id']);   
-           call('pages', 'home');
+            show_view('pages', 'home', [
+                'bodyParts' => BodyPart::all(),
+                'difficulty' => Difficulty::all(),
+                'posts' => Posts::findByBodyPart($_GET['id']),
+            ]);
         }
     }
-    
+
     public function findByDifficulty()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            $bodyParts = BodyPart::all();
-            $difficulty = Difficulty::all(); 
-            $posts = Posts::findByDifficulty($_GET['id']);   
-           call('pages', 'home2');
+            show_view('pages', 'home2', [
+                'bodyParts' => BodyPart::all(),
+                'difficulty' => Difficulty::all(),
+                'posts' => Posts::findByDifficulty($_GET['id']),
+            ]);
         }
     }
-    
 }
-
