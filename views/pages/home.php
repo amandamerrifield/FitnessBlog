@@ -9,7 +9,7 @@
     </div>
 </div>
 <div id="main">
-    <a style="font-size:30px;cursor:pointer;color:blacl;" data-toggle="collapse" data-target="#filter" aria-controls="filter" aria-expanded="false" aria-label="Toggle filter"">&#9776; Search the Blog </a>
+    <a style="font-size:30px;cursor:pointer;color:blacl;" data-toggle="collapse" data-target="#filter" aria-controls="filter" aria-expanded="false" aria-label="Toggle filter">&#9776; Search the Blog </a>
 </div>
 <div class="collapse" id="filter" style="max-width: 200px">
     <label>Sort by area of focus:</label>
