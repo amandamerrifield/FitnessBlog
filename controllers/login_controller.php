@@ -28,11 +28,8 @@ class LoginController
     
     public function logout() 
     {
-        if (isset($_SESSION["username"]))
-        { 
-            Login::logout();
-            redirect('pages', 'home');
-        }
-        
+        //removed the if statement 
+        Login::logout();
+        redirect('pages', 'home');
     }
 }
