@@ -2,7 +2,8 @@
 
 require_once 'password/Hashing.php';
 
-class Login {
+class Login
+{
 
     protected $id;
     protected $admin;
@@ -10,7 +11,8 @@ class Login {
     protected $email;
     protected $password;
 
-    public function __construct($id, $admin, $username, $email, $password) {
+    public function __construct($id, $admin, $username, $email, $password)
+    {
         $this->id = $id;
         $this->admin = $admin;
         $this->username = $username;
@@ -18,27 +20,33 @@ class Login {
         $this->password = $password;
     }
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getAdmin() {
+    public function getAdmin()
+    {
         return $this->admin;
     }
 
-    public function getUsername() {
+    public function getUsername()
+    {
         return $this->username;
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public static function validate($username, $password) {
+    public static function validate($username, $password)
+    {
         $db = Db::getInstance();
         $req = $db->prepare("SELECT * FROM users WHERE username = :username");
 
@@ -56,8 +64,7 @@ class Login {
         if (!Hashing::isPasswordValid($_POST["password"], $user['password'])) {
             //replace with a more meaningful exception
             // echo 'Incorrect password';
-
-            return;
+            throw new Exception('You made a typo. Incorrect password');
         }
 
         $_SESSION['last_login_timestamp'] = time();
@@ -69,7 +76,8 @@ class Login {
         $_SESSION['is_admin'] = $user['admin'] == 1; //refactoring, evaluates to the same
     }
 
-    public static function logout() {
+    public static function logout()
+    {
         session_destroy();
     }
 

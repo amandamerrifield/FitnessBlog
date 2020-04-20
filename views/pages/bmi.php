@@ -1,4 +1,4 @@
-<form method="post" class="row" action="BMI.php">
+<form method="post" action="index.php?controller=pages&action=bmi" class=" ">
     <div class="col">
         <label for="weight">Weight in kilograms: </label>
         <input type="number" name="weight" maxlength="4" autofocus required><br>
@@ -7,8 +7,11 @@
         <label for="height">Height in centimetres: </label>
         <input type="number" name="height" maxlength="3" required><br>
     </div>
-    <button type="submit" class="row btn btn-danger btn-rounded btn-sm my-0" value="Calculate"> Calculate</button>
-    <button type="reset" class="row btn btn-danger btn-rounded btn-sm my-0">Reset</button>
+    <div class="col">
+    <button type="submit" class="btn btn-danger btn-rounded" value="Calculate"> Calculate</button>
+    <label></label>
+    <button type="reset" class="btn btn-danger btn-rounded0">Reset</button>
+    </div>
 </form>
 
 <?php

@@ -47,7 +47,7 @@ function call($controller, $action)
 
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
-$controllers = array('pages' => ['home', 'home2', 'error'],
+$controllers = array('pages' => ['home', 'home2', 'error','bmi'],
     'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
     'difficulty'=>['readAll','read','create','update','delete'],
     'posts'=>['readAll', 'findByDifficulty', 'findByBodyPart','update', 'create', 'uploadFile', 'remove', 'bigPost'],
