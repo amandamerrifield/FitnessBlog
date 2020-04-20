@@ -48,9 +48,9 @@ class Login {
             //replace with a more meaningful exception
             //echo 'Account does not exist';
             //redirect('login', 'validateLogin');
-            echo "<script>alert('THIS USER DOES NOT EXIST');
-                  window.location.href='index.php?controller=login&action=validateLogin';</script>";
-            //return;
+            throw new Exception('This user does not exist.');
+//            echo "<script>alert('THIS USER DOES NOT EXIST');
+//                  window.location.href='index.php?controller=login&action=validateLogin';</script>";
         }
 
         if (!Hashing::isPasswordValid($_POST["password"], $user['password'])) {

@@ -19,7 +19,12 @@ class LoginController
             if (empty($_POST['username']) || empty($_POST['password'])) {
                 echo "Please enter all of the values!";
             } else {
-                Login::validate($username, $password);
+                try {
+                    Login::validate($username, $password);
+                } catch (Exception $e) {
+                    show_view('views/admin/login/validateLogin.php', ['message' => $e->getMessage()]);
+                    return;
+                }
             }
             //show_view('views/index.php');
             redirect('pages', 'home');

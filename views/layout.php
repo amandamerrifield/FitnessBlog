@@ -132,6 +132,10 @@ require_once 'utilities.php';
                 ?>
             </div>
             <div class="col-md-9">
+                <?php if (isset($message)):?>
+                    <script>alert('<?php echo $message ?>');</script>
+                <?php endif ?>
+
                 <?php require_once($view_path); ?>
             </div>
         </div>
