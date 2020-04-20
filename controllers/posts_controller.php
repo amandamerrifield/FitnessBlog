@@ -92,7 +92,7 @@ class PostsController
     public function findByDifficulty()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            show_view('views/pages/home2.php', [
+            show_view('views/pages/home.php', [
                 'bodyParts' => BodyPart::all(),
                 'difficulty' => Difficulty::all(),
                 'posts' => Posts::findByDifficulty($_GET['id']),
