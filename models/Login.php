@@ -54,13 +54,13 @@ class Login
         $user = $req->fetch();
         if (!$user) {
             //replace with a more meaningful exception
-            echo 'Account does not exist';
+            //echo 'Account does not exist';
             return;
         }
 
         if (!Hashing::isPasswordValid($_POST["password"], $user['password'])) {
             //replace with a more meaningful exception
-            echo 'Incorrect password';
+           // echo 'Incorrect password';
             return;
         }
         
