@@ -166,10 +166,10 @@ class Users
         }
     }
 
-    public static function update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content)
+    public static function update($id, $admin, $username, $email, $password, $photo, $first_name, $user_content)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password where id=:id");
+        $req = $db->prepare("Update users SET admin=:admin, username=:username, email=:email, password=:password, photo=:photo, first_name=:first_name, user_content=:user_content where id=:id");
         $req->bindParam(':id', intval($id));
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
@@ -178,6 +178,26 @@ class Users
         $req->bindParam(':photo', $photo);
         $req->bindParam(':first_name', $first_name);
         $req->bindParam(':user_content', $user_content);
+        //  $req->bindParam(':updated_at', $updated_at);
+        //$req = date_update table SET datetime =update_date_time;
+        //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");
+        // $date = date('Y-m-d H:i:s');
+        //  $updated_at("INSERT INTO `table` (`dateposted`) VALUES ('$date')");
+
+        $req->execute();
+    }
+    
+    
+    public static function updateOne($id, $first_name, $username, $email, $password)
+    {
+        $db = Db::getInstance();
+        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password, first_name=:first_name, where id=:id");
+        $req->bindParam(':id', intval($id));
+        $req->bindParam(':username', $username);
+        $req->bindParam(':email', $email);
+        $req->bindParam(':password', $password);
+       // $req->bindParam(':photo', $photo);
+        $req->bindParam(':first_name', $first_name);
         //  $req->bindParam(':updated_at', $updated_at);
         //$req = date_update table SET datetime =update_date_time;
         //$updated_at("INSERT INTO `table` (`dateposted`) VALUES (now())");

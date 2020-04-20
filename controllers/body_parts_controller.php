@@ -57,7 +57,7 @@ class BodyPartsController
                 return;
             }
             // we use the given id to get the correct product
-            show_view('views/admin/bodyparts/update.php',['bodyPart',BodyPart::find($_GET['id'])]);
+            show_view('views/admin/bodyparts/update.php',['bodyPart' => BodyPart::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $part = filter_input(INPUT_POST, 'part', FILTER_SANITIZE_SPECIAL_CHARS);

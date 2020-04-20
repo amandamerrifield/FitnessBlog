@@ -114,9 +114,34 @@ class UsersController
                 show_view('views/admin/users/update.php', ['passwordnotequal' => true]);
                 return;
             }
-
             Users::update($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
             redirect('users','readAll');
+        }
+    }
+    
+    
+    public function updateOne()
+            {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['id'])) {
+                call('pages', 'error');
+                return;
+            }
+            show_view('views/admin/users/updateOne.php', ['users'=> Users::find($_GET['id'])]);
+        } else { //case when we are writing the bodypart to the database
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
+            $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+//            $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
+            //$photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
+//            if ($_POST['password'] != $_POST['password2']) {
+//                show_view('views/admin/users/updateOne.php', ['passwordnotequal' => true]);
+//                return;
+//            }
+            Users::updateOne($id, $first_name, $username, $email, $password);
+            redirect('users','readOne');
         }
     }
 
