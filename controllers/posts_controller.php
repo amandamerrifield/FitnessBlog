@@ -10,7 +10,7 @@ class PostsController
     {
         show_view('views/admin/post/readAll.php', ['posts' => Posts::readAll()]);
     }
-
+    
     public function create()
     {
         // we expect a url of form ?controller=products&action=create

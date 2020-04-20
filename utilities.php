@@ -6,7 +6,11 @@ function show_view($view_path, $view_vars = []) {
     require_once('views/layout.php');
 }
 
-function redirect($controller, $action) {
-    header("Location: /index.php?controller=$controller&action=$action");
+function redirect($controller, $action, $query_params = []) {
+    $url = "/index.php?controller=$controller&action=$action";
+    if (!empty($query_params)) {
+        $url .= "&" . http_build_query($query_params);
+    }
+    header("Location: $url");
     die();
 }
