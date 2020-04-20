@@ -191,7 +191,7 @@ class Users
     public static function updateOne($id, $first_name, $username, $email, $password)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password, first_name=:first_name, where id=:id");
+        $req = $db->prepare("Update users SET username=:username, email=:email, password=:password, first_name=:first_name where id=:id");
         $req->bindParam(':id', intval($id));
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
