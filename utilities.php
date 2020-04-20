@@ -7,7 +7,7 @@ function show_view($view_path, $view_vars = []) {
 }
 
 function redirect($controller, $action, $query_params = []) {
-    $url = "/index.php?controller=$controller&action=$action";
+    $url = "index.php?controller=$controller&action=$action";
     if (!empty($query_params)) {
         $url .= "&" . http_build_query($query_params);
     }
