@@ -21,8 +21,8 @@
                     <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
                 </form>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">New around here? Sign up</a>
-                <a class="dropdown-item" href="#">Forgot password?</a>
+                <a class="dropdown-item" href="index.php?controller=users&action=register">New around here? Sign up</a>
+                <a class="dropdown-item" href="">Forgot password?</a>
             </div>
         </div>
     </div>

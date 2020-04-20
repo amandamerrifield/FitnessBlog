@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
                             <p class="card-text"> <?php print $user->getUserContent() ?></p>
-                            <a href="#" class="btn btn-primary" id='contact' action="">Contact</a>
+                            <a href="mailto:<?php print $user->getEmail() ?>" class="btn btn-primary" id='contact'>Contact</a>
                             <p class="card-text"> <?php print $user->getEmail() ?></p>
                         </div>
                     </div>
