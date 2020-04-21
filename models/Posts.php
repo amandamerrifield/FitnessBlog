@@ -55,7 +55,10 @@ class Posts {
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM posts');
+        $req = $db->query('SELECT p.user_id, p.exercise_name, p.description, p.posted_at, b.part,d.level
+FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
+INNER JOIN difficulty as d ON p.difficulty_id=d.id;
+');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
         }
