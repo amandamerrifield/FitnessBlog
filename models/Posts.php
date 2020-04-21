@@ -56,18 +56,17 @@ class Posts {
         $list = [];
         $db = Db::getInstance();
         $req = $db->query('SELECT p.id, p.user_id, p.exercise_name, p.description,p.created_at,b.part,d.level
-FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
-INNER JOIN difficulty as d ON p.difficulty_id=d.id;
-');
+        FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
+        INNER JOIN difficulty as d ON p.difficulty_id=d.id;
+        ');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts(
-                //$posts['id'],
+                $posts['id'],
                 $posts['user_id'],
                 $posts['exercise_name'],
                 $posts['part'],
                 $posts['level'],
                 $posts['description'],
-                $posts['posted_at'],
                 $posts['created_at']);
 
         }

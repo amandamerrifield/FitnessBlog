@@ -12,7 +12,7 @@
 <br>
 <div class="container-fluid">
 
-    <div class="row row-cols-1 row-cols-md-3">
+    <div class="row row-cols-1 row-cols-md-2">
         <?php foreach ($users as $user): ?>
             <?php if ($user->getAdmin() == 1) { ?>
                 <div class="col mb-4">
