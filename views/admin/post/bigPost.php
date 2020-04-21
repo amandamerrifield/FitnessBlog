@@ -7,7 +7,8 @@
             <hr>
             <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
             <hr>
-            <p> <?php print nl2br($post->getDescription())?></p>
+            <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
+                <?php //print nl2br($post->getDescription())?>
             <p>
                 <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
