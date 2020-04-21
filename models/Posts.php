@@ -60,7 +60,14 @@ FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
 INNER JOIN difficulty as d ON p.difficulty_id=d.id;
 ');
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts(
+                $posts['id'],
+                $posts['user_id'],
+                $posts['exercise_name'],
+                $posts['part'],
+                $posts['level'],
+                $posts['description'],
+                $posts['created_at']);
         }
         return $list;
     }
