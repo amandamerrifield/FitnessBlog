@@ -27,7 +27,7 @@ require_once 'utilities.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg static-top">
+<nav class="navbar navbar-expand-lg  navbar-light static-top">
     <div class="container">
         <div class="navbar-brand" id="logo">
             <a class="navbar-brand" style="margin-left: 15%;"
@@ -47,7 +47,7 @@ require_once 'utilities.php';
                       <a class ="nav-link" href="index.php?controller=pages&action=bmi">BMI calculator</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php?controller=pages&action=home">Home </a>
+                        <a class="nav-link" href="index.php?controller=pages&action=home">Home <span class="sr-only">(current)</span> </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?controller=users&action=read">About</a>
