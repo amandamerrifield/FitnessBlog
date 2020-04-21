@@ -20,7 +20,7 @@
                         <img src="<?php print $user->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
                         <div class="card-body">
                             <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
-                            <p class="card-text"> <?php print $user->getUserContent() ?></p>
+                            <p class="card-text"> <?php echo htmlspecialchars_decode($user->getUserContent(), ENT_QUOTES) ?></p>
                             <a href="mailto:<?php print $user->getEmail() ?>" class="btn btn-primary" id='contact'>Contact</a>
                             <p class="card-text"> <?php print $user->getEmail() ?></p>
                         </div>

@@ -35,6 +35,9 @@
             <div class="form-group">
                 <label for="body">Exercise Description</label>
                 <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
+            <script>
+            CKEDITOR.replace('description');
+            </script>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Image</label>
@@ -42,9 +45,7 @@
             </div>
             <button type="submit" class="btn btn-info">Add Post</button>
         </form>
-        <script>
-            CKEDITOR.replace('description');
-        </script>
+        
     </div>
 </div>  
 

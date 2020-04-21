@@ -29,7 +29,7 @@
                         <td><?php print $user->getPassword()?></td>
                         <td><?php print $user->getCreatedAt() ?></td>
                         <td><?php print $user->getUpdatedAt() ?></td>
-                        <td><?php print $user->getUserContent()?></td>
+                        <td><?php echo htmlspecialchars_decode($user->getUserContent(), ENT_QUOTES) ?></td>
                         <td>
                             <a href="index.php?controller=users&action=update&id=<?php print $user->getId() ?>">Edit</a>
                         </td>

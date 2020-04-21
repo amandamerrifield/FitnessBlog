@@ -24,7 +24,7 @@
                 <label for="inputConfirmPassword">Confirm Password</label>
                 <input type="password" id="inputConfirmPassword" class="form-control" name="password2" required>
             </div>
-           <?php if ($passwordsnotequal==true)
+           <?php $passwordsnotequal = false; if ($passwordsnotequal==true)
            {
                print "You made a typo. Please enter again";
            }

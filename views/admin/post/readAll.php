@@ -30,8 +30,8 @@
                             <td> <?php print $blogPosts->getUserId() ?></td>
                             <td> <?php print $blogPosts->getExerciseName() ?></td>
                             <td> <?php print $blogPosts->getBodyPartId() ?></td>
-                            <td> <?php print $blogPosts->getDifficultyId() ?></td>
-                            <td> <?php print $blogPosts->getDescription() ?></td>
+                            <td> <?php print $blogPosts->getDifficultyId() ?></td>                            
+                            <td> <?php echo htmlspecialchars_decode($blogPosts->getDescription(), ENT_QUOTES) ?></td>
                             <!--<td> <?php //print $blogPosts->getPhoto()  ?></td>-->
                             <td>
                                 <a href="index.php?controller=posts&action=update&id=<?php print $blogPosts->getId() ?>">Edit</a>
