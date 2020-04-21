@@ -3,7 +3,7 @@
     <div class="container">
     <div class="card">
         <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Manage Users</h3>
-        <div class="card-body">
+        <div class="card-body scrollable ">
             <table class="table fixed_header table-bordered table-responsive-sm table-striped text-center">
                 <thead>
                 <tr>

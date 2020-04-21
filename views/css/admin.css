@@ -7,6 +7,10 @@ body{
     table-layout: fixed;
     border-collapse: collapse;
 }
+.scrollable{
+    height: 400px;
+    overflow: scroll;
+}
 
 .table tbody{
   display:block;
