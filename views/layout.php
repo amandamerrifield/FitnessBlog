@@ -92,7 +92,7 @@ require_once 'utilities.php';
         </div>
     </div>
 </nav>
-
+    <div class="wrapper">
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -119,6 +119,7 @@ require_once 'utilities.php';
         <span class="sr-only">Next</span>
     </a>
 </div>
+        </div>
 <div class="row" style="padding-top: 80px;">
     <div class="col-md-2">
         <?php
