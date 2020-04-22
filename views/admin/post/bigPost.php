@@ -5,8 +5,13 @@
             <hr>
             <p>Posted on <?php print $post->getCreatedAt() ?></p>
             <hr>
-            <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+            <?php if ($post->hasPhoto()): ?>
+            <img class="img-fluid rounded"
+                 src="index.php?controller=images&action=read&post_id=<?php print $post->getId() ?>" alt="">
             <hr>
+            <?php else: ?>
+            <form action="index.php?controller=images&action=upload&post_id=<?php print $post->getId() ?>" class="dropzone"></form>
+            <?php endif; ?>
             <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                 <?php //print nl2br($post->getDescription())?>
             <p>
@@ -23,4 +28,6 @@
         </div>
     </div>
 </div>
-        
+
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
