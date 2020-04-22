@@ -39,10 +39,10 @@
             <label for="userContent">User Description (1000 word max)</label>
             <textarea class="form-control" name="user_content"></textarea>
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label for="exampleFormControlFile1">Image</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
+        </div>-->
         <button type="submit" class="btn btn-info">Add User</button>
     </form>
     <script>

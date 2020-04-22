@@ -32,10 +32,10 @@
                 CKEDITOR.replace('description');
             </script>
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label for="exampleFormControlFile1">Image</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
+        </div>-->
         <button type="submit" class="btn btn-info">Add Post</button>
     </form>
 

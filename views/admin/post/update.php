@@ -28,10 +28,10 @@
             <label for="body">Exercise Description (1000 word max)</label>
             <textarea class="form-control" maxlength="1000" id="description" name="description" value="<?php print htmlspecialchars_decode($posts->getDescription(), ENT_QUOTES) ?>" required ></textarea>
         </div>
-        <div class="form-group">
+<!--        <div class="form-group">
             <label for="exampleFormControlFile1">Exercise image file input</label>
             <input type="file" class="form-control-file" id="exampleFormControlFile1">
-        </div>
+        </div>-->
         <button type="submit" class="btn btn-outline-success">Save Updates</button> 
     </form>
     <script>

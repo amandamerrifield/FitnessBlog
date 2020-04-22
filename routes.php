@@ -53,7 +53,7 @@ function call($controller, $action)
 $controllers = array('pages' => ['home', 'home2', 'error','bmi'],
     'body_parts' => ['readAll','read','delete','update','create', 'readAll2'],
     'difficulty'=>['readAll','read','create','update','delete'],
-    'posts'=>['readAll', 'findByDifficulty', 'findByBodyPart','update', 'create', 'uploadFile', 'remove', 'bigPost'],
+    'posts'=>['readAll', 'findByDifficulty', 'findByBodyPart','update', 'create', 'uploadFile', 'delete', 'bigPost'],
     'users'=>['read','readAll','create', 'update', 'updateOne', 'register', 'readOne'],
     'login'=>['validateLogin', 'logout'],
     'comments'=>['create'],
