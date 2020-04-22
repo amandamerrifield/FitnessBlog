@@ -65,7 +65,12 @@ require_once 'utilities.php';
                     } else {
                         ?>
                         <ul class="navbar-nav ml-auto">
-
+                            <li class="nav-item">
+                                <a class ="nav-link" href="index.php?controller=pages&action=bmi">BMI calculator</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.php?controller=pages&action=home">Home <span class="sr-only">(current)</span> </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=users&action=read">About</a>
                             </li>

@@ -25,7 +25,7 @@
     <?php foreach ($posts as $post): ?>
         <div class="col mb-4">
             <div class="card h-100">
-                <img src="<?php print $post->getPhoto() ?> " class="card-img-top" alt="Photo of the exercise ">
+                <img src="#" class="card-img-top" alt="Photo of the exercise ">
                 <div class="card-body">
                     <h5 id='h5' class="card-title"><?php print $post->getExerciseName() ?></h5>
                     <p class="card-text"> Body part: <?php print $post->getBodyPartId() ?></p>
