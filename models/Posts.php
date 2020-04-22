@@ -113,32 +113,29 @@ class Posts {
     }
     
     
-        public static function update($user_id, $exercise_name, $body_part_id, $difficulty_id, $description) {
+        public static function update($id, $exerciseName, $description, $photo) {
         $db = Db::getInstance();
+        $req = $db->prepare("Update posts SET exercise_name=:exercise_name, description=:description, photo=:photo WHERE id=:id");
         $req->bindParam(':id', intval($id));
-        $req = $db->prepare("Update posts SET user_id=:user_id, exercise_name=:exercise_name,body_part_id=:body_part_id, difficulty_id=:difficulty_id, description=:description, photo=:photo WHERE id=:id");
-        $id = intval($id);
-        $req->bindParam(':user_id', $user_id);
-        $req->bindParam(':exercise_name', $exercise_name);
-        $req->bindParam(':body_part_id', $body_part_id);
-        $req->bindParam(':difficulty_id', $difficulty_id);
+        $req->bindParam(':exercise_name', $exerciseName);
+//        $req->bindParam(':body_part_id', $body_part_id);
+//        $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
         $req->bindParam(':photo', $photo);
         $req->execute();
     }
     
 
-    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
+    public static function create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $photo, $created_at) {
         $db = Db::getInstance();
-//        $req->bindParam(':id', intval($id));
-        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
-//        $id = intval($id);
-        $req->bindParam(':user_id', $user_id);
-        $req->bindParam(':exercise_name', $exercise_name);
-        $req->bindParam(':body_part_id', $body_part_id);
-        $req->bindParam(':difficulty_id', $difficulty_id);
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, photo, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
+        $req->bindParam(':user_id', $userId);
+        $req->bindParam(':exercise_name', $exerciseName);
+        $req->bindParam(':body_part_id', $bodyPartId);
+        $req->bindParam(':difficulty_id', $difficultyId);
         $req->bindParam(':description', $description);
-
+        $req->bindParam(':photo', $photo);
+        $req->bindParam(':created_at', $created_at);
 
 //        $req->bindParam(':photo', $photo);
         $req->execute();

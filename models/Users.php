@@ -124,15 +124,16 @@ class Users
         $req->execute();
     }
 
-    public static function create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content) //this is for the registering new users part
+    public static function create($id, $admin, $username, $email, $pass, $photo, $created_at, $updated_at, $first_name, $user_content) //this is for the registering new users part
     {
         $db = Db::getInstance();
+        $pass=Hashing::hashPassword($password);
         $req = $db->prepare("Insert into users(admin,username,email,password,created_at,updated_at,first_name,user_content) 
         values (:admin,:username,:email,:password, NOW(),NOW(),:first_name,:user_content)");
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
-        $req->bindParam(':password', Hashing::hashPassword($password));
+        $req->bindParam(':password',$pass );
 //        $req->bindParam(':photo', $photo);
         $req->bindParam(':first_name', $first_name);
         $req->bindParam(':user_content', $user_content);
