@@ -28,22 +28,18 @@
 
                 </div>
             <?php }
-        endforeach; ?>
+        endforeach;
+        ?>
     </div>
 </div>
 
-        
-   
+<style>
 
-
-   
-       
-   
-
-
-
-
- 
+    h5{
+        background-color: pink;
+        padding: 10%;
+    }
+</style>
 
 
 
@@ -70,5 +66,16 @@
 
 
 
-         
+
+
+
+
+
+
+
+
+
+
+
+
 

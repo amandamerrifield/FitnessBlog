@@ -1,18 +1,29 @@
-body{
-    background-color: #dcdcdc;
-}
+
 .fixed_header{
     margin-top: 20px;
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
 }
-.scrollable{
+/*.scrollable{
     height: 400px;
     overflow: scroll;
-}
+}*/
 
-.table tbody{
+/*.table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+}*/
+
+.table, tbody{
   display:block;
   width: 100%;
   overflow: auto;

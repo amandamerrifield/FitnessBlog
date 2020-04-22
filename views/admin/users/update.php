@@ -2,8 +2,7 @@
     <a href="index.php?controller=users&action=create" class="btn btn-info" id="adminBtn">Add User</a>
     <a href="index.php?controller=users&action=readAll" class="btn btn-info" id="adminBtn">Manage User</a>
     <div class="container"> 
-        <div class="row h-25 d-inline-block"></div>
-        <form action="index.php?controller=users&action=update" method="POST" enctype="multipart/form-data">
+        <form style="margin-top: 20px;" action="index.php?controller=users&action=update" method="POST" enctype="multipart/form-data">
             <input type="hidden" class="form-control" id="user_id" name="id" value="<?php print $users->getId() ?>">
             <div class="form-label-group">
                 <label for="inputFirstName">First Name</label>
@@ -46,11 +45,10 @@
                 <label for="exampleFormControlFile1">Image</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
-            <button type="submit" class="btn btn-info">Update User</button>
+            <button type="submit" class="btn btn-info">Save Updates</button>
         </form>
         <script>
             CKEDITOR.replace('user_content');
         </script>
-
     </div>
 </div>  
