@@ -71,7 +71,7 @@ class UsersController
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-            $pass = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
+            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
             $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
             $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
             $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -83,7 +83,7 @@ class UsersController
             }
 
 
-            Users::create($id, $admin, $username, $email, $pass, $photo, $created_at, $updated_at, $first_name, $user_content);
+            Users::create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
             $this->readAll();
             show_view('views/pages/home.php');
         }
