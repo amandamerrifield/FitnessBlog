@@ -1,9 +1,8 @@
- DROP TABLE IF EXISTS comments;
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS posts;
 DROP TABLE IF EXISTS bodyPart;
 DROP TABLE IF EXISTS difficulty;
 DROP TABLE IF EXISTS users;
-
 
 CREATE TABLE bodyPart
 (
@@ -24,7 +23,7 @@ CREATE TABLE users
     username     varchar(225) NOT NULL,
     email        varchar(225) NOT NULL,
     password     varchar(255) NOT NULL, # 255 because the hashing requires 255 min
-    photo        blob,
+    photo        mediumblob,
     created_at   datetime,
     updated_at   datetime,
     first_name   varchar(20)  NOT NULL,
@@ -39,8 +38,9 @@ CREATE TABLE posts
     body_part_id  tinyint      NOT NULL,
     difficulty_id tinyint      NOT NULL,
     description   text(1000)   NOT NULL,
-    photo         blob,
-    created_at datetime,
+    photo         mediumblob,
+    photo_type    varchar(100),
+    created_at    datetime,
     CONSTRAINT `fk_posts_user` FOREIGN KEY (user_id) REFERENCES users (id) ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT `fk_posts_bodyPart` FOREIGN KEY (body_part_id) REFERENCES bodyPart (id) ON UPDATE CASCADE ON DELETE RESTRICT,
     CONSTRAINT `fk_posts_difficulty` FOREIGN KEY (difficulty_id) REFERENCES difficulty (id) ON UPDATE CASCADE ON DELETE RESTRICT

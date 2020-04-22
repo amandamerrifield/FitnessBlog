@@ -9,8 +9,9 @@ class Posts {
     protected $difficulty_id;
     protected $description;
     protected $created_at;
+    protected $has_photo;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->exercise_name = $exercise_name;
@@ -18,6 +19,7 @@ class Posts {
         $this->difficulty_id = $difficulty_id;
         $this->description = $description;
         $this->created_at = $created_at;
+        $this->has_photo = $photo_type != null;
     }
 
     public function getId() {
@@ -52,6 +54,10 @@ class Posts {
         return $this->photo;
     }
 
+    public function hasPhoto() {
+        return $this->has_photo;
+    }
+
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
@@ -67,7 +73,8 @@ class Posts {
                 $posts['part'],
                 $posts['level'],
                 $posts['description'],
-                $posts['created_at']);
+                $posts['created_at'],
+                $posts['photo_type']);
 
         }
         return $list;
@@ -80,13 +87,19 @@ class Posts {
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Posts($post['id'], $post['user_id'], $post['exercise_name'], $post['body_part_id'], $post['difficulty_id'], $post['description'], $post['created_at']);
+            return new Posts(
+                $post['id'],
+                $post['user_id'],
+                $post['exercise_name'],
+                $post['body_part_id'],
+                $post['difficulty_id'],
+                $post['description'],
+                $post['created_at'],
+                $post['photo_type']);
         } else {
             throw new Exception('This post is not available');
         }
     }
-
-
 
     public static function findByBodyPart($body_part_id) {
         $list = [];
@@ -95,7 +108,7 @@ class Posts {
         //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }
@@ -107,7 +120,7 @@ class Posts {
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }

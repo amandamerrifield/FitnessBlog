@@ -31,6 +31,9 @@ function call($controller, $action)
         case 'comments':
             $controller = new CommentsController();
             break;
+        case 'images':
+            $controller = new ImagesController();
+            break;
 
         //we will need to add a separate case for each controller
         default:
@@ -54,6 +57,7 @@ $controllers = array('pages' => ['home', 'home2', 'error','bmi'],
     'users'=>['read','readAll','create', 'update', 'updateOne', 'register', 'readOne'],
     'login'=>['validateLogin', 'logout'],
     'comments'=>['create'],
+    'images'=>['upload', 'read', 'delete'],
 );
 
 // check that the requested controller and action are both allowed
