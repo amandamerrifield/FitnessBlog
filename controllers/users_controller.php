@@ -75,17 +75,14 @@ class UsersController
             $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
             $admin = filter_input(INPUT_POST, 'admin', FILTER_SANITIZE_SPECIAL_CHARS);
             $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
-            $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
 
-            if ($_POST['pass'] != $_POST['password2']) {
+            if ($_POST['password'] != $_POST['password2']) {
                 show_view('views/admin/users/create.php', ['passwordnotequal' => true]);
                 return;
             }
 
-
-            Users::create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content);
-            $this->readAll();
-            show_view('views/pages/home.php');
+            Users::create($admin, $username, $email, $password, $first_name, $user_content);
+            redirect('users', 'readAll');
         }
     }
 
@@ -152,27 +149,22 @@ class UsersController
 //
 // 
 
-//   public function delete()
-//    {
-////case we are showing the edit form for a specific bodypart
-//        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-//            if (!isset($_GET['id'])){
-//                call('pages', 'error');
-//                return;
-//            }
-//
-//            // we use the given id to get the correct product
-//            $bodyPart = Users::find($_GET['id']);
-//
-//            require_once('views/admin/bodyparts/delete.php');
-//        } else { //case when we are writing the bodypart to the database
-//            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//
-//            Users::remove($id,$part);
-//
-//            $this->readAll();
-//        }
-//    }
+    public function delete()
+    {
+//case we are showing the edit form for a specific bodypart
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (!isset($_GET['id'])) {
+                call('pages', 'error');
+                return;
+            }
+            // we use the given id to get the correct product
+            show_view('views/admin/users/delete.php', ['posts' => Users::find($_GET['id'])]);
+        } else { //case when we are writing the bodypart to the database
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            Users::remove($id);
+            redirect('users', 'readAll');
+        }
+    }
 
 
 }

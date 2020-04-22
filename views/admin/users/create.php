@@ -4,7 +4,7 @@
     <form style="margin-top: 20px;" action="index.php?controller=users&action=create" method="POST" enctype="multipart/form-data">
         <div class="form-label-group">
             <label for="inputFirstName">First Name</label>
-            <input type="text" id="inputUsername" class="form-control" name="first_name" required autofocus>
+            <input type="text" id="inputFirstName" class="form-control" name="first_name" required autofocus>
         </div>
         <div class="form-label-group">
             <label for="inputUsername">Username</label>

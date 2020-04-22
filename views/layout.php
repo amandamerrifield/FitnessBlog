@@ -92,7 +92,7 @@ require_once 'utilities.php';
                 </div>
             </div>
         </nav>
-        <div class="wrapper" style="margin-top: 100px;">
+        <div class="wrapper" style="margin-top: 90px;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

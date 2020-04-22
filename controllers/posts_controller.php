@@ -69,7 +69,7 @@ class PostsController
             show_view('views/admin/post/delete.php', ['posts' => Posts::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::remove($id, $posts);
+            Posts::remove($id);
             redirect('posts', 'readAll');
         }
     }
