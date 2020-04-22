@@ -57,7 +57,7 @@ $controllers = array('pages' => ['home', 'home2', 'error','bmi'],
     'users'=>['read','readAll','create', 'update', 'updateOne', 'register', 'readOne'],
     'login'=>['validateLogin', 'logout'],
     'comments'=>['create'],
-    'images'=>['upload', 'read'],
+    'images'=>['upload', 'read', 'delete'],
 );
 
 // check that the requested controller and action are both allowed

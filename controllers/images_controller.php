@@ -51,4 +51,10 @@ class ImagesController
         header("Content-Type: $photo_type");
         echo $photo;
     }
+
+    public function delete() {
+        $post_id = filter_input(INPUT_GET, 'post_id', FILTER_SANITIZE_SPECIAL_CHARS);
+        UploadedImage::delete($post_id);
+        redirect('posts', 'bigPost', ['id' => $post_id]);
+    }
 }

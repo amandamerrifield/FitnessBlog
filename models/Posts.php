@@ -73,7 +73,8 @@ class Posts {
                 $posts['part'],
                 $posts['level'],
                 $posts['description'],
-                $posts['created_at']);
+                $posts['created_at'],
+                $posts['photo_type']);
 
         }
         return $list;
@@ -107,7 +108,7 @@ class Posts {
         //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }
@@ -119,7 +120,7 @@ class Posts {
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }

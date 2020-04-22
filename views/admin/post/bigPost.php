@@ -8,9 +8,18 @@
             <?php if ($post->hasPhoto()): ?>
             <img class="img-fluid rounded"
                  src="index.php?controller=images&action=read&post_id=<?php print $post->getId() ?>" alt="">
+            <?php if ($_SESSION['is_admin']): ?>
+            <form method="post" action="index.php?controller=images&action=delete&post_id=<?php print $post->getId() ?>">
+                <button type="submit">Delete Photo</button>
+            </form>
+            <?php endif; ?>
             <hr>
             <?php else: ?>
-            <form action="index.php?controller=images&action=upload&post_id=<?php print $post->getId() ?>" class="dropzone"></form>
+                <?php if ($_SESSION['is_admin']): ?>
+            <form id="uploader"
+                  action="index.php?controller=images&action=upload&post_id=<?php print $post->getId() ?>"
+                  class="dropzone"></form>
+                <?php endif; ?>
             <?php endif; ?>
             <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                 <?php //print nl2br($post->getDescription())?>
@@ -31,3 +40,12 @@
 
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+<script>
+    Dropzone.options.uploader = {
+        init: function() {
+            this.on("success", function(file) {
+                window.location.href = "index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>";
+            });
+        }
+    };
+</script>
