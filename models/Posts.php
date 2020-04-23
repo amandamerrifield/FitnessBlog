@@ -81,7 +81,7 @@ class Posts {
     public static function find($id) {
         $db = Db::getInstance();
         $id = intval($id);
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at photo  FROM posts WHERE id = :id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type  FROM posts WHERE id = :id');
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
@@ -93,7 +93,7 @@ class Posts {
                 $post['difficulty_id'],
                 $post['description'],
                 $post['created_at'],
-                $post['photo']);
+                $post['photo_type']);
         } else {
             throw new Exception('This post is not available');
         }
