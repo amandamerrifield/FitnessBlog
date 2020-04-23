@@ -8,14 +8,14 @@
             <?php if ($post->hasPhoto()): ?>
             <img class="img-fluid rounded"
                  src="index.php?controller=images&action=read&post_id=<?php print $post->getId() ?>" alt="">
-            <?php if ($_SESSION['is_admin']): ?>
+            <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
             <form method="post" action="index.php?controller=images&action=delete&post_id=<?php print $post->getId() ?>">
                 <button type="submit">Delete Photo</button>
             </form>
             <?php endif; ?>
             <hr>
             <?php else: ?>
-                <?php if ($_SESSION['is_admin']): ?>
+                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
             <form id="uploader"
                   action="index.php?controller=images&action=upload&post_id=<?php print $post->getId() ?>"
                   class="dropzone"></form>
