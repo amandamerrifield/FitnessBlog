@@ -9,8 +9,9 @@ class Posts {
     protected $difficulty_id;
     protected $description;
     protected $created_at;
+    protected $has_photo;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $has_photo) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->exercise_name = $exercise_name;
@@ -18,6 +19,7 @@ class Posts {
         $this->difficulty_id = $difficulty_id;
         $this->description = $description;
         $this->created_at = $created_at;
+        $this->has_photo = $has_photo != null;
     }
 
     public function getId() {
@@ -52,13 +54,16 @@ class Posts {
         return $this->photo;
     }
 
+    public function hasPhoto() {
+        return $this->has_photo;
+    }
+
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT p.id, p.user_id, p.exercise_name, p.description,p.created_at,b.part,d.level
+        $req = $db->query('SELECT p.id, p.user_id, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level
         FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
-        INNER JOIN difficulty as d ON p.difficulty_id=d.id;
-        ');
+        INNER JOIN difficulty as d ON p.difficulty_id=d.id;');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts(
                 $posts['id'],
@@ -67,8 +72,8 @@ class Posts {
                 $posts['part'],
                 $posts['level'],
                 $posts['description'],
-                $posts['created_at']);
-
+                $posts['created_at'],
+                $posts['photo']);
         }
         return $list;
     }
@@ -76,26 +81,32 @@ class Posts {
     public static function find($id) {
         $db = Db::getInstance();
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at photo  FROM posts WHERE id = :id');
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Posts($post['id'], $post['user_id'], $post['exercise_name'], $post['body_part_id'], $post['difficulty_id'], $post['description'], $post['created_at']);
+            return new Posts(
+                $post['id'],
+                $post['user_id'],
+                $post['exercise_name'],
+                $post['body_part_id'],
+                $post['difficulty_id'],
+                $post['description'],
+                $post['created_at'],
+                $post['photo']);
         } else {
             throw new Exception('This post is not available');
         }
     }
 
-
-
     public static function findByBodyPart($body_part_id) {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT * FROM posts WHERE body_part_id = :body_part_id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at FROM posts WHERE body_part_id = :body_part_id');
         //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }
@@ -103,7 +114,7 @@ class Posts {
     public static function findByDifficulty($difficulty_id) {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT * FROM posts WHERE difficulty_id = :difficulty_id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at FROM posts WHERE difficulty_id = :difficulty_id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
@@ -113,34 +124,27 @@ class Posts {
     }
     
     
-        public static function update($user_id, $exercise_name, $body_part_id, $difficulty_id, $description) {
+        public static function update($id, $exerciseName, $description) {
         $db = Db::getInstance();
+        $req = $db->prepare("Update posts SET exercise_name=:exercise_name, description=:description WHERE id=:id");
         $req->bindParam(':id', intval($id));
-        $req = $db->prepare("Update posts SET user_id=:user_id, exercise_name=:exercise_name,body_part_id=:body_part_id, difficulty_id=:difficulty_id, description=:description, photo=:photo WHERE id=:id");
-        $id = intval($id);
-        $req->bindParam(':user_id', $user_id);
-        $req->bindParam(':exercise_name', $exercise_name);
-        $req->bindParam(':body_part_id', $body_part_id);
-        $req->bindParam(':difficulty_id', $difficulty_id);
+        $req->bindParam(':exercise_name', $exerciseName);
+//        $req->bindParam(':body_part_id', $body_part_id);
+//        $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
-        $req->bindParam(':photo', $photo);
         $req->execute();
     }
     
 
-    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
+    public static function create($userId, $exerciseName, $bodyPartId, $difficultyId, $description) {
         $db = Db::getInstance();
-//        $req->bindParam(':id', intval($id));
-        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
-//        $id = intval($id);
-        $req->bindParam(':user_id', $user_id);
-        $req->bindParam(':exercise_name', $exercise_name);
-        $req->bindParam(':body_part_id', $body_part_id);
-        $req->bindParam(':difficulty_id', $difficulty_id);
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description)");
+        $req->bindParam(':user_id', $userId);
+        $req->bindParam(':exercise_name', $exerciseName);
+        $req->bindParam(':body_part_id', $bodyPartId);
+        $req->bindParam(':difficulty_id', $difficultyId);
         $req->bindParam(':description', $description);
-
-
-//        $req->bindParam(':photo', $photo);
+      //  $req->bindParam(':created_at', $created_at);
         $req->execute();
     }
     

@@ -115,8 +115,8 @@ class Users
     public static function register($username, $email, $password) //this is for the registering new users part
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at,first_name,user_content) 
-        values (:username,:email,:password,NOW(),NOW(),'','')");
+        $req = $db->prepare("Insert into users(username,email,password,created_at,updated_at) 
+        values (:username,:email,:password,NOW(),NOW())");
         $hasher = Hashing::hashPassword($password);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
@@ -124,16 +124,16 @@ class Users
         $req->execute();
     }
 
-    public static function create($id, $admin, $username, $email, $password, $photo, $created_at, $updated_at, $first_name, $user_content) //this is for the registering new users part
+    public static function create($admin, $username, $email, $password, $first_name, $user_content) //this is for the registering new users part
     {
         $db = Db::getInstance();
         $req = $db->prepare("Insert into users(admin,username,email,password,created_at,updated_at,first_name,user_content) 
         values (:admin,:username,:email,:password, NOW(),NOW(),:first_name,:user_content)");
+        $hasher = Hashing::hashPassword($password);
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
-        $req->bindParam(':password', Hashing::hashPassword($password));
-//        $req->bindParam(':photo', $photo);
+        $req->bindParam(':password',$hasher );
         $req->bindParam(':first_name', $first_name);
         $req->bindParam(':user_content', $user_content);
         $req->execute();
@@ -144,7 +144,7 @@ class Users
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM users WHERE id = :id');
+        $req = $db->prepare('SELECT id, admin, username,email, password, created_at, updated_at, first_name, user_content, photo FROM users WHERE id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $users = $req->fetch();
@@ -155,11 +155,11 @@ class Users
                 $users['username'],
                 $users['email'],
                 $users['password'],
-                $users['photo'],
                 $users['created_at'],
                 $users['updated_at'],
                 $users['first_name'],
-                $users['user_content']);
+                $users['user_content'],
+                $users['photo']);
         } else {
             //replace with a more meaningful exception
             throw new Exception('This user is not available');
@@ -206,4 +206,14 @@ class Users
 
         $req->execute();
     }
+    
+    public static function remove($id) {
+        $db = Db::getInstance();
+        //make sure $id is an integer
+        $id = intval($id);
+        $req = $db->prepare('delete FROM users WHERE id = :id');
+        // the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('id' => $id));
+    }
+
 }

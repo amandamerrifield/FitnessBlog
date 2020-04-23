@@ -2,6 +2,47 @@ body {
     width:100%;
     overflow-x:hidden;
 }
+
+
+/*
+.fixed_header{
+    margin-top: 20px;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}*/
+/*.scrollable{
+     width: 100%;
+  overflow: auto;
+  height: 300px;
+}*/
+
+/*.table-fixed{
+  width: 100%;
+  background-color: #f3f3f3;
+  tbody{
+    height:200px;
+    overflow-y:auto;
+    width: 100%;
+    }
+  thead,tbody,tr,td,th{
+    display:block;
+  }
+}*/
+
+#table{
+    display: block;
+}
+.table{
+  width: 100%;
+  overflow: auto;
+  height: 300px;
+}
+
+
+
+
+
 .carousel-item{
     height: 50vh;
     min-height: 300px;
@@ -11,7 +52,7 @@ body {
 
 .navbar{
     height: auto;
-    background: #FFFFFF;
+    background: #dcdcdc;
     margin-bottom: 2%;
 }
 
@@ -65,15 +106,6 @@ body {
 }
 
 
-
-
-
-
- 
-    
-    
-    
-    
     
 
 

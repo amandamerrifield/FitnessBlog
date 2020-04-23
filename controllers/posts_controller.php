@@ -29,8 +29,8 @@ class PostsController
             $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-            $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at);
+            //$created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
+            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description);
             redirect('posts', 'readAll');
         }
     }
@@ -46,10 +46,12 @@ class PostsController
             show_view('views/admin/post/update.php', ['posts' => Posts::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $posts = filter_input(INPUT_POST, 'post', FILTER_SANITIZE_SPECIAL_CHARS);
-
-            Posts::update($id, $posts);
-
+            $exerciseName = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
+//            $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
+//            $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+            
+            Posts::update($id, $exerciseName, $description);
             redirect('posts', 'readAll');
         }
 
@@ -67,7 +69,7 @@ class PostsController
             show_view('views/admin/post/delete.php', ['posts' => Posts::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::remove($id, $posts);
+            Posts::remove($id);
             redirect('posts', 'readAll');
         }
     }

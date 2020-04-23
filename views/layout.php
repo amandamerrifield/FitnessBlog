@@ -19,7 +19,7 @@ require_once 'utilities.php';
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="views/css/homeBody.css" rel="stylesheet" type="text/css"/>
         <link href="views/css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="css/admin.css" rel="stylesheet" type="text/css"/>
+<!--        <link href="views/css/admin.css" rel="stylesheet" type="text/css"/>-->
         <link href="views/css/blogSearchStyle.css" rel="stylesheet" type="text/css"/>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <script src="jquery-3.4.1.min.js"></script>
@@ -27,7 +27,7 @@ require_once 'utilities.php';
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body style="width:100%; overflow-x:hidden; background-color: #dcdcdc;">
-        <nav class="navbar navbar-expand-lg  navbar-light fixed-top">
+        <nav class="navbar navbar-expand-lg  navbar-light fixed-top" style="background-color: #dcdcdc;">
             <div class="container">
                 <div class="navbar-brand" id="logo">
                     <a class="navbar-brand" style="margin-left: 15%;"
@@ -65,7 +65,12 @@ require_once 'utilities.php';
                     } else {
                         ?>
                         <ul class="navbar-nav ml-auto">
-
+                            <li class="nav-item">
+                                <a class ="nav-link" href="index.php?controller=pages&action=bmi">BMI calculator</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="index.php?controller=pages&action=home">Home <span class="sr-only">(current)</span> </a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="index.php?controller=users&action=read">About</a>
                             </li>
@@ -92,7 +97,7 @@ require_once 'utilities.php';
                 </div>
             </div>
         </nav>
-        <div class="wrapper" style="margin-top: 100px;">
+        <div class="wrapper" style="margin-top: 90px;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
