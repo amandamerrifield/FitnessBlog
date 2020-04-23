@@ -11,7 +11,7 @@ class Posts {
     protected $created_at;
     protected $has_photo;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $has_photo) {
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->exercise_name = $exercise_name;
@@ -19,7 +19,7 @@ class Posts {
         $this->difficulty_id = $difficulty_id;
         $this->description = $description;
         $this->created_at = $created_at;
-        $this->has_photo = $has_photo != null;
+        $this->has_photo = $photo_type != null;
     }
 
     public function getId() {
