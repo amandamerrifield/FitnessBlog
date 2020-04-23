@@ -97,6 +97,7 @@ require_once 'utilities.php';
                 </div>
             </div>
         </nav>
+        <?php if (!isset($hide_header)): ?>
         <div class="wrapper" style="margin-top: 90px;">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -125,6 +126,7 @@ require_once 'utilities.php';
                 </a>
             </div>
         </div>
+        <?php endif; ?>
         <div class="justify-content" style="padding-top: 80px;">
             <div class="flex-column">
                 <?php

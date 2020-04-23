@@ -77,7 +77,10 @@ class PostsController
     public function bigPost()
     {
         $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-        show_view('views/admin/post/bigPost.php', ['post' => Posts::find($post_id)]);
+        show_view('views/admin/post/bigPost.php', [
+            'post' => Posts::find($post_id),
+            'hide_header' => true
+        ]);
     }
 
     public function findByBodyPart()
