@@ -9,7 +9,7 @@
         </div>
         <div class="form-label-group">
             <label for="inputUsername">Username</label>
-            <input type="text" id="inputUsername" class="form-control" name="username" value="<?php print $users->getUsername() ?>" required autofocus>
+            <input type="text" id="inputUsername" class="form-control" name="username" value="<?php print $users->getUsername() ?>" required>
         </div>
         <div class="form-label-group">
             <label for="inputEmail">Email address</label>

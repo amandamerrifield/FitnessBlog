@@ -127,13 +127,11 @@ class Users
     public static function create($admin, $username, $email, $password, $first_name, $user_content) //this is for the registering new users part
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into users(admin,username,email,password,created_at,updated_at,first_name,user_content) 
-        values (:admin,:username,:email,:password, NOW(),NOW(),:first_name,:user_content)");
-        $hasher = Hashing::hashPassword($password);
+        $req = $db->prepare("Insert into users(admin,username,email,created_at,updated_at,first_name,user_content) 
+        values (:admin,:username,:email, NOW(),NOW(),:first_name,:user_content)");
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
-        $req->bindParam(':password',$hasher );
         $req->bindParam(':first_name', $first_name);
         $req->bindParam(':user_content', $user_content);
         $req->execute();
@@ -155,11 +153,12 @@ class Users
                 $users['username'],
                 $users['email'],
                 $users['password'],
+                $users['photo'],
                 $users['created_at'],
                 $users['updated_at'],
                 $users['first_name'],
-                $users['user_content'],
-                $users['photo']);
+                $users['user_content']);
+
         } else {
             //replace with a more meaningful exception
             throw new Exception('This user is not available');
@@ -212,8 +211,8 @@ class Users
 
         $req->execute();
     }
-    
-    
+
+
     public static function updateOne($id, $first_name, $username, $email, $password)
     {
         $db = Db::getInstance();
@@ -222,7 +221,7 @@ class Users
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $password);
-       // $req->bindParam(':photo', $photo);
+        // $req->bindParam(':photo', $photo);
         $req->bindParam(':first_name', $first_name);
         //  $req->bindParam(':updated_at', $updated_at);
         //$req = date_update table SET datetime =update_date_time;
@@ -232,8 +231,9 @@ class Users
 
         $req->execute();
     }
-    
-    public static function remove($id) {
+
+    public static function remove($id)
+    {
         $db = Db::getInstance();
         //make sure $id is an integer
         $id = intval($id);

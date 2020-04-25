@@ -12,10 +12,10 @@ INSERT INTO bodyPart(id, part) VALUES (4,'legs');
 
 
  INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Amanda',
-  "Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. However her preferred indoor exercise is yoga and weight training.");
+  'Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. However her preferred indoor exercise is yoga and weight training.');
 
  INSERT INTO users VALUES(2, true, 'Vani2', 'mayavanimudgal@gmail.com', 'password2', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Maya-Vani',
- "Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future");
+ 'Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future");
 
  INSERT INTO users VALUES(3, true, 'Zita3', 'buzasizita@gmail.com', '$2y$10$vnowDo8U4rKhS1QWXqJwHutURfKmdfXzaOeHAqIw56QNbvbQhN1fW', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Zita',
   "Zita believes you don't have to be a professional athlete to incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.");

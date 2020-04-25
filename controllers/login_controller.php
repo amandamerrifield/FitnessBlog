@@ -4,7 +4,6 @@ require_once 'utilities.php';
 
 class LoginController
 {
-
     public function validateLogin()
     {
         // we expect a url of form ?controller=posts&action=show&id=x
