@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" style="padding-top: 20px;" >
     <div class="row jumbotron">
         <div class="col-lg-8">
-            <h1 id = "pageTitle"class="mt-4"><?php print strtoupper($post->getExerciseName()) ?></h1>
+            <h1 id="pageTitle" class="mt-4"><?php print strtoupper($post->getExerciseName()) ?></h1>
             <hr>
             <p>Posted on <?php print $post->getCreatedAt() ?></p>
             <hr>
@@ -22,7 +22,6 @@
                       <?php endif; ?>
                   <?php endif; ?>
             <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
-            <?php //print nl2br($post->getDescription())?>
             <p>
                 <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
