@@ -9,9 +9,9 @@
         <input type="number" name="height" maxlength="3" required><br>
     </div>
     <div class="col">
-    <button type="submit" class="btn btn-danger btn-rounded" value="Calculate"> Calculate</button>
+    <button type="submit" class="btn btn-info btn-rounded" value="Calculate"> Calculate</button>
     <label></label>
-    <button type="reset" class="btn btn-danger btn-rounded0">Reset</button>
+    <button type="reset" class="btn btn-info btn-rounded">Reset</button>
     </div>
 </form>
 
@@ -25,11 +25,11 @@ if (isset($_POST['weight']) && isset($_POST['height'])) {
     echo "<p>Your BMI: " . number_format($result, 2, ",", ".") . "</p>";
 
     if ($result <= 18.4) {
-        echo "<p style= 'color:#ff5c00;'>You are underweight.</p>";
+        echo "<p style= 'color:#dd026d;'>You are underweight.</p>";
     } else if ($result >= 25.0) {
-        echo "<p style= 'color:#ff5c00;'>You are overweight.</p>";
+        echo "<p style= 'color:#dd026d;'>You are overweight.</p>";
     } else {
-        echo "<p style= 'color:#00bc5c;'>Congratulations!You are in the normal range.</p>";
+        echo "<p style= 'color:#29c1c4;'>Congratulations!You are in the normal range.</p>";
     }
 }
 ?>

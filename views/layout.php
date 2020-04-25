@@ -165,9 +165,13 @@ require_once 'utilities.php';
             <div class=" col">
                 <?php require_once($view_path); ?>
             </div>
+
         </div>
     </div>
     <div class="container">
+        <?php if (isset($message)): ?>
+            <script>alert('<?php echo $message ?>');</script>
+        <?php endif ?>
         <footer class="row">
             <div class="sozial col-xs-12 col-sm-6 col-sm-push-6">
                 <ul class="row">

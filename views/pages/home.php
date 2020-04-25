@@ -1,6 +1,4 @@
-
-        <h2 id="pageTitle">Exercise Made Easy</h2>
-
+<h2 id="pageTitle">Exercise Made Easy</h2>
 <div id="main">
     <a style="font-size:30px;cursor:pointer;color:black;" data-toggle="collapse" data-target="#filter"
        aria-controls="filter" aria-expanded="false" aria-label="Toggle filter">&#9776; Search the Blog </a>
@@ -32,7 +30,7 @@
                     <p class="card-text">
                         Description: <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                     <a href="index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>"
-                       class="btn btn-primary" id='readMore'>Read More!</a>
+                       class="btn btn-info" id='readMore'>Read More!</a>
                 </div>
             </div>
         </div>

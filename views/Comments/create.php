@@ -9,5 +9,5 @@
         </script>
             
     </div>
-    <button class="btn btn-primary" name = "commentSubmit" type="submit">Comment</button>
+    <button class="btn btn-info" name = "commentSubmit" type="submit">Comment</button>
 </form>

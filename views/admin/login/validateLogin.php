@@ -17,7 +17,7 @@
                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                     <label class="custom-control-label" for="customCheck1">Remember password</label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Login</button>
+                <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Login</button>
             </form>
 
             <div class="dropdown-divider"></div>

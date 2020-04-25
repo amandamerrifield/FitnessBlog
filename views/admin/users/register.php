@@ -26,7 +26,7 @@
                }
                ?>
                 <label> </label>
-                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign up</button>
+                <button class="btn btn-lg btn-info btn-block text-uppercase" type="submit">Sign up</button>
             </form>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item text-center" href="#">Or Sign In</a>

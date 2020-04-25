@@ -24,7 +24,7 @@
             <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                 <?php //print nl2br($post->getDescription())?>
             <p>
-                <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+                <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
                     Leave a comment
                 </a>

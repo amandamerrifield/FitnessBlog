@@ -24,18 +24,18 @@ h2, #titleText{
     color: #dd026d;
 }
 
-#readMore, btn-design {
-    background-color: #02d9dd;
-    border: #02d9dd;
-    color:white;
-    text-transform: uppercase;
-}
+/*#readMore, btn-design {*/
+/*    background-color: #02d9dd;*/
+/*    border: #02d9dd;*/
+/*    color:white;*/
+/*    text-transform: uppercase;*/
+/*}*/
 
-#readMore:hover, btn-design{
-    background-color: white;
-    color: #29c1c4;
-    text-transform: uppercase;
-}
+/*#readMore:hover, btn-design{*/
+/*    background-color: white;*/
+/*    color: #29c1c4;*/
+/*    text-transform: uppercase;*/
+/*}*/
 
 .sidebar > a:hover{
     color:#02d9dd;
