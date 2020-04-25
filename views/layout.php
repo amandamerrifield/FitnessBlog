@@ -157,6 +157,7 @@ require_once 'utilities.php';
             } else {
             ?>
             <aside class="list-group sidebar col2">
+                <a class="list-group-item list-group-item-action" href="index.php?controller=posts&action=create">Create a Post</a>
                 <a class="list-group-item list-group-item-action" href="index.php?controller=users&action=readOne">Manage
                     Your Details</a>
                 <!--            <div class="list-group">-->

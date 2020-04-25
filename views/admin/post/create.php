@@ -1,7 +1,16 @@
 <div class="container"> 
-    <a href="?controller=posts&action=create" class="btn btn-info" id="adminBtn">Add Post</a>
-    <a href="?controller=posts&action=readAll" class="btn btn-info" id="adminBtn">Manage Post</a>
-    
+    <?php
+    if (!isset($_SESSION["username"])) {
+        
+    } else if ($_SESSION['is_admin'] == true) {
+        ?>
+        <a href="?controller=posts&action=create" class="btn btn-info" id="adminBtn">Add Post</a>
+        <a href="?controller=posts&action=readAll" class="btn btn-info" id="adminBtn">Manage Post</a>
+        <?php
+    } else {
+        ?>  
+        <h1> Create a Post</h1>
+    <?php } ?>
     <form  style="margin-top: 20px;" action="index.php?controller=posts&action=create" method="POST" enctype="multipart/form-data">
         <input value =" <?php echo $_SESSION['id']; ?>" type="hidden" class="form-control" id="userId" name="user_id">
         <div class="form-group">
@@ -36,7 +45,7 @@
     </form>
 
 </div>
-</div>  
+ 
 
 
 
