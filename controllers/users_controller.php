@@ -129,7 +129,6 @@ class UsersController
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
-            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
 
 //            $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -138,7 +137,7 @@ class UsersController
 //                show_view('views/admin/users/updateOne.php', ['passwordnotequal' => true]);
 //                return;
 //            }
-            Users::updateOne($id, $first_name, $username, $email, $password);
+            Users::updateOne($id, $first_name, $username, $email);
             redirect('users','readOne');
         }
     }

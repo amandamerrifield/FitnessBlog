@@ -15,10 +15,10 @@
                 <label for="inputEmail">Email address</label>
                 <input type="email" id="inputEmail" class="form-control" name="email" value="<?php print $users->getEmail() ?>" >
             </div>
-            <div class="form-label-group">
-                <label for="inputPassword">Password</label>
-                <input type="password" id="inputPassword" class="form-control"  name="password" value="<?php print $users->getPassword() ?>" required>
-            </div>
+<!--            <div class="form-label-group">-->
+<!--                <label for="inputPassword">Password</label>-->
+<!--                <input type="password" id="inputPassword" class="form-control"  name="password" value="--><?php //print $users->getPassword() ?><!--" >-->
+<!--            </div>-->
             <!--            <div class="form-label-group">
                             <label for="inputConfirmPassword">Confirm Password</label>
                             <input type="password" id="inputConfirmPassword" class="form-control" name="password2" value="<?php print $users->getPassword() ?>" required>
