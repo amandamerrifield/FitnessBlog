@@ -134,7 +134,7 @@ require_once 'utilities.php';
 
 <div class="container-fluid py3" style="padding-top: 80px; ">
     <div class="row">
-        <div>
+<!--        <div>-->
             <?php
             if (!isset($_SESSION["username"])) {
                 require_once('index.php');
@@ -166,7 +166,7 @@ require_once 'utilities.php';
                 <?php require_once($view_path); ?>
             </div>
 
-        </div>
+<!--        </div>-->
     </div>
     <div class="container">
         <?php if (isset($message)): ?>
@@ -214,3 +214,4 @@ require_once 'utilities.php';
     </div>
 </body>
 </html>
+
