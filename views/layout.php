@@ -143,7 +143,7 @@ require_once 'utilities.php';
                 <?php
             } else if ($_SESSION['is_admin'] == true) {
                 ?>
-                <div class="list-group sidebar col2">
+                <aside class="list-group sidebar col2">
                     <a class="list-group-item list-group-item-action" href="index.php?controller=posts&action=readAll">Manage
                         Post</a>
                     <a class="list-group-item list-group-item-action" href="index.php?controller=users&action=readAll">Manage
@@ -152,19 +152,19 @@ require_once 'utilities.php';
                        href="index.php?controller=difficulty&action=readAll">Manage Difficulty Levels</a>
                     <a class="list-group-item list-group-item-action"
                        href="index.php?controller=body_parts&action=readAll">Manage Body Part</a>
-                </div>
+                </aside>
                 <?php
             } else {
             ?>
-            <div class="list-group sidebar col2">
+            <aside class="list-group sidebar col2">
                 <a class="list-group-item list-group-item-action" href="index.php?controller=users&action=readOne">Manage
                     Your Details</a>
                 <!--            <div class="list-group">-->
                 <?php } ?>
-            </div>
-            <div class=" col">
+            </aside>
+            <main class=" col">
                 <?php require_once($view_path); ?>
-            </div>
+            </main>
 
 <!--        </div>-->
     </div>
