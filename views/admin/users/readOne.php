@@ -8,8 +8,6 @@
                         <th>First Name</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Password</th>
-
                         <th>Edit</th>
                         <th>Delete</th>
                     </tr>
@@ -20,7 +18,7 @@
                         <td><?php print $user->getFirstName() ?></td>
                         <td><?php print $user->getUsername() ?></td>
                         <td><?php print $user->getEmail() ?></td>
-                        <td><?php print $user->getPassword() ?></td>
+<!--                        <td>--><?php //print $user->getPassword() ?><!--</td>-->
     <!--                <td><?php //print $user->getCreatedAt()  ?></td>
                         <td><?php //print $user->getUpdatedAt()  ?></td>-->
                         <td>

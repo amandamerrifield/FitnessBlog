@@ -4,10 +4,6 @@
     margin-left: 15%
 }
 
-h2, #titleText{
-    color: #dd026d;;
-}
-
  #pageTitle {
     font-size: 60px;
     color: #dd026d;
@@ -18,28 +14,18 @@ h2, #titleText{
 }
 
 
-.card-title {
+h2, .card-title {
     left: 100px;
     bottom: 150px;
     color: #dd026d;
+    text-transform: uppercase;
 }
 
-/*#readMore, btn-design {*/
-/*    background-color: #02d9dd;*/
-/*    border: #02d9dd;*/
-/*    color:white;*/
-/*    text-transform: uppercase;*/
-/*}*/
 
-/*#readMore:hover, btn-design{*/
-/*    background-color: white;*/
-/*    color: #29c1c4;*/
-/*    text-transform: uppercase;*/
-/*}*/
 
 .sidebar > a:hover{
     color:#02d9dd;
-    /*background-color: #dda602;*/
+    background-color: #eff4ff;
 }
 
 
