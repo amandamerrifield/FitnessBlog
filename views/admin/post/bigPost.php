@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row jumbotron">
         <div class="col-lg-8">
-            <h1 class="mt-4"><?php print strtoupper($post->getExerciseName() )?></h1>
+            <h1 id = "pageTitle"class="mt-4"><?php print strtoupper($post->getExerciseName() )?></h1>
             <hr>
             <p>Posted on <?php print $post->getCreatedAt() ?></p>
             <hr>

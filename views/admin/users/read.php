@@ -1,5 +1,5 @@
 <div class="about-section">
-    <h1 style="text-align:center">About Us Page</h1>
+    <h1 id="pageTitle" style="text-align:center">About Us Page</h1>
     <br>
     <p style="text-align:center">We want to ensure everyone is taking care of both their physical and mental wellbeing,
         especially during this time of self-isolation and social distancing. This is why we passionate to share some
@@ -21,8 +21,8 @@
                         <div class="card-body">
                             <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
                             <p class="card-text"> <?php echo htmlspecialchars_decode($user->getUserContent(), ENT_QUOTES) ?></p>
-                            <a href="mailto:<?php print $user->getEmail() ?>" class="btn btn-primary" id='contact'>Contact</a>
-                            <p class="card-text"> <?php print $user->getEmail() ?></p>
+                            <a href="mailto:<?php print $user->getEmail() ?>" class="btn btn-primary" id='contact btn-design'>Contact me</a>
+<!--                            <p class="card-text"> --><?php //print $user->getEmail() ?><!--</p>-->
                         </div>
                     </div>
 

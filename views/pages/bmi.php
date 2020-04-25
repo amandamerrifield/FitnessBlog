@@ -1,4 +1,5 @@
-<form method="post" action="index.php?controller=pages&action=bmi" class=" ">
+<h2 id="pageTitle">BMI Calculator</h2>
+<form method="post" action="index.php?controller=pages&action=bmi" >
     <div class="col">
         <label for="weight">Weight in kilograms: </label>
         <input type="number" name="weight" maxlength="4" autofocus required><br>

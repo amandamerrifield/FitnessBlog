@@ -166,6 +166,32 @@ class Users
         }
     }
 
+
+
+//    public static function findOne($id)
+//    {
+//        $db = Db::getInstance();
+//        //use intval to make sure $id is an integer
+//        $id = intval($id);
+//        $req = $db->prepare('SELECT id,first_name, username,email, password FROM users WHERE id = :id');
+//        //the query was prepared, now replace :id with the actual $id value
+//        $req->execute(array('id' => $id));
+//        $users = $req->fetch();
+//        if ($users) {
+//            return new Users(
+//                $users['id'],
+//                $users['first_name'],
+//                $users['username'],
+//                $users['email'],
+//                $users['password']);
+//
+//        } else {
+//            //replace with a more meaningful exception
+//            throw new Exception('This user is not available');
+//        }
+//    }
+
+
     public static function update($id, $admin, $username, $email, $password, $photo, $first_name, $user_content)
     {
         $db = Db::getInstance();
