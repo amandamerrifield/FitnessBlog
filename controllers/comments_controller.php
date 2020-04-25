@@ -7,7 +7,7 @@ class CommentsController
     public function readAll() //we will need ones for a given blog
     {
         // we store all the posts in a variable
-        show_view('views/Comments/readAll.php',['comments'=>Comment::all()]);
+        show_view('views/admin/post/bigPost.php',['comments'=>Comment::all()]);
     }
 
     public function create()

@@ -44,17 +44,20 @@ class Comment
         $req->execute();
     }
 
-    public static function all()
+    public static function all($blog_id)
     {
         $db = Db::getInstance();
-        $id = intval($id);
-        $req = $db->prepare('SELECT * FROM comments WHERE id = :id');
-        $req->execute(array('id' => $id));
-        $comments = $req->fetch();
-        if ($comments) {
-            return new Comments($comments['id'], $comments['blog_id'], $comments['posted_at'], $comments['content']);
-        } else {
-            throw new Exception('This comment is not available');
+       // $id = intval($id);
+        $req = $db->prepare('SELECT * FROM comments WHERE blog_id = :blog_id');
+        $req->execute(array('blog_id' => $blog_id));
+        foreach ($req->fetchAll() as $comments) {
+            $list[] = new Comment(
+                    $comments['id'],
+                    $comments['blog_id'], 
+                    $comments['posted_at'], 
+                    $comments['content']);
         }
+        return $list;
+        
     }
 }

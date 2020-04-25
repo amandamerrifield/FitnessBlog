@@ -2,6 +2,7 @@
 require_once "models/Posts.php";
 require_once "models/BodyPart.php";
 require_once "models/Difficulty.php";
+require_once "models/Comment.php";
 require_once 'utilities.php';
 
 class PostsController
@@ -77,8 +78,10 @@ class PostsController
     public function bigPost()
     {
         $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+        $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
         show_view('views/admin/post/bigPost.php', [
             'post' => Posts::find($post_id),
+            'comments' => Comment::all($blog_id),
             'hide_header' => true
         ]);
     }

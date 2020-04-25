@@ -32,7 +32,7 @@ require_once 'utilities.php';
         <div class="navbar-brand">
             <a class="navbar-brand"
                href="index.php?controller=pages&action=home">
-                <img src="views/images/IMG_0219.png" id="logo" alt="logo"/>
+                <img src="views/images/IMG_02191.png" id="logo" alt="logo"/>
 
             </a>
         </div>

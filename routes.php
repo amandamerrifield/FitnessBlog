@@ -56,7 +56,7 @@ $controllers = array('pages' => ['home', 'home2', 'error','bmi'],
     'posts'=>['readAll', 'findByDifficulty', 'findByBodyPart','update', 'create', 'uploadFile', 'delete', 'bigPost'],
     'users'=>['read','readAll','create', 'update', 'updateOne', 'register', 'readOne', 'delete'],
     'login'=>['validateLogin', 'logout'],
-    'comments'=>['create'],
+    'comments'=>['create', 'readAll'],
     'images'=>['upload', 'read', 'delete'],
 );
 
