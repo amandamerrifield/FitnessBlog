@@ -24,6 +24,8 @@ require_once 'utilities.php';
         <script src="jquery-3.4.1.min.js"></script>
         <script src="../../../libraries/ckeditor/ckeditor.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://kit.fontawesome.com/962bdcfa7f.js" crossorigin="anonymous"></script>
+
     </head>
     <body>
         <nav class="navbar navbar-expand-lg  navbar-light fixed-top" style="background-color: #dcdcdc;">
@@ -143,14 +145,14 @@ require_once 'utilities.php';
                     ?>
                     <div >
                         <aside class="list-group sidebar col2">
-                            <a class="list-group-item list-group-item-action" href="index.php?controller=posts&action=readAll">Manage
+                            <a class="list-group-item list-group-item-action" href="index.php?controller=posts&action=readAll"><i class="fas fa-portrait"></i>Manage
                                 Post</a>
-                            <a class="list-group-item list-group-item-action" href="index.php?controller=users&action=readAll">Manage
+                            <a class="list-group-item list-group-item-action" href="index.php?controller=users&action=readAll"><i class="fas fa-user"></i>Manage
                                 Users</a>
                             <a class="list-group-item list-group-item-action"
-                               href="index.php?controller=difficulty&action=readAll">Manage Difficulty Levels</a>
+                               href="index.php?controller=difficulty&action=readAll"><i class="fas fa-biking"></i>Manage Difficulty Levels</a>
                             <a class="list-group-item list-group-item-action"
-                               href="index.php?controller=body_parts&action=readAll">Manage Body Part</a>
+                               href="index.php?controller=body_parts&action=readAll"><i class="fas fa-walking"></i>Manage Body Part</a>
                         </aside>
                     </div>
                     <?php
