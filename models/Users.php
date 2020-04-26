@@ -32,7 +32,7 @@ class Users
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
-        $this->password = $photo;
+        $this->photo = $photo;
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
         $this->first_name = $first_name;
@@ -107,7 +107,17 @@ class Users
         $db = Db::getInstance();
         $req = $db->query('SELECT * FROM users');
         foreach ($req->fetchAll() as $users) {
-            $list[] = new Users($users['id'], $users['admin'], $users['username'], $users['email'], $users['password'], $users['photo'], $users['created_at'], $users['updated_at'], $users['first_name'], $users['user_content']);
+            $list[] = new Users(
+                $users['id'],
+                $users['admin'],
+                $users['username'],
+                $users['email'],
+                $users['password'],
+                $users['photo'],
+                $users['created_at'],
+                $users['updated_at'],
+                $users['first_name'],
+                $users['user_content']);
         }
         return $list;
     }

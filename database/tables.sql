@@ -23,7 +23,7 @@ CREATE TABLE users
     username     varchar(225) NOT NULL,
     email        varchar(225) NOT NULL,
     password     varchar(255) NOT NULL, # 255 because the hashing requires 255 min
-    photo        mediumblob,
+    photo        varchar(225),
     created_at   datetime,
     updated_at   datetime,
     first_name   varchar(20)  NOT NULL,
