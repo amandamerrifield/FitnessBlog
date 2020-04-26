@@ -30,8 +30,8 @@ class PostsController
             $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-            //$created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description);
+            $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
+            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at);
             redirect('posts', 'readAll');
         }
     }

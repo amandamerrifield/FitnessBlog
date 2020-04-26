@@ -10,8 +10,9 @@ class Posts {
     protected $description;
     protected $created_at;
     protected $has_photo;
+    protected $first_name;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type) {
+    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type, $first_name) {
         $this->id = $id;
         $this->user_id = $user_id;
         $this->exercise_name = $exercise_name;
@@ -20,6 +21,7 @@ class Posts {
         $this->description = $description;
         $this->created_at = $created_at;
         $this->has_photo = $photo_type != null;
+        $this->first_name= $first_name;
     }
 
     public function getId() {
@@ -57,13 +59,18 @@ class Posts {
     public function hasPhoto() {
         return $this->has_photo;
     }
+    public function authorName() {
+        return $this->first_name;
+    }
 
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT p.id, p.user_id, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level
+        $req = $db->query('SELECT p.id, p.user_id, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level,u.first_name
         FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
-        INNER JOIN difficulty as d ON p.difficulty_id=d.id;');
+        INNER JOIN difficulty as d ON p.difficulty_id=d.id
+        INNER JOIN users as u ON u.id=p.id
+        ORDER BY created_at DESC;');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts(
                 $posts['id'],
@@ -73,7 +80,8 @@ class Posts {
                 $posts['level'],
                 $posts['description'],
                 $posts['created_at'],
-                $posts['photo']);
+                $posts['photo'],
+                $posts['first_name']);
         }
         return $list;
     }
@@ -136,15 +144,16 @@ class Posts {
     }
     
 
-    public static function create($userId, $exerciseName, $bodyPartId, $difficultyId, $description) {
+    public static function create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at) {
         $db = Db::getInstance();
-        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description)");
+        $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
         $req->bindParam(':user_id', $userId);
         $req->bindParam(':exercise_name', $exerciseName);
         $req->bindParam(':body_part_id', $bodyPartId);
         $req->bindParam(':difficulty_id', $difficultyId);
         $req->bindParam(':description', $description);
-      //  $req->bindParam(':created_at', $created_at);
+        $req->bindParam(':created_at', $created_at);
+        //$req->bindParam(':first_name', $first_name);
         $req->execute();
     }
     
