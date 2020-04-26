@@ -211,7 +211,7 @@ class Users
     public static function update($id, $admin, $username, $email, $password, $first_name, $user_content)
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Update users SET admin=:admin, username=:username, email=:email, password=:password, first_name=:first_name, user_content=:user_content where id=:id");
+        $req = $db->prepare("Update users SET id=:id, admin=:admin, username=:username, email=:email, password=:password, first_name=:first_name, user_content=:user_content where id=:id");
         $req->bindParam(':id', intval($id));
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
