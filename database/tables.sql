@@ -52,6 +52,6 @@ CREATE table comments
     blog_id   INT       NOT NULL,
     posted_at datetime,
     content   text(300) NOT NULL,
-    CONSTRAINT `fk_comments` FOREIGN KEY (blog_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE RESTRICT
+    CONSTRAINT `fk_comments` FOREIGN KEY (blog_id) REFERENCES posts (id) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
