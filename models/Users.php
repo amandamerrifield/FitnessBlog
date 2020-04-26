@@ -142,8 +142,8 @@ class Users
     public static function create($admin, $username, $email, $password, $first_name, $user_content) //this is for the registering new users part
     {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into users(admin,username,email,created_at,updated_at,first_name,user_content) 
-        values (:admin,:username,:email, NOW(),NOW(),:first_name,:user_content)");
+        $req = $db->prepare("Insert into users(admin,username,email,password,created_at,updated_at,first_name,user_content) 
+        values (:admin,:username,:email,:password, NOW(),NOW(),:first_name,:user_content)");
         $hasher = Hashing::hashPassword($password);
         $req->bindParam(':admin', $admin);
         $req->bindParam(':username', $username);
