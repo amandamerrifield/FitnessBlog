@@ -158,7 +158,7 @@ class UsersController
                 return;
             }
             // we use the given id to get the correct product
-            show_view('views/admin/users/delete.php', ['posts' => Users::find($_GET['id'])]);
+            show_view('views/admin/users/delete.php', ['users' => Users::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             Users::remove($id);
