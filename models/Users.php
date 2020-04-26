@@ -122,6 +122,11 @@ class Users
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $hasher);
         $req->execute();
+
+        $_SESSION['last_login_timestamp'] = time();
+        $_SESSION['id'] = $db->lastInsertId();
+        $_SESSION['username'] = $username;
+        $_SESSION['is_admin'] = false;
     }
 
     public static function create($admin, $username, $email, $password, $first_name, $user_content) //this is for the registering new users part
