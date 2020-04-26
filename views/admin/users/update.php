@@ -19,7 +19,7 @@
             <label for="inputPassword">Password</label>
             <input type="password" id="inputPassword" class="form-control"  name="password" value="<?php print $users->getPassword() ?>" required>
         </div>
-        <div class="form-label-group">
+        <div  class="form-label-group">
             <label for="inputConfirmPassword">Confirm Password</label>
             <input type="password" id="inputConfirmPassword" class="form-control" name="password2" value="<?php print $users->getPassword() ?>" required>
         </div>
@@ -31,14 +31,14 @@
         ?>
         <div class="form-group">
             <label for="user">Is this user an admin?</label>
-            <select class="form-control" id="admin" name="admin" value="<?php print $users->getAdmin() ?>">
+            <select class="form-control" id="admin" name="admin">
                 <option value="0">Not Admin</option>
                 <option value="1">Is an Admin</option>
             </select>
         </div>
         <div class="form-group">
             <label for="userContent">User Description (1000 word max)</label>
-            <textarea class="form-control" maxlength="1000" id="userContent" name="user_content" value="<?php print $users->getUserContent() ?>"></textarea>
+            <textarea class="form-control" maxlength="1000" id="userContent" name="user_content"><?php print $users->getUserContent() ?></textarea>
         </div>
         <button type="submit" class="btn btn-info">Save Updates</button>
     </form>
