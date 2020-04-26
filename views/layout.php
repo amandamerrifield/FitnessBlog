@@ -25,7 +25,7 @@ require_once 'utilities.php';
         <script src="../../../libraries/ckeditor/ckeditor.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
-    <body style="width:100%; overflow-x:hidden; background-color: #dcdcdc;">
+    <body>
         <nav class="navbar navbar-expand-lg  navbar-light fixed-top" style="background-color: #dcdcdc;">
             <div class="container">
                 <div class="navbar-brand">
@@ -100,7 +100,7 @@ require_once 'utilities.php';
             </div>
         </nav>
         <?php if (!isset($hide_header)): ?>
-            <div class="wrapper" style="margin-top: 90px;">
+            <div class="wrapper">
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

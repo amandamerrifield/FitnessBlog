@@ -35,7 +35,7 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="body">Exercise Description</label>
+            <label for="body">Exercise Description (1000 word max)</label>
             <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
             <script>
                 CKEDITOR.replace('description');

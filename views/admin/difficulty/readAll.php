@@ -1,5 +1,4 @@
-
-<div class="container"> 
+ <div class="container"> 
     <a href='?controller=difficulty&action=create' class="btn btn-info" id="adminBtn">Add Level</a>
     <a href='?controller=difficulty&action=readAll' class="btn btn-info" id="adminBtn">Manage Level</a>
     <div class="card"  style="margin-top: 20px;">

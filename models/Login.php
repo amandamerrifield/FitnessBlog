@@ -70,7 +70,6 @@ class Login
         $_SESSION['last_login_timestamp'] = time();
         $_SESSION['id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        $_SESSION['password'] = $user['password'];
 
         //mysql translates true to 1, we want to te translate it back to boolean
         $_SESSION['is_admin'] = $user['admin'] == 1; //refactoring, evaluates to the same
