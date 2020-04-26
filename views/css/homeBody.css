@@ -1,3 +1,12 @@
+body {
+    width:100%;
+    overflow-x:hidden;
+    background-color: #dcdcdc;
+}
+.wrapper {
+    margin-top: 90px;
+}
+
 #logo {
     height: 100px;
     width: 100px;
@@ -25,6 +34,8 @@ h2, .card-title {
     color:#02d9dd;
     background-color: #eff4ff;
 }
+
+
 
 
 
