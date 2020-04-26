@@ -3,6 +3,7 @@ require_once "models/Posts.php";
 require_once "models/BodyPart.php";
 require_once "models/Difficulty.php";
 require_once "models/Comment.php";
+require_once "models/Users.php";
 require_once 'utilities.php';
 
 class PostsController
@@ -21,7 +22,8 @@ class PostsController
 
             show_view('views/admin/post/create.php', [
                 'bodyParts' => BodyPart::all(),
-                'difficulty' => Difficulty::all()
+                'difficulty' => Difficulty::all(),
+                'users' => Users::all()
             ]);
         } else {
             //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -108,3 +110,4 @@ class PostsController
         }
     }
 }
+

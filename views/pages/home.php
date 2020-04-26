@@ -25,9 +25,10 @@
                 <?php endif; ?>
                 <div class="card-body">
                     <h5 id='h5' class="card-title"><?php print $post->getExerciseName() ?></h5>
-<!--                    <p class="card-text"> Body part: <?php //print $post->getBodyPartId() ?></p>-->
+                    <p class="card-text"> Body part: <?php print $post->getBodyPartId() ?></p>
                     <p class="card-text"> Level: <?php print $post->getDifficultyId() ?></p>
-                    <p class="card-text"> Author: <?php print $post->authorName() ?></p>
+                    <p class="card-text"> Author: <?php print $post->getUserId() ?></p>
+                    
                     <p class="card-text">
                         Description: <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                     <a href="index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>"
