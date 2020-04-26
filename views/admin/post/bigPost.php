@@ -1,4 +1,4 @@
-<div class="container" style="padding-top: 20px;" >
+<div class="container" style="padding-top: 200px;" >
     <div class="row jumbotron">
         <div class="col-lg-8">
             <h1 id="pageTitle" class="mt-4"><?php print strtoupper($post->getExerciseName()) ?></h1>
@@ -31,27 +31,32 @@
             <div class="collapse" id="collapseExample">
                 <?php require_once 'views/Comments/create.php' ?>
             </div>    
-            <?php foreach ($comments as $comment): ?>
-                <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
-                        <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>
+            <?php
+            if (empty($comments)) {
+                
+                print "";
+            } else{
+                foreach ($comments as $comment):?>
+                    <div class="media mb-4">
+                        <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                        <div class="media-body">
+                            <h5 class="mt-0">Commenter Name</h5>
+                    <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
-
+            <?php endforeach;} ?>
+                
+            </div>
         </div>
     </div>
-</div>
 
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-<script>
-    Dropzone.options.uploader = {
-        init: function () {
-            this.on("success", function (file) {
-                window.location.href = "index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>";
+    <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+    <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+    <script>
+        Dropzone.options.uploader = {
+            init: function () {
+                this.on("success", function (file) {
+                    window.location.href = "index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>";
             });
         }
     };
