@@ -27,7 +27,8 @@ CREATE TABLE users
     created_at   datetime,
     updated_at   datetime,
     first_name   varchar(20)  NOT NULL,
-    user_content varchar(225) NOT NULL
+    user_content varchar(225) NOT NULL,
+    CONSTRAINT username UNIQUE (username)
 );
 
 CREATE TABLE posts

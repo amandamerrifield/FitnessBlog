@@ -49,12 +49,16 @@ class UsersController
 
 
             if ($_POST['password'] != $_POST['password2']) {
-                show_view('views/admin/users/create.php', ['passwordsnotequal' => true]);
+                show_view('views/admin/users/register.php', ['message' => 'Passwords are not equal.']);
                 return;
             }
 
-
-            Users::register($username, $email, $password);
+            try {
+                Users::register($username, $email, $password);
+            } catch (Exception $e) {
+                show_view('views/admin/users/register.php', ['message' => $e->getMessage()]);
+                return;
+            }
             redirect('pages', 'home');
         }
     }

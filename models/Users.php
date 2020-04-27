@@ -136,7 +136,14 @@ class Users
         $req->bindParam(':username', $username);
         $req->bindParam(':email', $email);
         $req->bindParam(':password', $hasher);
-        $req->execute();
+        try {
+            $req->execute();
+        } catch (Exception $e) {
+            if (preg_match('/.*Integrity constraint violation.*for key \'username\'.*/', $e->getMessage())) {
+                throw new Exception("Username $username already taken. Please choose another.");
+            }
+        }
+
 
         $_SESSION['last_login_timestamp'] = time();
         $_SESSION['id'] = $db->lastInsertId();
