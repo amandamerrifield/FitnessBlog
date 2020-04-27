@@ -127,11 +127,11 @@ class Posts {
     }
     
     
-        public static function update($id, $exerciseName, $description) {
+        public static function update($id, $exercise_name, $description) {
         $db = Db::getInstance();
         $req = $db->prepare("Update posts SET exercise_name=:exercise_name, description=:description WHERE id=:id");
         $req->bindParam(':id', intval($id));
-        $req->bindParam(':exercise_name', $exerciseName);
+        $req->bindParam(':exercise_name', $exercise_name);
 //        $req->bindParam(':body_part_id', $body_part_id);
 //        $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
