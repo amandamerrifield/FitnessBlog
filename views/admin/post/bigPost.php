@@ -38,7 +38,7 @@
 
             {foreach ($comments as $comment): ?>
                 <div class="media mb-4">
-                    <div class="d-flex mr-3 rounded-circle"><i class="fas fa-user"></i></div>
+                    <div class="d-flex mr-3 rounded-circle"><i class="fas fa-user-secret fa-3x usercomment"></i></div>
                     <div class="media-body">
                         <h5 class="mt-0">Commenter Name</h5>
                         <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>
