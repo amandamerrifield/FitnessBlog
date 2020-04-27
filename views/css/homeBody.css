@@ -30,7 +30,11 @@ h2, .card-title {
     text-transform: uppercase;
 }
 
+.sidebar {
+    margin-left: 20px;
+}
 .sidebar > a:hover{
+    margin-left: 20px;
     color:#02d9dd;
     background-color: #eff4ff;
 }
@@ -41,9 +45,6 @@ h2, .card-title {
 }
 
 
-.bigPost::first-line{
-    color: #dd026d;
-}
 
 
 
