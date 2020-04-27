@@ -23,6 +23,7 @@
                   <?php endif; ?>
 <!--            <p> --><?php //echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?><!--</p>-->
             <p class="bigPost"> <?php print nl2br($post->getDescription())?></p>
+            <blockquote>Author: <?php print $user->getDisplayName() ?></blockquote>
             <p>
                 <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
@@ -38,7 +39,7 @@
 
             {foreach ($comments as $comment): ?>
                 <div class="media mb-4">
-                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="d-flex mr-3 rounded-circle"><i class="fas fa-user-secret fa-3x usercomment"></i></div>
                     <div class="media-body">
                         <h5 class="mt-0">Commenter Name</h5>
                         <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>

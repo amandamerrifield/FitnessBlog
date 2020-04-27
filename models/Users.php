@@ -85,6 +85,11 @@ class Users
         return $this->first_name;
     }
 
+    public function getDisplayName()
+    {
+        return empty($this->first_name) ? $this->username : $this->first_name;
+    }
+
     public function getUserContent()
     {
         return $this->user_content;

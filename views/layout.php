@@ -15,6 +15,10 @@ require_once 'utilities.php';
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+
+        <link href="views/css/style1.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="views/css/homeBody.css" rel="stylesheet" type="text/css"/>
@@ -172,49 +176,41 @@ require_once 'utilities.php';
                 <!--        </div>-->
             </div>
         </div>
-        <div class="container">
+           
+            
+        <div class="container ">
             <?php if (isset($message)): ?>
                 <script>alert('<?php echo $message ?>');</script>
             <?php endif ?>
-            <footer class="row">
-                <div class="sozial col-xs-12 col-sm-6 col-sm-push-6">
-                    <ul class="row">
-                        <li class="col-xs-6 col-sm-2">
-                            <a href="#">
-                                <img class="logo"
-                                     src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/online_social_media_facebook-128.png">
-                            </a>
-                        </li>
-                        <li class="col-xs-6 col-sm-2">
-                            <a href="#">
-                                <img class="logo"
-                                     src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/twitter_online_social_media-128.png">
-                            </a>
-                        </li>
-                        <li class="col-xs-6 col-sm-2">
-                            <a href="#">
-                                <img class="logo"
-                                     src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/instagram_online_social_media_photo-128.png">
-                            </a>
-                        </li>
-                        <li class="col-xs-6 col-sm-2">
-                            <a href="#">
-                                <img class="logo"
-                                     src="https://cdn2.iconfinder.com/data/icons/black-white-social-media/32/online_social_media_google_plus-128.png">
-                            </a>
-                        </li>
-                    </ul>
+            <footer >
+                    <div class="container text-center connect-container" >
+                         <p>CONNECT WITH US</p>
+                    </div>
+
+                <div class="container text-center " >
+
+                    <a id="b" href="https://www.facebook.com/Synergy-Fitness-109012990792326/?modal=admin_todo_tour"><i class="fab fa-facebook-f"></i></a>
+                    <a id="b" href=https://twitter.com/Synergy1a2><i class="fab fa-twitter"></i></a>
+                    <a id="b" href="https://www.instagram.com/synergy1a2/"><i class="fab fa-instagram"></i></a>
+                    <a id="b" href="mailto:fitnessyourpersonaltrainers@gmail.com"><i class="fab fa-google"></i></a>        
                 </div>
 
-                <div class="copyright col-xs-12 col-sm-3 col-sm-pull-6">
-                    <p> &copy; Me from now to eternity </p>
-                </div>
+                <div class="copyright-container " style="margin: 20px 50px">
+                    <p style="text-align: justify;">© 2020 fitnessInstructors.com. 
 
-                <div class="impressum col-xs-12 col-sm-3 col-sm-pull-6">
-                    <p> An impressive impressum </p>
-                    <p> Adresse und so </p>
+                        Before performing these exercises if you have any 
+                        injury always consult with a qualified healthcare 
+                        professional. It is important to remember that 
+                        supplements should be added to a calorie sufficient 
+                        diet to help boost nutrition where is needed. The
+                        information on our blog is for educational purposes
+                        only and does not outweigh the medical advice advice 
+                        from a qualified healthcare professional.
+
+                        fitnessInstructors.com Isleworth, London</p> 
                 </div>
             </footer>
+
         </div>
     </body>
 </html>
