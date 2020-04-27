@@ -79,10 +79,12 @@ class PostsController
     public function bigPost()
     {
         $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-        $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+        $post = Posts::find($post_id);
+
         show_view('views/admin/post/bigPost.php', [
             'post' => Posts::find($post_id),
-            'comments' => Comment::all($blog_id),
+            'comments' => Comment::all($post_id),
+            'user' => Users::find($post->getId()),
             'hide_header' => true
         ]);
     }

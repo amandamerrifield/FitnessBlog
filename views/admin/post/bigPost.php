@@ -23,6 +23,7 @@
                   <?php endif; ?>
 <!--            <p> --><?php //echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?><!--</p>-->
             <p class="bigPost"> <?php print nl2br($post->getDescription())?></p>
+            <p><?php print $user->getDisplayName() ?></p>
             <p>
                 <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
