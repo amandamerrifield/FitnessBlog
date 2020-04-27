@@ -22,18 +22,17 @@ class PostsController
 
             show_view('views/admin/post/create.php', [
                 'bodyParts' => BodyPart::all(),
-                'difficulty' => Difficulty::all(),
-                'users' => Users::all()
+                'difficulty' => Difficulty::all()
             ]);
         } else {
             //$id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $userId = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $exerciseName = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
-            $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $exercise_name = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
+            $body_part_id = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $difficulty_id = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
             $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
-            Posts::create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at);
+            Posts::create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at);
             redirect('posts', 'readAll');
         }
     }

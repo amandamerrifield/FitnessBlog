@@ -33,7 +33,9 @@
                 <?php require_once 'views/Comments/create.php' ?>
             </div>    
             <?php
-            if (!empty($comments))
+            //if (!empty($comments))
+               if (is_array($comments) || is_object($comments))
+
             {foreach ($comments as $comment): ?>
                 <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">

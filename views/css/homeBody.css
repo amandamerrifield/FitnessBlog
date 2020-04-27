@@ -35,6 +35,16 @@ h2, .card-title {
     background-color: #eff4ff;
 }
 
+.fas {
+    padding-right: 10px;
+    color: #dd026d;
+}
+
+
+.bigPost::first-line{
+    color: #dd026d;
+}
+
 
 
 

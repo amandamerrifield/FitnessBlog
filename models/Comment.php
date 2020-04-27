@@ -46,6 +46,7 @@ class Comment
 
     public static function all($blog_id)
     {
+        $list = [];
         $db = Db::getInstance();
        // $id = intval($id);
         $req = $db->prepare('SELECT * FROM comments WHERE blog_id = :blog_id');

@@ -139,13 +139,13 @@ class Posts {
     }
     
 
-    public static function create($userId, $exerciseName, $bodyPartId, $difficultyId, $description, $created_at) {
+    public static function create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at) {
         $db = Db::getInstance();
         $req = $db->prepare("INSERT INTO posts (user_id, exercise_name, body_part_id, difficulty_id, description, created_at) VALUES (:user_id, :exercise_name, :body_part_id, :difficulty_id, :description, NOW())");
-        $req->bindParam(':user_id', $userId);
-        $req->bindParam(':exercise_name', $exerciseName);
-        $req->bindParam(':body_part_id', $bodyPartId);
-        $req->bindParam(':difficulty_id', $difficultyId);
+        $req->bindParam(':user_id', $user_id);
+        $req->bindParam(':exercise_name', $exercise_name);
+        $req->bindParam(':body_part_id', $body_part_id);
+        $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);
         //$req->bindParam(':created_at', $created_at);
         $req->execute();
