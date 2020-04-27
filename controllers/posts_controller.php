@@ -78,25 +78,35 @@ class PostsController
     }
 
     public function bigPost()
-    {    if (!empty($blog_id)){
-            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            show_view('views/admin/post/bigPost.php', [
-                'post' => Posts::find($post_id),
-                'comments' => Comment::all($blog_id),
-                'hide_header' => true
+    {
+        $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+        $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+        show_view('views/admin/post/bigPost.php', [
+            'post' => Posts::find($post_id),
+            'comments' => Comment::all($blog_id),
+            'hide_header' => true
         ]);
-        } else {
-            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            show_view('views/admin/post/bigPost.php', [
-                'post' => Posts::find($post_id),
-                'hide_header' => true
-            ]);
-
-        }
-        
-        
     }
+//        public function bigPost1111()
+//    {    if (!empty($blog_id)){
+//            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+//            $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+//            show_view('views/admin/post/bigPost.php', [
+//                'post' => Posts::find($post_id),
+//                'comments' => Comment::all($blog_id),
+//                'hide_header' => true
+//        ]);
+//        } else {
+//            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+//            show_view('views/admin/post/bigPost.php', [
+//                'post' => Posts::find($post_id),
+//                'hide_header' => true
+//            ]);
+//
+//        }
+//        
+//        
+//    }
 
     public function findByBodyPart()
     {

@@ -71,7 +71,6 @@ class Posts {
             $list[] = new Posts(
                 $posts['id'],
                 $posts['first_name'],
-                //$posts['user_id'],
                 $posts['exercise_name'],
                 $posts['part'],
                 $posts['level'],
