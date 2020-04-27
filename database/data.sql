@@ -9,6 +9,7 @@ INSERT INTO bodyPart(id, part) VALUES (1,'Arms');
 INSERT INTO bodyPart(id, part) VALUES (2,'Chest');
 INSERT INTO bodyPart(id, part) VALUES (3,'Abs');
 INSERT INTO bodyPart(id, part) VALUES (4,'Legs');
+INSERT INTO bodyPart(id, part) VALUES (5,'Back');
 
  INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Amanda',
   "Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. However her preferred indoor exercise is yoga and weight training.");
@@ -23,6 +24,8 @@ INSERT INTO bodyPart(id, part) VALUES (4,'Legs');
 INSERT INTO users VALUES(4, true, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', 'views/images/logo.png', NOW(),NOW(), 'Afrodyta',
  "Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
   her to share her passion for keeping fit, with others.");
+INSERT INTO users VALUES(4, false, 'trainer1', 'trainer@hotmail.com', 'trainer1', 'views/images/logo.png', NOW(),NOW(), 'trainer',
+ "");
 
 
 INSERT INTO difficulty VALUES (1,'Beginner');
