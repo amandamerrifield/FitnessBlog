@@ -41,6 +41,11 @@ h2, .card-title {
 }
 
 
+.bigPost::first-line{
+    color: #dd026d;
+}
+
+
 
 
 

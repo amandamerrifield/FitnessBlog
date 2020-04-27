@@ -21,7 +21,8 @@
                           class="dropzone"></form>
                       <?php endif; ?>
                   <?php endif; ?>
-            <p> <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
+<!--            <p> --><?php //echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?><!--</p>-->
+            <p class="bigPost"> <?php print nl2br($post->getDescription())?></p>
             <p>
                 <a class="btn btn-info" data-toggle="collapse" href="#collapseExample" role="button"
                    aria-expanded="false" aria-controls="collapseExample">
@@ -31,7 +32,9 @@
             <div class="collapse" id="collapseExample">
                 <?php require_once 'views/Comments/create.php' ?>
             </div>    
-            <?php foreach ($comments as $comment): ?>
+            <?php
+            if (!empty($comments))
+            {foreach ($comments as $comment): ?>
                 <div class="media mb-4">
                     <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
                     <div class="media-body">
@@ -39,7 +42,7 @@
                         <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endforeach;} else print ''; ?>
 
         </div>
     </div>
