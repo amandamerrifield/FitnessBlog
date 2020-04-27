@@ -29,7 +29,7 @@
                     <p class="card-text"> Level: <?php print $post->getDifficultyId() ?></p>
                     <p class="card-text"> Author: <?php print $post->getUserId() ?></p>
                     
-                    <p class="card-text">
+                    <p id='p' class="card-text">
                         Description: <?php echo htmlspecialchars_decode($post->getDescription(), ENT_QUOTES) ?></p>
                     <a href="index.php?controller=posts&action=bigPost&id=<?php print $post->getId() ?>"
                        class="btn btn-info" id='readMore'>Read More!</a>
@@ -42,7 +42,7 @@
 
 
 <style>
-    p {
+    #p {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
