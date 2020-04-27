@@ -105,7 +105,7 @@ class Posts {
     public static function findByBodyPart($body_part_id) {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at FROM posts WHERE body_part_id = :body_part_id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE body_part_id = :body_part_id');
         //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
         foreach ($req->fetchAll() as $posts) {
@@ -117,21 +117,21 @@ class Posts {
     public static function findByDifficulty($difficulty_id) {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at FROM posts WHERE difficulty_id = :difficulty_id');
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE difficulty_id = :difficulty_id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'],$posts['photo_type']);
         }
         return $list;
     }
     
     
-        public static function update($id, $exerciseName, $description) {
+        public static function update($id, $exercise_name, $description) {
         $db = Db::getInstance();
         $req = $db->prepare("Update posts SET exercise_name=:exercise_name, description=:description WHERE id=:id");
         $req->bindParam(':id', intval($id));
-        $req->bindParam(':exercise_name', $exerciseName);
+        $req->bindParam(':exercise_name', $exercise_name);
 //        $req->bindParam(':body_part_id', $body_part_id);
 //        $req->bindParam(':difficulty_id', $difficulty_id);
         $req->bindParam(':description', $description);

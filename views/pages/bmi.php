@@ -50,9 +50,9 @@
         <div class="col-xs-4 jumbotron">
             <img id="BMI_chart" class="open" style="max-width: 200px;" src="views/images/BMI_chart_small.png" alt="BMI Chart"/>
         </div>
-        <div class="popup-overlay">
+        <div class="popup-overlay ">
             <div class="popup-content">
-                <img id="BMI_chart" style="max-width: 600px;" src="views/images/BMI_chart.png" alt="BMI Chart"/>
+                <img class="col-lg" style="max-width: 600px;" src="views/images/BMI_chart.png" alt="BMI Chart"/>
                 <button class="close"></button> 
             </div>
         </div>
@@ -69,7 +69,6 @@
             .popup-overlay {
                 visibility: hidden;
                 position: absolute;
-
                 left: 25%;
             }
 
