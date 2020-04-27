@@ -44,15 +44,3 @@ Step 3
 Step 4:
  As an exercise progression, modify your movement to include a slight foot rotation as you dorsiflex the ankle (toes point towards the ceiling). The direction of your slight rotation should be into inversion (bringing the big toe towards your shin bone). Attempt to sit upright and avoid any excessive arching or slouching in the low back.',
         NOW());
-
-INSERT INTO comments VALUES (1,1,NOW(),'This is an amazing exercise!');
-
-
-
-
-
-
- 
-
-
-
