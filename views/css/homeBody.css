@@ -1,8 +1,9 @@
 body {
-    width:100%;
-    overflow-x:hidden;
+    width: 100%;
+    overflow-x: hidden;
     background-color: #dcdcdc;
 }
+
 .wrapper {
     margin-top: 90px;
 }
@@ -13,7 +14,7 @@ body {
     margin-left: 15%
 }
 
- #pageTitle {
+#pageTitle {
     font-size: 60px;
     color: #dd026d;
     text-transform: uppercase;
@@ -40,8 +41,13 @@ h2, .card-title {
     text-transform: uppercase;
 }
 
-.sidebar > a:hover{
-    color:#02d9dd;
+.sidebar {
+    margin-left: 20px;
+}
+
+.sidebar > a:hover {
+    margin-left: 20px;
+    color: #02d9dd;
     background-color: #eff4ff;
 }
 
@@ -50,10 +56,17 @@ h2, .card-title {
     color: #dd026d;
 }
 
+.usercomment {
+    padding-right: 10px;
+    color: #02d9dd;
+}
 
-.bigPost::first-line{
+blockquote {
+    margin: 50px 50px;
+    font-style: italic;
     color: #dd026d;
 }
+
 
 
 
