@@ -5,10 +5,11 @@ DELETE FROM difficulty;
 DELETE FROM users;
 
 
-INSERT INTO bodyPart(id, part) VALUES (1,'arms');
-INSERT INTO bodyPart(id, part) VALUES (2,'chest');
-INSERT INTO bodyPart(id, part) VALUES (3,'abs');
-INSERT INTO bodyPart(id, part) VALUES (4,'legs');
+INSERT INTO bodyPart(id, part) VALUES (1,'Arms');
+INSERT INTO bodyPart(id, part) VALUES (2,'Chest');
+INSERT INTO bodyPart(id, part) VALUES (3,'Abs');
+INSERT INTO bodyPart(id, part) VALUES (4,'Legs');
+INSERT INTO bodyPart(id, part) VALUES (5, 'Back');
 
 
 
@@ -25,7 +26,7 @@ INSERT INTO bodyPart(id, part) VALUES (4,'legs');
 INSERT INTO users VALUES(4, true, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', 'views/images/logo.png', NOW(),NOW(), 'Afrodyta',
  "Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
   her to share her passion for keeping fit, with others.");
-INSERT INTO users VALUES(4, false, 'trainer1', 'trainer@hotmail.com', 'trainer1', 'views/images/logo.png', NOW(),NOW(), 'trainer',
+INSERT INTO users VALUES(5, false, 'trainer1', 'trainer@hotmail.com', 'trainer1', 'views/images/logo.png', NOW(),NOW(), 'trainer',
  "");
 
 
@@ -57,7 +58,7 @@ INSERT INTO difficulty VALUES (3,'Advanced');
                         the floor underneath the chest and catch the ball when it rebounds.', ''
                        , NOW());
 
---Abs-
+# --Abs-
 
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
                 VALUES (10,4, 'Crunch',4, 1, 'Step 1: Starting position: Lie down on with the back on the ground. Step 2: Plant feet hip-width apart on the floor. Step 3: Bend knees and place arms across chest then tense and contract abs whilst inhaling.   Step 4: Exhale and lift upper body whilst keeping the head and neck relaxed before inhaling, then return to the starting position.',
@@ -69,7 +70,7 @@ INSERT INTO difficulty VALUES (3,'Advanced');
                 VALUES (12,4,'Russian Twist',4, 3, ' Step 1: Starting position: Lie back on a Swiss ball. Step 2: The feet should be flat on the floor with knees bent to 90 degrees and arms extended with hands clasped out in front of cchest. Step 3: Rotate arms and torso to one side while the ball rolls across the back of the shoulders. Step 4: Stop the rotation when arms are parallel to floor. Pause, and then  return to the starting position.',
                        '' , NOW());
 
---Legs-
+# --Legs-
 
 
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
@@ -83,7 +84,7 @@ INSERT INTO difficulty VALUES (3,'Advanced');
                     ',
                     '', NOW());
 
--- Back -
+# Back -
 
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
             VALUES (13,5,'Childs Pose Kneel',5, 1, '  Step 1: Starting position: Kneel on the floor with toes together and  knees hip-width apart. Step 2: Rest palms on top of thighs whilst exhaling, lower torso between knees. Step 3: Starting position:Extend the arms alongside the torso with palms facing down whilst relaxing the shoulders toward the ground. ',
