@@ -14,3 +14,9 @@ function redirect($controller, $action, $query_params = []) {
     header("Location: $url");
     die();
 }
+
+function redirectToHomeIfNotLoggedIn() {
+    if (!$_SESSION['id']) {
+        redirect('pages', 'home');
+    }
+}

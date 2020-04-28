@@ -4,6 +4,7 @@ class Posts {
 
     protected $id;
     protected $user_id;
+    protected $user_first_name;
     protected $exercise_name;
     protected $body_part_id;
     protected $difficulty_id;
@@ -11,9 +12,10 @@ class Posts {
     protected $created_at;
     protected $has_photo;
 
-    public function __construct($id, $user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type) {
+    public function __construct($id, $user_id, $user_first_name, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at, $photo_type) {
         $this->id = $id;
         $this->user_id = $user_id;
+        $this->user_first_name = $user_first_name;
         $this->exercise_name = $exercise_name;
         $this->body_part_id = $body_part_id;
         $this->difficulty_id = $difficulty_id;
@@ -28,6 +30,10 @@ class Posts {
 
     public function getUserId() {
         return $this->user_id;
+    }
+
+    public function getFirstName() {
+        return $this->user_first_name;
     }
 
     public function getExerciseName() {
@@ -62,7 +68,7 @@ class Posts {
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT p.id,u.first_name, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level
+        $req = $db->query('SELECT p.id,u.id AS user_id,u.first_name, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level
         FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
         INNER JOIN difficulty as d ON p.difficulty_id=d.id
         INNER JOIN users as u ON p.user_id=u.id
@@ -70,6 +76,7 @@ class Posts {
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts(
                 $posts['id'],
+                $posts['user_id'],
                 $posts['first_name'],
                 $posts['exercise_name'],
                 $posts['part'],
@@ -91,6 +98,7 @@ class Posts {
             return new Posts(
                 $post['id'],
                 $post['user_id'],
+                '',
                 $post['exercise_name'],
                 $post['body_part_id'],
                 $post['difficulty_id'],
@@ -109,7 +117,7 @@ class Posts {
         //the query was prepared, now replace :body_part_id with the actual $body_part_id value
         $req->execute(array('body_part_id' => $body_part_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
         }
         return $list;
     }
@@ -121,7 +129,7 @@ class Posts {
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'],$posts['photo_type']);
+            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'],$posts['photo_type']);
         }
         return $list;
     }

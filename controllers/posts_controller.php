@@ -8,13 +8,31 @@ require_once 'utilities.php';
 
 class PostsController
 {
+    public function readForEditing()
+    {
+        redirectToHomeIfNotLoggedIn();
+
+        $posts = Posts::readAll();
+        $posts_allowed_to_view = [];
+
+        if ($_SESSION['is_admin']) {
+            $posts_allowed_to_view = $posts;
+        } else {
+            foreach ($posts as $post){
+                if ($post->getUserId() == $_SESSION['id']) {
+                    $posts_allowed_to_view[] = $post;
+                }
+            }
+        }
+
+        show_view('views/admin/post/readAll.php', ['posts' => $posts_allowed_to_view]);
+    }
+
     public function readAll()
     {
         show_view('views/admin/post/readAll.php', ['posts' => Posts::readAll()]);
     }
-    
-    
-    
+
     public function create()
     {
         // we expect a url of form ?controller=products&action=create
@@ -35,16 +53,16 @@ class PostsController
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
             $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
             Posts::create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at);
-            
-            
+
+
             //if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if ($_SESSION['is_admin'] == 1){
                  redirect('posts', 'readAll');
              } else {
                  redirect('pages', 'home');
              }
-            
-            
+
+
         //}
         }
     }
