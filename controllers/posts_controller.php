@@ -13,6 +13,8 @@ class PostsController
         show_view('views/admin/post/readAll.php', ['posts' => Posts::readAll()]);
     }
     
+    
+    
     public function create()
     {
         // we expect a url of form ?controller=products&action=create
@@ -33,7 +35,17 @@ class PostsController
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
             $created_at = filter_input(INPUT_POST, 'created_at', FILTER_SANITIZE_SPECIAL_CHARS);
             Posts::create($user_id, $exercise_name, $body_part_id, $difficulty_id, $description, $created_at);
-            redirect('posts', 'readAll');
+            
+            
+            //if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if ($_SESSION['is_admin'] = $user['admin'] == 1){
+                 redirect('posts', 'readAll');
+             } else {
+                 redirect('pages', 'home');
+             }
+            
+            
+        //}
         }
     }
 

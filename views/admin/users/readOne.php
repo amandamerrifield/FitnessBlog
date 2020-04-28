@@ -9,7 +9,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Edit</th>
-                        <th>Delete</th>
+                        <!--<th>Delete</th>-->
                     </tr>
                 </thead>
                 <tbody>
@@ -24,9 +24,9 @@
                         <td>
                             <a href="index.php?controller=users&action=updateOne&id=<?php print $user->getId() ?>">Edit</a>
                         </td>
-                        <td>
-                            <a href="index.php?controller=users&action=delete&id=<?php print $user->getId() ?>">Delete</a>
-                        </td>
+<!--                        <td>
+                            <a href="index.php?controller=users&action=delete&id=<?php //print $user->getId() ?>">Delete</a>
+                        </td>-->
                     </tr>
                 </tbody>
             </table>
