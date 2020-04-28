@@ -1,7 +1,7 @@
+<div class="row">
+    <h2 id="pageTitle">BMI Calculator</h2>
+</div>
 <div class="container">
-    <div class="row">
-        <h2 id="pageTitle">BMI Calculator</h2>
-    </div>
     <div class="row"> 
         <div class="col-xs-4 jumbotron">
             <h1>What is the body mass index (BMI)?</h1>
@@ -15,16 +15,16 @@
             <form method="post" action="index.php?controller=pages&action=bmi" >
                 <div class="col">
                     <label for="weight">Weight in kilograms: </label><br>
-                    <input type="number" name="weight" maxlength="4" autofocus required><br>
+                    <input type="number" min="0" name="weight" maxlength="4" autofocus required><br>
                 </div>
                 <div class="col">
                     <label for="height">Height in centimetres: </label><br>
-                    <input type="number" name="height" maxlength="3" required><br>
+                    <input type="number" min="0" name="height" maxlength="3" required><br>
                 </div>
                 <div class="col" style="margin-top: 10px;">
                     <button type="submit" class="btn btn-info btn-rounded" value="Calculate"> Calculate</button>
 
-                    <button type="reset" class="btn btn-info btn-rounded">Reset</button>
+                    <!--                    <button type="reset" class="btn btn-info btn-rounded">Reset</button>-->
                 </div>
             </form>
 
