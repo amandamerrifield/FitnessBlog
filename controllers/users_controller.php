@@ -84,7 +84,7 @@ class UsersController
                 show_view('views/admin/users/create.php', ['passwordnotequal' => true]);
                 return;
             }
-
+ 
             Users::create($admin, $username, $email, $password, $first_name, $user_content);
             redirect('users', 'readAll');
         }
