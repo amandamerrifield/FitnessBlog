@@ -38,7 +38,7 @@ class PostsController
             
             
             //if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if ($_SESSION['is_admin'] = $user['admin'] == 1){
+            if ($_SESSION['is_admin'] == 1){
                  redirect('posts', 'readAll');
              } else {
                  redirect('pages', 'home');

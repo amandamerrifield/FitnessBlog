@@ -15,7 +15,7 @@
         <input value =" <?php echo $_SESSION['id']; ?>" type="hidden" class="form-control" id="userId" name="user_id">
         <div class="form-group">
             <label for="ExerciseName">Exercise Name</label>
-            <input type="text" class="form-control" id="ExerciseName" name="exercise_name" placeholder="Push Up">
+            <input type="text" class="form-control" id="ExerciseName" name="exercise_name" placeholder="e.g.Push Up">
         </div>
         <div class="form-group">
             <label for="BodyPart">Body Part</label>
