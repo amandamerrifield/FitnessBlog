@@ -51,20 +51,30 @@ h2, .card-title {
     background-color: #eff4ff;
 }
 
+/*for the icons from font awesome*/
+
 .fas {
     padding-right: 10px;
     color: #dd026d;
 }
 
+.comment-area{
+    margin: 20px 20px;
+}
 .usercomment {
     padding-right: 10px;
     color: #02d9dd;
 }
-
+/*For the author*/
 blockquote {
     margin: 50px 50px;
     font-style: italic;
     color: #dd026d;
+}
+
+
+footer{
+    margin-top: 50px;
 }
 
 
