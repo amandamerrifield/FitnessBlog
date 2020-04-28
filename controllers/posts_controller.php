@@ -145,7 +145,7 @@ class PostsController
             show_view('views/pages/home.php', [
                 'bodyParts' => BodyPart::all(),
                 'difficulty' => Difficulty::all(),
-                'posts' => Posts::findByBodyPart($_GET['id']),
+                'posts' => Posts::findByBodyPart($_GET['id'])
             ]);
         }
     }
