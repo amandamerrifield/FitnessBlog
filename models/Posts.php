@@ -89,24 +89,25 @@ class Posts {
     public function readAll() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT p.id,u.id AS user_id,u.first_name, p.exercise_name, p.description,p.created_at, p.photo, b.part,d.level
-        FROM posts AS p INNER JOIN bodyPart  AS b ON p.body_part_id=b.id
-        INNER JOIN difficulty as d ON p.difficulty_id=d.id
-        INNER JOIN users as u ON p.user_id=u.id
-        ORDER BY created_at DESC;');
+        $req = $db->query('SELECT p.id, p.user_id, u.username as username, u.first_name as first_name, b.part AS body_part, p.exercise_name, p.body_part_id, p.difficulty_id, d.level as difficulty, p.description, p.created_at, p.photo_type
+FROM posts AS p
+    INNER JOIN users AS u ON p.user_id = u.id
+    INNER JOIN bodyPart AS b ON p.body_part_id = b.id
+    INNER JOIN difficulty AS d ON p.difficulty_id = d.id
+ORDER BY created_at DESC;');
         foreach ($req->fetchAll() as $posts) {
             $list[] = new Posts(
                 $posts['id'],
                 $posts['user_id'],
-                $posts['first_name'],
+                empty($posts['username']) ? $posts['first_name'] : $posts['username'],
                 $posts['exercise_name'],
-                $posts['part'],
-                '',
-                $posts['level'],
-                '',
+                $posts['body_part_id'],
+                $posts['body_part'],
+                $posts['difficulty_id'],
+                $posts['difficulty'],
                 $posts['description'],
                 $posts['created_at'],
-                $posts['photo']);
+                $posts['photo_type']);
         }
         return $list;
     }
@@ -166,11 +167,27 @@ WHERE body_part_id = :body_part_id');
     public static function findByDifficulty($difficulty_id) {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE difficulty_id = :difficulty_id');
+        $req = $db->prepare('SELECT p.id, p.user_id, u.username as username, u.first_name as first_name, b.part AS body_part, p.exercise_name, p.body_part_id, p.difficulty_id, d.level as difficulty, p.description, p.created_at, p.photo_type
+FROM posts AS p
+    INNER JOIN users AS u ON p.user_id = u.id
+    INNER JOIN bodyPart AS b ON p.body_part_id = b.id
+    INNER JOIN difficulty AS d ON p.difficulty_id = d.id
+WHERE difficulty_id = :difficulty_id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('difficulty_id' => $difficulty_id));
         foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], '', $posts['difficulty_id'], '', $posts['description'], $posts['created_at'],$posts['photo_type']);
+            $list[] = new Posts(
+                $posts['id'],
+                $posts['user_id'],
+                empty($posts['username']) ? $posts['first_name'] : $posts['username'],
+                $posts['exercise_name'],
+                $posts['body_part_id'],
+                $posts['body_part'],
+                $posts['difficulty_id'],
+                $posts['difficulty'],
+                $posts['description'],
+                $posts['created_at'],
+                $posts['photo_type']);
         }
         return $list;
     }
