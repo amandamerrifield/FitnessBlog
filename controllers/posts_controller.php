@@ -59,7 +59,7 @@ class PostsController
             if ($_SESSION['is_admin'] == 1){
                  redirect('posts', 'readAll');
              } else {
-                 redirect('pages', 'home');
+                 redirect('posts', 'readForEditing');
              }
 
 
