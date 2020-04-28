@@ -204,7 +204,7 @@ require_once 'utilities.php';
                         supplements should be added to a calorie sufficient 
                         diet to help boost nutrition where is needed. The
                         information on our blog is for educational purposes
-                        only and does not outweigh the medical advice advice 
+                        only and does not outweigh the medical advice
                         from a qualified healthcare professional.
 
                         fitnessInstructors.com Isleworth, London</p> 

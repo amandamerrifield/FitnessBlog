@@ -84,7 +84,7 @@ class PostsController
         show_view('views/admin/post/bigPost.php', [
             'post' => Posts::find($post_id),
             'comments' => Comment::all($post_id),
-            'user' => Users::find($post->getId()),
+            'user' => Users::find($post->getUserId()),
             'hide_header' => true
         ]);
     }
