@@ -18,6 +18,11 @@
                class="btn btn-info"> <?php print $level->getLevel() ?></a>
            <?php endforeach; ?>
     </div>
+    <div style="margin-bottom:20px;">
+        <label>Show All</label><br>
+            <a href="index.php?controller=pages&action=home"
+               class="btn btn-info">All</a>
+    </div>
 </div>
 <div class="row row-cols-1 row-cols-md-3">
     <?php foreach ($posts as $post): ?>

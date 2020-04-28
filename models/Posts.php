@@ -88,6 +88,43 @@ class Posts {
         return $list;
     }
 
+   
+    
+     public static function findByBodyPart($body_part_id) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE body_part_id = :body_part_id');
+        //the query was prepared, now replace :body_part_id with the actual $body_part_id value
+        $req->execute(array('body_part_id' => $body_part_id));
+        foreach ($req->fetchAll() as $posts) {
+            $list[] = new Posts(
+                    $posts['id'], 
+                    $posts['user_id'], '', 
+                    $posts['exercise_name'], 
+                    $posts['body_part_id'], 
+                    $posts['difficulty_id'], 
+                    $posts['description'], 
+                    $posts['created_at'], 
+                    $posts['photo_type']);
+        }
+        return $list;
+    }
+    
+    
+
+    public static function findByDifficulty($difficulty_id) {
+        $list = [];
+        $db = Db::getInstance();
+        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE difficulty_id = :difficulty_id');
+        //the query was prepared, now replace :id with the actual $id value
+        $req->execute(array('difficulty_id' => $difficulty_id));
+        foreach ($req->fetchAll() as $posts) {
+            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'],$posts['photo_type']);
+        }
+        return $list;
+    }
+    
+    
     public static function find($id) {
         $db = Db::getInstance();
         $id = intval($id);
@@ -109,31 +146,6 @@ class Posts {
             throw new Exception('This post is not available');
         }
     }
-
-    public static function findByBodyPart($body_part_id) {
-        $list = [];
-        $db = Db::getInstance();
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE body_part_id = :body_part_id');
-        //the query was prepared, now replace :body_part_id with the actual $body_part_id value
-        $req->execute(array('body_part_id' => $body_part_id));
-        foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'], $posts['photo_type']);
-        }
-        return $list;
-    }
-
-    public static function findByDifficulty($difficulty_id) {
-        $list = [];
-        $db = Db::getInstance();
-        $req = $db->prepare('SELECT id, user_id, exercise_name, body_part_id, difficulty_id, description, created_at, photo_type FROM posts WHERE difficulty_id = :difficulty_id');
-        //the query was prepared, now replace :id with the actual $id value
-        $req->execute(array('difficulty_id' => $difficulty_id));
-        foreach ($req->fetchAll() as $posts) {
-            $list[] = new Posts($posts['id'], $posts['user_id'], '', $posts['exercise_name'], $posts['body_part_id'], $posts['difficulty_id'], $posts['description'], $posts['created_at'],$posts['photo_type']);
-        }
-        return $list;
-    }
-    
     
         public static function update($id, $exercise_name, $description) {
         $db = Db::getInstance();
