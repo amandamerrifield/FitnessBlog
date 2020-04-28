@@ -15,7 +15,7 @@
                 <?php endif; ?>
                 <hr>
             <?php else: ?>
-                <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
+                <?php if (isset($_SESSION['username']) && $_SESSION['username']): ?>
                     <form id="uploader"
                           action="index.php?controller=images&action=upload&post_id=<?php print $post->getId() ?>"
                           class="dropzone"></form>
@@ -38,10 +38,10 @@
                if (is_array($comments) || is_object($comments))
 
             {foreach ($comments as $comment): ?>
-                <div class="media mb-4">
+                <div class="media mb-4 comment-area">
                     <div class="d-flex mr-3 rounded-circle"><i class="fas fa-user-secret fa-3x usercomment"></i></div>
-                    <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
+                    <div class="media-body ">
+                        <p class="mt-0"><strong>Comment</strong></p>
                         <?php echo htmlspecialchars_decode($comment->getContent(), ENT_QUOTES) ?>
                     </div>
                 </div>

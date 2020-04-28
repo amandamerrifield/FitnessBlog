@@ -34,8 +34,8 @@
                      <?php endif; ?>
                 <div class="card-body">
                     <h5 id='h5' class="card-title"><?php print $post->getExerciseName() ?></h5>
-                    <p class="card-text"> Body part: <?php print $post->getBodyPartId() ?></p>
-                    <p class="card-text"> Level: <?php print $post->getDifficultyId() ?></p>
+                    <p class="card-text"> Body part: <?php print $post->getBodyPart() ?></p>
+                    <p class="card-text"> Level: <?php print $post->getDifficulty() ?></p>
                     <p class="card-text"> Author: <?php print $post->getFirstName() ?></p>
 
                     <p id='p' class="card-text">

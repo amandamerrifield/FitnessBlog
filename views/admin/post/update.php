@@ -1,6 +1,10 @@
 <div class="container">
-    <a href="?controller=posts&action=create" class="btn btn-info" id="adminBtn">Add Post</a>
-    <a href="?controller=posts&action=readAll" class="btn btn-info" id="adminBtn">Manage Post</a>
+    <a href='?controller=posts&action=create' class="btn btn-info" id="adminBtn">Add Post</a>
+    <?php if ($_SESSION['is_admin'] == true) {    ?>
+    <a href='?controller=posts&action=readAll' class="btn btn-info" id="adminBtn">Manage Posts</a>
+    <?php } else { ?>
+         <a href='?controller=posts&action=readForEditing' class="btn btn-info" id="adminBtn">Manage Posts</a>
+    <?php } ?>
     <form style="margin-top: 20px;"  action="index.php?controller=posts&action=update" method="POST" enctype="multipart/form-data">
         <input type="hidden" class="form-control" id="post_id" name="id" value="<?php print $posts->getId() ?>">
         <div class="form-group">

@@ -84,7 +84,12 @@ class PostsController
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
             
             Posts::update($id, $exercise_name, $description);
-            redirect('posts', 'readAll');
+            
+            if ($_SESSION['is_admin'] == 1){
+                 redirect('posts', 'readAll');
+             } else {
+                 redirect('posts', 'readForEditing');
+             }
         }
 
     }
@@ -102,7 +107,11 @@ class PostsController
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             Posts::remove($id);
-            redirect('posts', 'readAll');
+            if ($_SESSION['is_admin'] == 1){
+                 redirect('posts', 'readAll');
+             } else {
+                 redirect('posts', 'readForEditing');
+             }
         }
     }
 
@@ -145,7 +154,7 @@ class PostsController
             show_view('views/pages/home.php', [
                 'bodyParts' => BodyPart::all(),
                 'difficulty' => Difficulty::all(),
-                'posts' => Posts::findByBodyPart($_GET['id']),
+                'posts' => Posts::findByBodyPart($_GET['id'])
             ]);
         }
     }
