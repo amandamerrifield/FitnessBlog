@@ -10,7 +10,6 @@
             <a href="https://www.nhs.uk/common-health-questions/lifestyle/what-is-the-body-mass-index-bmi/">Click here for more information</a>
 
         </div>
-
         <div class="col-xs-3 jumbotron">
             <form method="post" action="index.php?controller=pages&action=bmi" >
                 <div class="col">
