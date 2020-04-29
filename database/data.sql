@@ -20,7 +20,7 @@ INSERT INTO bodyPart(id, part) VALUES (5, 'Back');
 
  "Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future");
 
- INSERT INTO users VALUES(3, true, 'Zita3', 'buzasizita@gmail.com', '$2y$10$vnowDo8U4rKhS1QWXqJwHutURfKmdfXzaOeHAqIw56QNbvbQhN1fW', 'views/images/IMG_0223.png', NOW(),NOW(), 'Zita',
+ INSERT INTO users VALUES(3, true, 'Zita3', 'buzasizita@gmail.com', '$2y$10$vnowDo8U4rKhS1QWXqJwHutURfKmdfXzaOeHAqIw56QNbvbQhN1fW', 'views/images/zita.png', NOW(),NOW(), 'Zita',
   "Zita believes you don't have to be a professional athlete to incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.");
  
 INSERT INTO users VALUES(4, true, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', 'views/images/logo.png', NOW(),NOW(), 'Afrodyta',
