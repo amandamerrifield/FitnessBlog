@@ -10,21 +10,26 @@
   font-family: sans-serif;
   font-size: 15px;
   padding-top: 20px;
-   font-weight: medium;
-   margin:auto;
+  margin:auto;
+}
+.privacy-policy #c{
+  color: grey;
+  text-decoration: none;
+  margin: 0 30px;
 }
 
-#c:visited {
+.privacy-policy #c:visited {
+  text-decoration: none;
   color: grey;
   background-color: transparent;
-  text-decoration: none;
- margin-bottom: 50px;
+  margin-bottom: 50px;
 }
-#c:hover {
+
+.privacy-policy #c:hover {
   color: navy;
   background-color: transparent;
-  text-decoration: underline;
-   margin-bottom: 50px;
+  text-decoration: none;
+  margin-bottom: 50px;
 }
 
 

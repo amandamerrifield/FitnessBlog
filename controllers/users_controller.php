@@ -14,24 +14,6 @@ class UsersController
         show_view('views/admin/users/readOne.php', ['user' => Users::find($_SESSION['id'])]);
     }
 
-//
-//    public function read()
-//    {
-//        // we expect a url of form ?controller=posts&action=show&id=x
-//        // without an id we just redirect to the error page as we need the post id to find it in the database
-//        if (!isset($_GET['id'])) {
-//            call('pages', 'error');
-//            return;
-//        }
-//
-//        try {
-//            // we use the given id to get the correct post
-//            $users = Users::find($_GET['id']);
-//            require_once('views/includes/register.php');
-//        } catch (Exception $ex) {
-//            call('pages', 'error');
-//        }
-//    }
 
     public function register() //shall we rename this to register?
     {
@@ -84,7 +66,7 @@ class UsersController
                 show_view('views/admin/users/create.php', ['passwordnotequal' => true]);
                 return;
             }
- 
+
             Users::create($admin, $username, $email, $password, $first_name, $user_content);
             redirect('users', 'readAll');
         }
@@ -98,7 +80,7 @@ class UsersController
                 call('pages', 'error');
                 return;
             }
-            show_view('views/admin/users/update.php', ['users'=> Users::find($_GET['id'])]);
+            show_view('views/admin/users/update.php', ['users' => Users::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
 
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -109,40 +91,32 @@ class UsersController
             $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
             $user_content = filter_input(INPUT_POST, 'user_content', FILTER_SANITIZE_SPECIAL_CHARS);
-//            $photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
-
             if ($_POST['password'] != $_POST['password2']) {
                 show_view('views/admin/users/update.php', ['passwordnotequal' => true]);
                 return;
             }
             Users::update($id, $admin, $username, $email, $password, $first_name, $user_content);
-            redirect('users','readAll');
+            redirect('users', 'readAll');
         }
     }
-    
-    
+
+
     public function updateOne()
-            {
+    {
         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             if (!isset($_GET['id'])) {
                 call('pages', 'error');
                 return;
             }
-            show_view('views/admin/users/updateOne.php', ['users'=> Users::find($_GET['id'])]);
+            show_view('views/admin/users/updateOne.php', ['users' => Users::find($_GET['id'])]);
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_SPECIAL_CHARS);
             $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_SPECIAL_CHARS);
             $first_name = filter_input(INPUT_POST, 'first_name', FILTER_SANITIZE_SPECIAL_CHARS);
 
-//            $passwordretype = filter_input(INPUT_POST, 'password2', FILTER_SANITIZE_SPECIAL_CHARS);
-            //$photo = filter_input(INPUT_POST, 'photo', FILTER_SANITIZE_SPECIAL_CHARS);
-//            if ($_POST['password'] != $_POST['password2']) {
-//                show_view('views/admin/users/updateOne.php', ['passwordnotequal' => true]);
-//                return;
-//            }
             Users::updateOne($id, $first_name, $username, $email);
-            redirect('users','readOne');
+            redirect('users', 'readOne');
         }
     }
 

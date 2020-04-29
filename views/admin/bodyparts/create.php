@@ -10,4 +10,3 @@
         <button type="submit" class="btn btn-info" id="adminBtn">Add Body Part</button>
     </form>
 </div>
-<!-- add the closing div herFe not in the layout because it is hard to understand and maintain when the opening and closing tags are in separate files -->

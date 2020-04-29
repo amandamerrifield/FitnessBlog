@@ -15,18 +15,13 @@ require_once 'utilities.php';
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
                 integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
         <link href="views/css/style1.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
               integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="views/css/homeBody.css" rel="stylesheet" type="text/css"/>
         <link href="views/css/style.css" rel="stylesheet" type="text/css"/>
-        <link href="views/css/blogSearchStyle.css" rel="stylesheet" type="text/css"/>
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-<!--        <script src="jquery-3.4.1.min.js"></script>
-        <script src="../../../libraries/ckeditor/ckeditor.js"></script>-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://kit.fontawesome.com/962bdcfa7f.js" crossorigin="anonymous"></script>
 
@@ -176,8 +171,8 @@ require_once 'utilities.php';
                 <!--        </div>-->
             </div>
         </div>
-           
-            
+
+
         <div class="container ">
             <?php if (isset($message)): ?>
                 <script>alert('<?php echo $message ?>');</script>
@@ -192,36 +187,31 @@ require_once 'utilities.php';
                     <a id="b" href="https://www.facebook.com/Synergy-Fitness-109012990792326/?modal=admin_todo_tour"><i class="fab fa-facebook-f"></i></a>
                     <a id="b" href=https://twitter.com/Synergy1a2><i class="fab fa-twitter"></i></a>
                     <a id="b" href="https://www.instagram.com/synergy1a2/"><i class="fab fa-instagram"></i></a>
-                    <a id="b" href="mailto:fitnessyourpersonaltrainers@gmail.com"><i class="fab fa-google"></i></a>        
+                    <a id="b" href="mailto:fitnessyourpersonaltrainers@gmail.com"><i class="fab fa-google"></i></a>
                 </div>
-                
-                <div class="privacy-policy text-center"  style="margin-top: 30px; margin-left:75px" > 
-                      
-                      <a id="c" style="margin: 0px 30px " href="http://localhost/FittnessBlog/views/pages/privacyOptions.html  ">Privacy Options</a>
-                      
-                      <a id="c" style="margin: 0px 30px" href="http://localhost/FittnessBlog/views/pages/termsAndConditions.html">Terms & conditions</a>
-                      
-                      <a id="c"  style="margin: 0px 30px "  href="http://localhost/FittnessBlog/views/pages/privacyAndCookiesNotice.html">Privacy & cookies notice </a>
-                      
-              
+
+                <div class="privacy-policy text-center"  style="margin: 30px 0 0 75px" >
+                      <a id="c" href="http://localhost/FittnessBlog/views/pages/privacyOptions.html">Privacy Options</a>
+                      <a id="c" href="http://localhost/FittnessBlog/views/pages/termsAndConditions.html">Terms & conditions</a>
+                      <a id="c" href="http://localhost/FittnessBlog/views/pages/privacyAndCookiesNotice.html">Privacy & cookies notice </a>
                   </div>
 
                 <div class="copyright-container " style="margin: 20px 50px">
-                    <p style="text-align: justify;">© 2020 fitnessInstructors.com. 
+                    <p style="text-align: justify;">© 2020 fitnessInstructors.com.
 
-                        Before performing these exercises if you have any 
-                        injury always consult with a qualified healthcare 
-                        professional. It is important to remember that 
-                        supplements should be added to a calorie sufficient 
+                        Before performing these exercises if you have any
+                        injury always consult with a qualified healthcare
+                        professional. It is important to remember that
+                        supplements should be added to a calorie sufficient
                         diet to help boost nutrition where is needed. The
                         information on our blog is for educational purposes
                         only and does not outweigh the medical advice
                         from a qualified healthcare professional.
                         If in need of contact please send an email to
-                        fitnessyourpersonaltrainers@gmail.com and we will get 
-                        back to you as soon as possible. Synergy fitness, Isleworth, 
-                        London WC7A 9GT Tel: +44 (0) 20 6549 1000.
-                        </p> 
+                        fitnessyourpersonaltrainers@gmail.com and we will get
+                        back to you as soon as possible. Synergy fitness, Isleworth,
+                        London WC7A 9GT.
+                        </p>
                 </div>
             </footer>
 

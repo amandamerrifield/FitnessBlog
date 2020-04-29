@@ -17,9 +17,6 @@
         </div>
         <button type="submit" class="btn btn-outline-success">Save Updates</button> 
     </form>
-<!--    <script>-->
-<!--        CKEDITOR.replace('description');-->
-<!--    </script>-->
 </div>
 </div>  
 

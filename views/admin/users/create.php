@@ -41,8 +41,5 @@
         </div>
         <button type="submit" class="btn btn-info">Add User</button>
     </form>
-    <script>
-        CKEDITOR.replace('user_content');
-    </script>
 </div>  
 

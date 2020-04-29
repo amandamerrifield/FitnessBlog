@@ -15,30 +15,8 @@
                 <label for="inputEmail">Email address</label>
                 <input type="email" id="inputEmail" class="form-control" name="email" value="<?php print $users->getEmail() ?>" >
             </div>
-<!--            <div class="form-label-group">-->
-<!--                <label for="inputPassword">Password</label>-->
-<!--                <input type="password" id="inputPassword" class="form-control"  name="password" value="--><?php //print $users->getPassword() ?><!--" >-->
-<!--            </div>-->
-            <!--            <div class="form-label-group">
-                            <label for="inputConfirmPassword">Confirm Password</label>
-                            <input type="password" id="inputConfirmPassword" class="form-control" name="password2" value="<?php print $users->getPassword() ?>" required>
-                        </div>
-            <?php
-//            $passwordsnotequal = false;
-//            if ($passwordsnotequal == true) {
-//                print "You made a typo. Please enter again";
-//            }
-            ?>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Image</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>-->
             <button type="submit" class="btn btn-info">Save Updates</button>
         </form>
-        <script>
-            CKEDITOR.replace('user_content');
-        </script>
-
     </div>
 </div>  
 

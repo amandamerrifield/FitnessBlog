@@ -18,7 +18,7 @@ class PostsController
         if ($_SESSION['is_admin']) {
             $posts_allowed_to_view = $posts;
         } else {
-            foreach ($posts as $post){
+            foreach ($posts as $post) {
                 if ($post->getUserId() == $_SESSION['id']) {
                     $posts_allowed_to_view[] = $post;
                 }
@@ -56,14 +56,11 @@ class PostsController
 
 
             //if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if ($_SESSION['is_admin'] == 1){
-                 redirect('posts', 'readAll');
-             } else {
-                 redirect('posts', 'readForEditing');
-             }
-
-
-        //}
+            if ($_SESSION['is_admin'] == 1) {
+                redirect('posts', 'readAll');
+            } else {
+                redirect('posts', 'readForEditing');
+            }
         }
     }
 
@@ -79,17 +76,15 @@ class PostsController
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             $exercise_name = filter_input(INPUT_POST, 'exercise_name', FILTER_SANITIZE_SPECIAL_CHARS);
-//            $bodyPartId = filter_input(INPUT_POST, 'body_part_id', FILTER_SANITIZE_SPECIAL_CHARS);
-//            $difficultyId = filter_input(INPUT_POST, 'difficulty_id', FILTER_SANITIZE_SPECIAL_CHARS);
             $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
-            
+
             Posts::update($id, $exercise_name, $description);
-            
-            if ($_SESSION['is_admin'] == 1){
-                 redirect('posts', 'readAll');
-             } else {
-                 redirect('posts', 'readForEditing');
-             }
+
+            if ($_SESSION['is_admin'] == 1) {
+                redirect('posts', 'readAll');
+            } else {
+                redirect('posts', 'readForEditing');
+            }
         }
 
     }
@@ -107,11 +102,11 @@ class PostsController
         } else { //case when we are writing the bodypart to the database
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
             Posts::remove($id);
-            if ($_SESSION['is_admin'] == 1){
-                 redirect('posts', 'readAll');
-             } else {
-                 redirect('posts', 'readForEditing');
-             }
+            if ($_SESSION['is_admin'] == 1) {
+                redirect('posts', 'readAll');
+            } else {
+                redirect('posts', 'readForEditing');
+            }
         }
     }
 
@@ -127,26 +122,6 @@ class PostsController
             'hide_header' => true
         ]);
     }
-//        public function bigPost1111()
-//    {    if (!empty($blog_id)){
-//            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//            $blog_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//            show_view('views/admin/post/bigPost.php', [
-//                'post' => Posts::find($post_id),
-//                'comments' => Comment::all($blog_id),
-//                'hide_header' => true
-//        ]);
-//        } else {
-//            $post_id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-//            show_view('views/admin/post/bigPost.php', [
-//                'post' => Posts::find($post_id),
-//                'hide_header' => true
-//            ]);
-//
-//        }
-//        
-//        
-//    }
 
     public function findByBodyPart()
     {

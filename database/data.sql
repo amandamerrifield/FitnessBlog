@@ -34,7 +34,7 @@ INSERT INTO difficulty VALUES (1,'Beginner');
 INSERT INTO difficulty VALUES (2,'Intermediate');
 INSERT INTO difficulty VALUES (3,'Advanced');
 
---Arms-
+# --Arms-
 
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
                 VALUES (1,1,'Bent Knee Pushup',1, 1, 'Step 1: Starting position: Start with hands on the floor, straighten arms underneath  shoulders. Step 2: Step knees back behind you so there is a straight line through. Step 3: Engage the glutes, tense legs and brace the core to keep the body rigid. ','' , NOW());
@@ -45,7 +45,7 @@ INSERT INTO difficulty VALUES (3,'Advanced');
                VALUES (3,1,'Overhead Triceps Extension',1, 3, ' Step 1: Starting position: Stand with feet hip-width apart, holding a dumbbell over the head and extending arms straight. Step 2: Everything from shoulders to elbows remain still, slowly bend elbows, lowering the weight  behind the head until the arms are just lower than 90 degrees. Step 3: Pause, and keep the core tight before raising back to straight. ',
                      '' , NOW());
 
--- Chest-
+# Chest-
 
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
                 VALUES (4,2,'Standing Chest Stretch',2,1, 'Step 1: Starting position: Standing upright with fingers interlinked behind the head. Step 2: Draw both elbows back to open up the shoulders and stretch the pectorial muscles.',
@@ -95,3 +95,7 @@ INSERT INTO difficulty VALUES (3,'Advanced');
         INSERT INTO posts(id,user_id,exercise_name,body_part_id,difficulty_id,description, photo, created_at)
             VALUES (15,5,'  Prone Scapular (Shoulder) Stabilization Series Y',5, 3, '    Step 1: You should  feel like one-half of the letter "Y" when you are in the uppermost position, as thumbs should be facing up towards the ceiling. Step 2: Hold this "Y" position for a couple of seconds. Step 3 :Slowly lower back down to the  starting position and repeat.',
                   ''  , NOW());
+
+# comments-
+INSERT INTO comments VALUES (1,1,NOW(),'This is an amazing exercise! It helped me a lot to gain confidence.');
+INSERT INTO comments VALUES (2,2,NOW(),'This has really helped me build up my body-strength.');

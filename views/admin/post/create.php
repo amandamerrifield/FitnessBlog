@@ -37,9 +37,6 @@
         <div class="form-group">
             <label for="body">Exercise Description (1000 word max)</label>
             <textarea class="form-control" maxlength="1000" id="body" name="description"></textarea>
-<!--            <script>
-                CKEDITOR.replace('description');
-            </script>-->
         </div>
         <button type="submit" class="btn btn-info">Add Post</button>
     </form>

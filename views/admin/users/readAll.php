@@ -11,7 +11,6 @@
                         <th>Admin</th>
                         <th>Username</th>
                         <th>Email</th>
-<!--                        <th>Password</th>-->
                         <th>Created_at</th>
                         <th>Updated_at</th>
                         <th>User Description</th>
@@ -26,7 +25,6 @@
                             <td><?php print $user->getAdmin() ?></td>
                             <td><?php print $user->getUsername() ?></td>
                             <td><?php print $user->getEmail() ?></td>
-<!--                            <td>--><?php //print $user->getPassword() ?><!--</td>-->
                             <td><?php print $user->getCreatedAt() ?></td>
                             <td><?php print $user->getUpdatedAt() ?></td>
                             <td><?php echo htmlspecialchars_decode($user->getUserContent(), ENT_QUOTES) ?></td>
