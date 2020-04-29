@@ -194,6 +194,17 @@ require_once 'utilities.php';
                     <a id="b" href="https://www.instagram.com/synergy1a2/"><i class="fab fa-instagram"></i></a>
                     <a id="b" href="mailto:fitnessyourpersonaltrainers@gmail.com"><i class="fab fa-google"></i></a>        
                 </div>
+                
+                <div class="privacy-policy text-center"  style="margin-top: 30px; margin-left:75px" > 
+                      
+                      <a id="c" style="margin: 0px 30px " href="http://localhost/FittnessBlog/views/pages/privacyOptions.html  ">Privacy Options</a>
+                      
+                      <a id="c" style="margin: 0px 30px" href="http://localhost/FittnessBlog/views/pages/termsAndConditions.html">Terms & conditions</a>
+                      
+                      <a id="c"  style="margin: 0px 30px "  href="http://localhost/FittnessBlog/views/pages/privacyAndCookiesNotice.html">Privacy & cookies notice </a>
+                      
+              
+                  </div>
 
                 <div class="copyright-container " style="margin: 20px 50px">
                     <p style="text-align: justify;">© 2020 fitnessInstructors.com. 
@@ -206,8 +217,11 @@ require_once 'utilities.php';
                         information on our blog is for educational purposes
                         only and does not outweigh the medical advice
                         from a qualified healthcare professional.
-
-                        fitnessInstructors.com Isleworth, London</p> 
+                        If in need of contact please send an email to
+                        fitnessyourpersonaltrainers@gmail.com and we will get 
+                        back to you as soon as possible. Synergy fitness, Isleworth, 
+                        London WC7A 9GT Tel: +44 (0) 20 6549 1000.
+                        </p> 
                 </div>
             </footer>
 
