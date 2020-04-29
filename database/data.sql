@@ -13,17 +13,17 @@ INSERT INTO bodyPart(id, part) VALUES (5, 'Back');
 
 
 
- INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', LOAD_FILE('views/images/amanda.JPG'), NOW(),NOW(), 'Amanda',
+ INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', 'views/images/amanda.jpg', NOW(),NOW(), 'Amanda',
   "Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. However her preferred indoor exercise is yoga and weight training.");
 
- INSERT INTO users VALUES(2, true, 'Vani2', 'mayavanimudgal@gmail.com', 'password2', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Maya-Vani',
+ INSERT INTO users VALUES(2, true, 'Vani2', 'mayavanimudgal@gmail.com', 'password2', 'views/images/logo.png', NOW(),NOW(), 'Maya-Vani',
 
  "Maya-Vani is a certified lifeguard and has been a competitive swimmer for several years. She also enjoys practising and teaching martial arts, as she hopes to open her own women's self defence classes in the future");
 
  INSERT INTO users VALUES(3, true, 'Zita3', 'buzasizita@gmail.com', '$2y$10$vnowDo8U4rKhS1QWXqJwHutURfKmdfXzaOeHAqIw56QNbvbQhN1fW', 'views/images/zita.png', NOW(),NOW(), 'Zita',
   "Zita believes you don't have to be a professional athlete to incorporate sport into your everyday routine. She believes our exercises are perfect for beginners to complete and enjoy the guaranteed benefits.");
  
-INSERT INTO users VALUES(4, true, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', 'views/images/logo.png', NOW(),NOW(), 'Afrodyta',
+INSERT INTO users VALUES(4, true, 'Afro4', 'afrodytapudlo@hotmail.com', 'password4', 'views/images/Profile.jpg', NOW(),NOW(), 'Afrodyta',
  "Afrodyta is extremely enthusiastic about exercise and the benefits it can have on your mental, social and physical wellbeing. This blog has allowed
   her to share her passion for keeping fit, with others.");
 INSERT INTO users VALUES(5, false, 'trainer1', 'trainer@hotmail.com', 'trainer1', 'views/images/logo.png', NOW(),NOW(), 'trainer',

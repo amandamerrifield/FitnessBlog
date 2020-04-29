@@ -31,7 +31,19 @@ body {
     text-align: center;
     padding-bottom: 20px;
 }
+ #profile-photos{
+     /*max-height: 400px;*/
+     /*height: auto;*/
+     /*overflow: hidden;*/
+     /*width:  100px; !*or 70%, or what you want*!*/
+     /*height: 200px; !*or 70%, or what you want*!*/
+     max-width: 100%;
+     height: 40%;
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
 
+ }
 
 
 h2, .card-title {

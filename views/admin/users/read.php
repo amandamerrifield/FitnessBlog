@@ -16,7 +16,7 @@
             <?php if ($user->getAdmin() == 1) { ?>
                 <div class="col mb-4">
                     <div class="card h-100">
-                        <img src="<?php print $user->getPhoto() ?>" class="card-img-top" alt="Photo of the exercise ">
+                        <img src="<?php print $user->getPhoto() ?>" class="card-img-top" id = "profile-photos" alt="Photo of the exercise ">
                         <div class="card-body">
                             <h5 id='h5' class="card-title"><?php print $user->getFirstName() ?></h5>
                             <p class="card-text"> <?php echo htmlspecialchars_decode($user->getUserContent(), ENT_QUOTES) ?></p>
