@@ -13,7 +13,7 @@ INSERT INTO bodyPart(id, part) VALUES (5, 'Back');
 
 
 
- INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Amanda',
+ INSERT INTO users VALUES(1, true, 'Manda1', 'amanda.r.merrifield@gmail.com', 'password1', LOAD_FILE('views/images/amanda.JPG'), NOW(),NOW(), 'Amanda',
   "Amanda is an outdoor exercise enthusiast, and loves to take long hikes, rock climb and swim in the ocean. However her preferred indoor exercise is yoga and weight training.");
 
  INSERT INTO users VALUES(2, true, 'Vani2', 'mayavanimudgal@gmail.com', 'password2', LOAD_FILE('views/images/logo.png'), NOW(),NOW(), 'Maya-Vani',
